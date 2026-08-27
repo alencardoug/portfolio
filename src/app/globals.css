@@ -1029,7 +1029,7 @@ h3 {
   margin-top: 8px;
 }
 
-/* card em destaque: ações viram CTAs grandes (~2x) */
+/* card em destaque: ações viram CTAs com contorno forte */
 .project-card.featured .project-actions {
   gap: 14px;
   margin-top: 24px;
@@ -1037,10 +1037,26 @@ h3 {
 
 .project-card.featured .project-actions .button {
   min-height: 62px;
-  padding: 0 28px;
+  padding: 0 26px;
   font-size: 1.02rem;
-  border-radius: calc(var(--button-radius) + 3px);
+  border-width: 2px;
+  border-color: var(--accent);
+  border-radius: calc(var(--button-radius) + 10px);
   letter-spacing: -0.01em;
+}
+
+/* o secundário no destaque: fundo neutro, mas contorno em acento forte */
+.project-card.featured .project-actions .button.secondary {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+:root[data-theme="dark"]
+  .project-card.featured
+  .project-actions
+  .button.secondary {
+  color: var(--accent);
+  font-weight: 400;
 }
 
 :root[data-theme="dark"]
