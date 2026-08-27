@@ -5,7 +5,7 @@
 ## Conteúdo
 - [~] Foto — 2 fotos reais ligadas (claro/escuro); variante AVIF e revisão de recorte pendentes.
 - [ ] Vídeo no YouTube (`links.youtubeIntro`).
-- [ ] CV PDF (`links.cv`, `public/cv/`).
+- [x] CV PDF em `public/cv/douglas-alencar-cv.pdf` (`links.cv` ligado; download no Hero + rodapé).
 - [x] GitHub · LinkedIn · E-mail · WhatsApp · Calendly — links reais em `src/content/pt.ts`.
 - [x] Screenshots do projeto principal — 5 telas reais na galeria "Evidências visuais".
 - [x] Diagrama de arquitetura — aplicação + topologia de deploy (SVG por tema).

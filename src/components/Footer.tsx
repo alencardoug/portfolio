@@ -20,7 +20,15 @@ export function Footer() {
               GitHub
             </a>
           )}
-          {links.cv && <a href={links.cv}>CV</a>}
+          {links.cv && (
+            <a
+              href={links.cv}
+              type="application/pdf"
+              download="douglas-alencar-cv.pdf"
+            >
+              CV (PDF)
+            </a>
+          )}
           {links.email && <a href={`mailto:${links.email}`}>E-mail</a>}
         </nav>
       </div>

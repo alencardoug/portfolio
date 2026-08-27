@@ -50,7 +50,8 @@ Trajetória de 7 anos em TI, com experiências no A.C.Camargo Cancer Center, AB 
 - Plataforma de Atendimento — aplicação: https://plataforma-atendimento-prod.web.app/customer
 - Plataforma de Atendimento — repositório: https://github.com/alencardoug/ws_plataforma_atendimento_codex
 - Calendly: https://calendly.com/alencardoug/45-minutes-meeting
-- Ainda pendentes: CV (PDF), vídeo de 1 minuto.
+- CV (PDF): `public/cv/douglas-alencar-cv.pdf` (adicionado 2026-08-27).
+- Ainda pendente: vídeo de 1 minuto.
 
 > Não adicionar projetos internos públicos sem autorização explícita.
 
