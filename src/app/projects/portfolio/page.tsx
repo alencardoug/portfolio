@@ -33,6 +33,10 @@ export default function PortfolioCasePage() {
 
           <p className="case-eyebrow">// estudo de caso</p>
           <h1>Portfólio Data &amp; AI Engineer</h1>
+          <span className="status status-production">
+            <span className="pulse" aria-hidden="true" />
+            Em produção
+          </span>
           <p className="case-lead">
             Currículo web construído como produto estático, com progressive
             disclosure, temas claro/escuro e contato de baixa fricção.

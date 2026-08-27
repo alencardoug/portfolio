@@ -193,7 +193,7 @@ export const projects: Project[] = [
   {
     slug: "portfolio",
     title: "Este portfólio",
-    status: "case-study",
+    status: "production",
     description:
       "Currículo web e produto de apresentação profissional construído com arquitetura estática, temas claro/escuro e foco em evidência técnica.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
