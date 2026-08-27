@@ -133,8 +133,12 @@
 
 ## P12 — Fase 2: Inglês
 
-- [ ] Traduzir conteúdo.
-- [ ] Implementar `/en`.
-- [ ] Adicionar PT/EN no header.
-- [ ] Definir hreflang/canonical.
-- [ ] Revisar CV em inglês.
+- [x] Traduzir conteúdo — `src/content/en.ts` (draft à mão; revisão editorial
+  de Douglas pendente).
+- [x] Implementar `/en` — subpath aditivo; raiz `/` permanece PT.
+- [x] Adicionar PT/EN no header — pílula com `hreflang` que preserva o subpath.
+- [x] Definir hreflang/canonical — `src/lib/seo.ts` (`canonical` + `languages`
+  pt-BR/en/x-default + `og:locale`).
+- [x] CV em inglês — `public/cv/douglas-alencar-resume-en.pdf` ligado ao botão
+  "Download CV (PDF)". Revisão final do PDF com Douglas.
+- Ver `docs/i18n-future.md` para o registro do que foi feito e as pendências.

@@ -3,17 +3,17 @@ import { CaseSimple } from "@/components/case/CaseSimple";
 import { getContent } from "@/content";
 import { pageMetadata } from "@/lib/seo";
 
-const content = getContent("pt");
+const content = getContent("en");
 
 export const metadata: Metadata = pageMetadata({
-  locale: "pt",
+  locale: "en",
   ptPath: "/projects/portfolio",
-  title: "Este portfólio",
+  title: "This portfolio",
   description:
-    "Como este portfólio foi construído: produto estático com Next.js, progressive disclosure, temas claro/escuro e contato de baixa fricção.",
+    "How this portfolio was built: a static product with Next.js, progressive disclosure, light/dark themes and low-friction contact.",
 });
 
-export default function PortfolioCasePage() {
+export default function PortfolioCasePageEn() {
   return (
     <CaseSimple content={content} slug="portfolio" ptPath="/projects/portfolio" />
   );

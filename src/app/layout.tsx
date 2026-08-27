@@ -39,10 +39,18 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   applicationName: "Portfólio Douglas Alencar",
   authors: [{ name: "Douglas Alencar" }],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "pt-BR": "/",
+      en: "/en",
+      "x-default": "/",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
+    alternateLocale: "en_US",
     url: SITE_URL,
     siteName: "Douglas Alencar — Data & AI Engineer",
     title: "Douglas Alencar | Data & AI Engineer",
@@ -76,6 +84,14 @@ const themeScript = `
           : "light";
     document.documentElement.dataset.theme = theme;
   } catch (_) {}
+  try {
+    // O HTML estático nasce com lang="pt-BR"; corrige para as rotas /en
+    // antes da interação (bom para leitor de tela). hreflang + og:locale
+    // por página complementam para os crawlers.
+    if (location.pathname === "/en" || location.pathname.indexOf("/en/") === 0) {
+      document.documentElement.lang = "en";
+    }
+  } catch (_) {}
 })();
 `;
 
@@ -94,9 +110,6 @@ export default function RootLayout({
       <body
         className={`${newsreader.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}
       >
-        <a className="skip-link" href="#conteudo">
-          Pular para o conteúdo
-        </a>
         {children}
       </body>
     </html>

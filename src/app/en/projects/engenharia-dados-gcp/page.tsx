@@ -3,17 +3,17 @@ import { CaseSimple } from "@/components/case/CaseSimple";
 import { getContent } from "@/content";
 import { pageMetadata } from "@/lib/seo";
 
-const content = getContent("pt");
+const content = getContent("en");
 
 export const metadata: Metadata = pageMetadata({
-  locale: "pt",
+  locale: "en",
   ptPath: "/projects/engenharia-dados-gcp",
-  title: "Engenharia de Dados no GCP",
+  title: "Data Engineering on GCP",
   description:
-    "Projeto em desenvolvimento: pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.",
+    "Project in development: pipelines, processing, modeling and delivery of data on Google Cloud.",
 });
 
-export default function EngenhariaDadosGcpPage() {
+export default function EngenhariaDadosGcpPageEn() {
   return (
     <CaseSimple
       content={content}

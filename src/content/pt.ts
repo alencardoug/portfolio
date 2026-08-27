@@ -4,11 +4,15 @@ import type {
   CaseStudy,
   ExternalLinks,
   HeroSpecItem,
+  Profile,
   Project,
   SectionCopy,
+  SimpleCase,
+  SiteContent,
+  Ui,
 } from "./types";
 
-export const profile = {
+export const profile: Profile = {
   name: "Douglas Alencar",
   role: "Data & AI Engineer",
   eyebrow: "Dados • IA • Engenharia de Software",
@@ -18,6 +22,7 @@ export const profile = {
     "Engenheiro de dados especializado no desenvolvimento de aplicações de Inteligência Artificial.",
   summary:
     "7 anos de experiência em tecnologia e atuação em ambientes corporativos complexos, conectando engenharia de dados, aplicações de IA, APIs, cloud, avaliação, observabilidade e produção.",
+  companiesRun: "A.C.Camargo Cancer Center / AB InBev / Shell + UFRJ",
 };
 
 export const links: ExternalLinks = {
@@ -205,6 +210,8 @@ export const projects: Project[] = [
 
 export const caseStudies: Partial<Record<string, CaseStudy>> = {
   "plataforma-atendimento-ia": {
+    eyebrow: "// estudo de caso — 01",
+    disclaimerLabel: "Sistema fictício",
     disclaimer:
       "Sistema fictício de demonstração técnica. Instituição, profissionais, procedimentos, conteúdo clínico, preços, pagamento, CPF e demais dados são simulados. Não há paciente, serviço de saúde ou dado real.",
     nature:
@@ -287,6 +294,10 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
       },
     ],
     architecture: {
+      appAlt:
+        "Arquitetura da aplicação: UI web e FastAPI no transporte, serviços de aplicação neutros de canal, domínio e políticas, porta de IA e porta de RAG, adapters (OpenAI / determinístico / pgvector) e PostgreSQL 17 com pgvector.",
+      deployAlt:
+        "Topologia de deploy: navegador para Firebase Hosting (estáticos da SPA e rewrite /api/** na mesma origem), Cloud Run (FastAPI, us-east1, min-instances=0), Neon Postgres 17 com pgvector, API da OpenAI, e Cloud Build, Artifact Registry e Secret Manager em volta.",
       notes: [
         "Monólito modular com regra de dependência estrita: o núcleo de domínio/aplicação não conhece React, objetos de request do FastAPI nem tipos do SDK da OpenAI. Os serviços de conversa são neutros de canal — permitem um futuro adaptador (ex.: Telegram) sem duplicar lógica.",
         "Provedor de LLM e embeddings atrás de ports/adapters (Protocol de ~4 métodos): adapter OpenAI em produção e um adapter determinístico que roda toda a suíte de testes sem chave nem rede.",
@@ -296,6 +307,7 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
     },
     decisionTree: {
       kh: "// ai.router.generate_draft — executa nesta ordem e para na primeira regra que se aplica",
+      alt: "Árvore de decisão da geração da resposta: retrieve, ramos de agendamento guiado, evidência clínica, ADMIN_QA dinâmico, chamada ao LLM, reranker clínico, persistência da AIGeneration e decisão de autonomia.",
       notes: [
         "O LLM só entra no ramo F — quando a melhor evidência é ADMIN_QA não-dinâmica ou quando não há evidência. Evidência clínica nunca é enviada ao LLM: vira o documento-pai inteiro no ramo D1, e no ramo F só os itens ADMIN_QA compõem o payload.",
         "Nenhum ramo envia sozinho. Todos gravam uma AIGeneration (rascunho interno) e só então maybe_open_autonomous_window decide se abre uma janela de envio autônomo.",
@@ -304,5 +316,184 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
       ],
     },
     pending: [],
+    headings: {
+      nature: "Natureza do projeto",
+      evidence: "Evidências",
+      archDecision: "Decisão arquitetural",
+      architecture: "Arquitetura",
+      stack: "Stack",
+      state: "Estado atual e próximos passos",
+      decisionTree: "Geração da resposta — árvore de decisão",
+      visualEvidence: "Evidências visuais",
+    },
+    kh: {
+      nature: "// portfólio · engenharia assistida por IA",
+      evidence: "// números informados pelo repositório",
+      fineprint:
+        "// revalidar os números no repositório antes da publicação final do portfólio",
+      archDecision: "// monólito modular",
+      archApp:
+        "// aplicação — regra de dependência (domínio ⟶ portas ⟶ adapters)",
+      archDeploy: "// deploy — Firebase Hosting ⟶ Cloud Run ⟶ Neon / OpenAI",
+      stack: "// da engenharia ao deploy",
+      state: "// produção funcional · refinamento conversacional em aberto",
+      visualEvidence: "// aplicação em produção — capturas reais",
+      pending: "// pendente — entram quando o material real existir",
+    },
+    archDecisionBody: {
+      pre: "Arquitetura em ",
+      strong: "monólito modular, sem microsserviços",
+      post: ", por decisão explícita. LangChain e LangGraph também não foram utilizados nesta versão, permitindo explorar diretamente a integração com o provedor de LLM, a recuperação e a orquestração da aplicação.",
+    },
+    stateBody:
+      "Produção funcional e testes funcionais previstos concluídos. O refinamento de conteúdo e comportamento conversacional continua como etapa posterior.",
   },
 };
+
+export const simpleCases: Partial<Record<string, SimpleCase>> = {
+  "engenharia-dados-gcp": {
+    eyebrow: "// em desenvolvimento",
+    title: "Engenharia de Dados no GCP",
+    lead: "Projeto voltado a pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.",
+    sections: [
+      {
+        heading: "Por que aparece no portfólio agora?",
+        body: "O projeto complementará o case de IA e sustentará o posicionamento Data & AI Engineer. O card é deliberadamente marcado como “Em desenvolvimento”.",
+      },
+      {
+        heading: "O que ainda será definido",
+        list: [
+          "Problema e dataset.",
+          "Arquitetura e serviços GCP.",
+          "Pipeline e modelagem.",
+          "Observabilidade e qualidade.",
+          "Repositório GitHub e evidências.",
+        ],
+      },
+    ],
+  },
+  portfolio: {
+    eyebrow: "// estudo de caso",
+    title: "Portfólio Data & AI Engineer",
+    lead: "Currículo web construído como produto estático, com progressive disclosure, temas claro/escuro e contato de baixa fricção.",
+    sections: [
+      {
+        heading: "Decisões principais",
+        list: [
+          "Next.js + TypeScript.",
+          "Tailwind CSS.",
+          "Export estático.",
+          "Firebase Hosting.",
+          "Sem backend na V1.",
+          "Conteúdo separado da apresentação.",
+          "Preparação para inglês numa fase posterior.",
+        ],
+      },
+      {
+        heading: "Critério de sucesso",
+        body: "Um recrutador deve entender o posicionamento e encontrar evidências rapidamente; um gestor técnico deve conseguir aprofundar sem sobrecarregar a homepage.",
+      },
+    ],
+  },
+};
+
+export const ui: Ui = {
+  htmlLang: "pt-BR",
+  skipLink: "Pular para o conteúdo",
+  nav: {
+    career: "Trajetória",
+    capabilities: "Capacidades",
+    projects: "Projetos",
+    brandAria: "Ir para o início",
+    navAria: "Navegação principal",
+  },
+  langSwitch: { label: "EN", aria: "View this page in English" },
+  theme: {
+    toLight: "modo claro",
+    toDark: "modo escuro",
+    hintTemplate: "tecle {kbd} para {target}",
+    activateTemplate: "Ativar {target}",
+  },
+  hero: {
+    seeProjects: "Ver projetos",
+    watchVideo: "Vídeo de 1 minuto",
+    downloadCv: "Baixar CV (PDF)",
+    specAria: "Resumo profissional",
+    portraitLightAlt: "Douglas Alencar, retrato profissional",
+    portraitDarkAlt: "Douglas Alencar, retrato com fundo verde",
+  },
+  capabilities: {
+    markAria: "Sei construir e colocar em produção",
+    techAriaTemplate: "Tecnologias de {title}",
+  },
+  projectCard: {
+    status: {
+      production: "Em produção",
+      development: "Em desenvolvimento",
+      "case-study": "Estudo de caso",
+    },
+    openApp: "Abrir aplicação",
+    github: "GitHub",
+    caseStudy: "Estudo de caso",
+  },
+  footer: {
+    navAria: "Links profissionais",
+    cvLabel: "CV (PDF)",
+    email: "E-mail",
+    tagline: "Data & AI Engineer",
+  },
+  contactDock: {
+    ariaLabel: "Contato rápido",
+    trigger: "Contato",
+    openTrigger: "Abrir opções de contato",
+    closeTrigger: "Fechar opções de contato",
+    scheduleLabel: "Agendar",
+    scheduleDesc: "Agendar uma conversa",
+    emailLabel: "E-mail",
+    emailDesc: "Enviar e-mail",
+    whatsappLabel: "WhatsApp",
+    whatsappDesc: "Enviar WhatsApp",
+    emailSubject: "Contato profissional — oportunidade em Dados/IA",
+    emailBody:
+      "Olá, Douglas.\n\nEncontrei seu portfólio e gostaria de conversar sobre uma oportunidade profissional na área de Dados/IA.\n\nPodemos agendar uma conversa?\n\nObrigado(a).",
+  },
+  notFound: {
+    metaTitle: "Página não encontrada",
+    eyebrow: "// 404",
+    title: "Página não encontrada",
+    lead: "O endereço que você abriu não existe (ou saiu do ar). Volte para a home ou vá direto a uma das seções.",
+    goHome: "Ir para a home",
+  },
+  caseChrome: {
+    back: "Voltar aos projetos",
+    openFullscreen: "Abrir em tela cheia",
+    openDiagramFullscreen: "Abrir o diagrama em tela cheia",
+    otherProjects: "Ver outros projetos",
+    codeOnGithub: "Código no GitHub",
+    pendingSlot: "pendente",
+  },
+  meta: {
+    title: "Douglas Alencar | Data & AI Engineer",
+    description:
+      "Portfólio profissional de Douglas Alencar: Engenharia de Dados, aplicações de IA, RAG, APIs, cloud e produtos em produção.",
+    ogSiteName: "Douglas Alencar — Data & AI Engineer",
+    ogImageAlt: "Douglas Alencar — Data & AI Engineer",
+  },
+};
+
+export const pt: SiteContent = {
+  locale: "pt",
+  ui,
+  profile,
+  links,
+  heroSpec,
+  sections,
+  career,
+  education,
+  capabilities,
+  projects,
+  caseStudies,
+  simpleCases,
+};
+
+export default pt;

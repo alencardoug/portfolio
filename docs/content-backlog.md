@@ -64,8 +64,10 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
 ## Fase posterior
 
 - [ ] Certificados.
-- [ ] Tradução completa para inglês.
-- [ ] CV em inglês.
-- [ ] Botão PT/EN.
+- [x] Tradução completa para inglês — `/en` no ar (2026-08-27). `src/content/en.ts`
+  é um draft escrito à mão; falta a revisão editorial de Douglas.
+- [x] CV em inglês — `public/cv/douglas-alencar-resume-en.pdf` (revisão final do
+  PDF pendente).
+- [x] Botão PT/EN — pílula no header, com `hreflang`, preserva o subpath.
 - [ ] Open Graph final.
 - [ ] Analytics somente se houver objetivo claro e consentimento/privacidade adequados.

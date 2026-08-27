@@ -16,6 +16,12 @@ A home é organizada em três grandes seções:
 2. **O que sei construir**
 3. **O que já construí**
 
+## Idiomas
+
+PT na raiz `/` (padrão), EN em `/en` (subpath aditivo — as URLs PT não mudam).
+Conteúdo em `src/content/{pt,en}.ts`, bundle por `src/content/index.ts`. Seletor
+PT/EN no header. Detalhes e pendências em `docs/i18n-future.md`.
+
 ## Stack definida para a V1
 
 - Next.js 16.3.x, App Router

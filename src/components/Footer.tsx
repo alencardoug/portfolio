@@ -1,15 +1,18 @@
-import { links, profile } from "@/content/pt";
+import type { SiteContent } from "@/content/types";
 
-export function Footer() {
+export function Footer({ content }: { content: SiteContent }) {
+  const { links, profile, ui } = content;
+  const cvName = links.cv?.split("/").pop() || "cv.pdf";
+
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
         <div>
           <strong>{profile.name}</strong>
-          <p>{profile.role}</p>
+          <p>{ui.footer.tagline}</p>
         </div>
 
-        <nav aria-label="Links profissionais">
+        <nav aria-label={ui.footer.navAria}>
           {links.linkedin && (
             <a href={links.linkedin} target="_blank" rel="noreferrer noopener">
               LinkedIn
@@ -21,15 +24,11 @@ export function Footer() {
             </a>
           )}
           {links.cv && (
-            <a
-              href={links.cv}
-              type="application/pdf"
-              download="douglas-alencar-cv.pdf"
-            >
-              CV (PDF)
+            <a href={links.cv} type="application/pdf" download={cvName}>
+              {ui.footer.cvLabel}
             </a>
           )}
-          {links.email && <a href={`mailto:${links.email}`}>E-mail</a>}
+          {links.email && <a href={`mailto:${links.email}`}>{ui.footer.email}</a>}
         </nav>
       </div>
     </footer>

@@ -1,15 +1,9 @@
 import { ArrowRight, Globe } from "lucide-react";
-import type { Project } from "@/content/types";
+import type { Project, Ui } from "@/content/types";
 import { GithubMark } from "./BrandIcons";
 import { ExternalLink } from "./ExternalLink";
 
-const statusLabel = {
-  production: "Em produção",
-  development: "Em desenvolvimento",
-  "case-study": "Estudo de caso",
-};
-
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, ui }: { project: Project; ui: Ui }) {
   // No card em destaque, as ações são botões grandes (CTA); nos demais, links.
   return (
     <article className={`project-card ${project.featured ? "featured" : ""}`}>
@@ -18,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.status === "production" && (
             <span className="pulse" aria-hidden="true" />
           )}
-          {statusLabel[project.status]}
+          {ui.projectCard.status[project.status]}
         </span>
       </div>
 
@@ -48,12 +42,10 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.appUrl && (
           <ExternalLink
             href={project.appUrl}
-            className={
-              project.featured ? "button primary" : "text-link"
-            }
+            className={project.featured ? "button primary" : "text-link"}
           >
             <Globe size={project.featured ? 19 : 16} aria-hidden="true" />
-            Abrir aplicação
+            {ui.projectCard.openApp}
           </ExternalLink>
         )}
 
@@ -63,7 +55,7 @@ export function ProjectCard({ project }: { project: Project }) {
             className={project.featured ? "button secondary" : "text-link"}
           >
             <GithubMark size={project.featured ? 19 : 16} />
-            GitHub
+            {ui.projectCard.github}
           </ExternalLink>
         )}
 
@@ -72,7 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={project.caseStudyUrl}
             className={project.featured ? "button secondary" : "text-link"}
           >
-            Estudo de caso
+            {ui.projectCard.caseStudy}
             <ArrowRight size={project.featured ? 19 : 16} aria-hidden="true" />
           </a>
         )}

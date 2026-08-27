@@ -2,6 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import type { Ui } from "@/content/types";
 
 type Theme = "light" | "dark";
 
@@ -16,7 +17,7 @@ function getInitialTheme(): Theme {
     : "light";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ labels }: { labels: Ui["theme"] }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
@@ -66,19 +67,25 @@ export function ThemeToggle() {
   }, [toggle]);
 
   // Rótulo = a ação (para onde o toggle leva).
-  const target = mounted && theme === "dark" ? "modo claro" : "modo escuro";
+  const target = mounted && theme === "dark" ? labels.toLight : labels.toDark;
+  const activate = labels.activateTemplate.replace("{target}", target);
+  const [hintBefore, hintAfter] = labels.hintTemplate
+    .replace("{target}", target)
+    .split("{kbd}");
 
   return (
     <>
       <span className="theme-hint" aria-hidden="true">
-        tecle <kbd>T</kbd> para {target}
+        {hintBefore}
+        <kbd>T</kbd>
+        {hintAfter}
       </span>
       <button
         type="button"
         className="icon-button theme-toggle"
         onClick={toggle}
-        aria-label={`Ativar ${target}`}
-        title={`Ativar ${target} — tecla T`}
+        aria-label={activate}
+        title={`${activate} — T`}
       >
         {mounted && theme === "dark" ? (
           <Sun aria-hidden="true" size={18} />
