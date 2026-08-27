@@ -1,9 +1,22 @@
+import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Globe, Maximize2, Network } from "lucide-react";
 import { ContactDock } from "@/components/ContactDock";
 import { Footer } from "@/components/Footer";
 import { GithubMark } from "@/components/BrandIcons";
 import { Header } from "@/components/Header";
 import { caseStudies, links, projects } from "@/content/pt";
+
+const PAGE_TITLE = "Plataforma de Atendimento com IA";
+const PAGE_DESC =
+  "Estudo de caso: RAG, LLM, dados relacionais e vetoriais, workflows de atendimento e níveis de autonomia — arquitetura, processo SDD e evidências de engenharia.";
+
+export const metadata: Metadata = {
+  title: PAGE_TITLE,
+  description: PAGE_DESC,
+  alternates: { canonical: "/projects/plataforma-atendimento-ia" },
+  openGraph: { title: PAGE_TITLE, description: PAGE_DESC },
+  twitter: { title: PAGE_TITLE, description: PAGE_DESC },
+};
 
 const slotIcons = [Network];
 const ASSET = "/assets/projects/plataforma-atendimento";
@@ -22,7 +35,7 @@ export default function PlataformaAtendimentoPage() {
   return (
     <>
       <Header />
-      <main className="case-page">
+      <main id="conteudo" className="case-page">
         <div className="container case-container">
           <a href="/#projetos" className="case-back">
             <ArrowLeft size={15} aria-hidden="true" />
@@ -109,8 +122,7 @@ export default function PlataformaAtendimentoPage() {
                 <img
                   className="diagram-dark"
                   src={`${ARCH_APP}-dark.svg`}
-                  alt=""
-                  aria-hidden="true"
+                  alt="Arquitetura da aplicação: UI web e FastAPI no transporte, serviços de aplicação neutros de canal, domínio e políticas, porta de IA e porta de RAG, adapters (OpenAI / determinístico / pgvector) e PostgreSQL 17 com pgvector."
                 />
               </div>
               <a
@@ -135,8 +147,7 @@ export default function PlataformaAtendimentoPage() {
                 <img
                   className="diagram-dark"
                   src={`${ARCH_DEPLOY}-dark.svg`}
-                  alt=""
-                  aria-hidden="true"
+                  alt="Topologia de deploy: navegador para Firebase Hosting (estáticos da SPA e rewrite /api/** na mesma origem), Cloud Run (FastAPI, us-east1, min-instances=0), Neon Postgres 17 com pgvector, API da OpenAI, e Cloud Build, Artifact Registry e Secret Manager em volta."
                 />
               </div>
               <a
@@ -201,8 +212,7 @@ export default function PlataformaAtendimentoPage() {
                 <img
                   className="diagram-dark"
                   src={`${DIAGRAM}-dark.svg`}
-                  alt=""
-                  aria-hidden="true"
+                  alt="Árvore de decisão da geração da resposta: retrieve, ramos de agendamento guiado, evidência clínica, ADMIN_QA dinâmico, chamada ao LLM, reranker clínico, persistência da AIGeneration e decisão de autonomia."
                 />
               </div>
               <a

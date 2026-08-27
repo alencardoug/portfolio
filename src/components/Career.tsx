@@ -15,16 +15,18 @@ export function Career() {
         <div className="path">
           {career.map((item, index) => {
             const tipId = `career-role-${index}`;
+            const nameId = `career-org-${index}`;
             return (
               <div className="node" key={item.organization}>
                 <span className="node-dot" aria-hidden="true" />
                 <article
                   className="career-card"
                   tabIndex={0}
+                  aria-labelledby={nameId}
                   aria-describedby={tipId}
                 >
                   <span className="seq">{`#0${index + 1}`}</span>
-                  <h3>{item.organization}</h3>
+                  <h3 id={nameId}>{item.organization}</h3>
                   <span className="career-dur">{item.duration}</span>
                   <p>{item.context}</p>
                   <span className="tip" id={tipId}>

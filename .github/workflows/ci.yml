@@ -21,8 +21,10 @@ jobs:
       - name: Install
         run: npm ci --no-audit --no-fund
 
-      - name: Typecheck
-        run: npm run check
-
+      # Build primeiro: `next build` gera `.next/types/*` referenciados por
+      # `next-env.d.ts`, sem os quais o `tsc` do passo seguinte falharia.
       - name: Build
         run: npm run build
+
+      - name: Typecheck
+        run: npm run check

@@ -1,14 +1,27 @@
+import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { ContactDock } from "@/components/ContactDock";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { links } from "@/content/pt";
 
+const PAGE_TITLE = "Engenharia de Dados no GCP";
+const PAGE_DESC =
+  "Projeto em desenvolvimento: pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.";
+
+export const metadata: Metadata = {
+  title: PAGE_TITLE,
+  description: PAGE_DESC,
+  alternates: { canonical: "/projects/engenharia-dados-gcp" },
+  openGraph: { title: PAGE_TITLE, description: PAGE_DESC },
+  twitter: { title: PAGE_TITLE, description: PAGE_DESC },
+};
+
 export default function EngenhariaDadosGcpPage() {
   return (
     <>
       <Header />
-      <main className="case-page">
+      <main id="conteudo" className="case-page">
         <div className="container case-container">
           <a href="/#projetos" className="case-back">
             <ArrowLeft size={15} aria-hidden="true" />
