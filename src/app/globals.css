@@ -356,6 +356,7 @@ h3 {
 .theme-toggle {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
 }
 
@@ -1560,16 +1561,9 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  /* no mobile o detalhe de cargo (tooltip) não aparece — sem hover e para
+     manter o card enxuto; o resumo curto (context) permanece. */
   .tip {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    margin-top: 12px;
-    box-shadow: none;
-  }
-
-  .tip::before {
     display: none;
   }
 
