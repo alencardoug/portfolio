@@ -46,7 +46,7 @@ Trajetória de 7 anos em TI, com experiências no A.C.Camargo Cancer Center, AB 
 - GitHub: https://github.com/alencardoug/
 - LinkedIn: https://www.linkedin.com/in/alencardoug/
 - E-mail: alencardoug@gmail.com
-- WhatsApp: https://wa.me/dougzinho
+- WhatsApp: https://wa.me/qr/SZB7REVZSBB6M1
 - Plataforma de Atendimento — aplicação: https://plataforma-atendimento-prod.web.app/customer
 - Plataforma de Atendimento — repositório: https://github.com/alencardoug/ws_plataforma_atendimento_codex
 - Calendly: https://calendly.com/alencardoug/45-minutes-meeting

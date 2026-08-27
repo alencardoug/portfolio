@@ -26,7 +26,7 @@
 - [ ] Screen-reader sanity check com leitor real (VoiceOver/NVDA).
 - [x] Contraste — calculado: texto passa AA nos dois temas; `--line` (bordas de card) fica abaixo de 3:1 **por decisão de design** ("bordas discretas"), com os controles identificáveis por texto/hover/foco.
 - [x] Reduced motion — `prefers-reduced-motion` cobre animações e transições.
-- [~] Links externos — verificados; **`wa.me/dougzinho` a confirmar** (`wa.me` espera número de telefone).
+- [x] Links externos — verificados (GitHub, LinkedIn, Calendly, app, repo, WhatsApp `wa.me/qr/...`).
 - [x] 404 estática (`src/app/not-found.tsx` → `out/404.html`).
 - [ ] Lighthouse (mobile + desktop).
 - [x] Build limpo — `npm run check` + `npm run build` verdes.

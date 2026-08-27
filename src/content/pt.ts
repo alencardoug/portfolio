@@ -27,7 +27,7 @@ export const links: ExternalLinks = {
   youtubeIntro: null, // pendente: vídeo de 1 minuto
   calendly: "https://calendly.com/alencardoug/45-minutes-meeting",
   email: "alencardoug@gmail.com",
-  whatsappUrl: "https://wa.me/dougzinho",
+  whatsappUrl: "https://wa.me/qr/SZB7REVZSBB6M1",
 };
 
 export const heroSpec: HeroSpecItem[] = [
