@@ -122,11 +122,11 @@
 
 ## P11 — Deploy
 
-- [ ] Criar projeto Firebase.
-- [ ] Configurar `.firebaserc` local.
-- [ ] Criar preview.
-- [ ] Validar `out/`.
-- [ ] Configurar deploy.
+- [ ] Criar projeto Firebase `portfolio-douglas-alencar` (passo manual — ver `docs/deploy.md`).
+- [ ] Configurar `.firebaserc` local (`cp .firebaserc.example .firebaserc`).
+- [x] Configurar deploy — `firebase.json` (`trailingSlash`, `cleanUrls`, cache headers), `.firebaserc.example` e `docs/deploy.md`. Os workflows de CI (`live` + preview) são gerados por `firebase init hosting:github` no passo manual.
+- [x] Validar `out/` — export estático gera home + 3 páginas de projeto + `404.html`.
+- [ ] Criar preview (primeira PR após o secret do Firebase existir).
 - [ ] Configurar domínio próprio.
 - [ ] Testar SSL e redirecionamentos.
 - [ ] Publicar V1.
