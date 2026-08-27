@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+.env
+.env.*
+!.env.example
+.firebase/
+.firebase-debug.log
+.firebaserc
+.DS_Store
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# Material de origem / pessoal — não versionado (as versões usadas no site
+# já estão otimizadas em public/assets/).
+DOCS_PESSOAIS/
+DOCS_PROJETO/
