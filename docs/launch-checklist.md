@@ -43,7 +43,7 @@
 
 ## Produção
 - [ ] Projeto Firebase `portfolio-douglas-alencar` criado (ver `docs/deploy.md`).
-- [ ] Preview (canal de PR — workflow em `.github/workflows/deploy.yml`).
+- [ ] Preview (canal de PR — workflow gerado por `firebase init hosting:github`).
 - [ ] Deploy final (`live` no push para `main`).
 - [ ] SSL (automático no `*.web.app`).
 - [ ] Domínio próprio.
