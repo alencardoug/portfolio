@@ -1,14 +1,27 @@
+import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import { ContactDock } from "@/components/ContactDock";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { links } from "@/content/pt";
 
+const PAGE_TITLE = "Este portfólio";
+const PAGE_DESC =
+  "Como este portfólio foi construído: produto estático com Next.js, progressive disclosure, temas claro/escuro e contato de baixa fricção.";
+
+export const metadata: Metadata = {
+  title: PAGE_TITLE,
+  description: PAGE_DESC,
+  alternates: { canonical: "/projects/portfolio" },
+  openGraph: { title: PAGE_TITLE, description: PAGE_DESC },
+  twitter: { title: PAGE_TITLE, description: PAGE_DESC },
+};
+
 export default function PortfolioCasePage() {
   return (
     <>
       <Header />
-      <main className="case-page">
+      <main id="conteudo" className="case-page">
         <div className="container case-container">
           <a href="/#projetos" className="case-back">
             <ArrowLeft size={15} aria-hidden="true" />

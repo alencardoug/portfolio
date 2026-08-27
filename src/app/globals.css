@@ -142,6 +142,28 @@ button:focus-visible,
   border-radius: 4px;
 }
 
+/* pular para o conteúdo (visível só ao focar via teclado) */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transform: translateY(-120%);
+  padding: 11px 18px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 700;
+  font-size: 0.88rem;
+  border-radius: 0 0 12px 0;
+  transition: transform 0.15s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+}
+
 h1,
 h2,
 h3 {
@@ -1541,7 +1563,19 @@ h3 {
   }
 
   .hero-name {
-    font-size: clamp(2.6rem, 14vw, 4rem);
+    font-size: clamp(2.2rem, 13vw, 4rem);
+    line-height: 1.02;
+  }
+
+  /* liberar a barra do header: redes ficam no rodapé */
+  .header-actions a.icon-button {
+    display: none;
+  }
+
+  .hero-run,
+  .case-kh,
+  .case-flow span {
+    overflow-wrap: anywhere;
   }
 
   .metric-grid {
@@ -1552,6 +1586,10 @@ h3 {
   .capability-card,
   .project-card {
     padding: 22px;
+  }
+
+  .case-diagram {
+    padding: 12px;
   }
 }
 

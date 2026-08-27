@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div id="top" />
       <Header />
-      <main>
+      <main id="conteudo">
         <Hero />
         <Career />
         <Capabilities />
