@@ -32,9 +32,14 @@ export function Hero() {
             </a>
 
             {links.cv && (
-              <a className="button secondary" href={links.cv}>
+              <a
+                className="button secondary"
+                href={links.cv}
+                type="application/pdf"
+                download="douglas-alencar-cv.pdf"
+              >
                 <FileText size={17} aria-hidden="true" />
-                Baixar CV
+                Baixar CV (PDF)
               </a>
             )}
           </div>

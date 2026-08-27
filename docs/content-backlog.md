@@ -17,9 +17,9 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
   - Duração alvo: ~1 minuto.
   - Inserir URL final em `src/content/pt.ts`.
 
-- [ ] **CV em PDF**
-  - Preferência: 1–2 páginas.
-  - Arquivo sugerido: `public/cv/douglas-alencar-cv.pdf`.
+- [x] **CV em PDF** — `public/cv/douglas-alencar-cv.pdf` (versão final "Setembro de 2026", 2 páginas,
+  PDF marcado/`/Lang`). Botão "Baixar CV (PDF)" no Hero e "CV (PDF)" no rodapé, ambos com `download`.
+  - Contém telefone e cidade — publicação no repo público confirmada por Douglas.
 
 - [x] **LinkedIn** — https://www.linkedin.com/in/alencardoug/ (2026-08-27)
 

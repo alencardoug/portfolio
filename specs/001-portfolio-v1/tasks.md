@@ -31,7 +31,7 @@
 - [x] Preparar CTA de CV opcional.
 - [x] Inserir foto real (2 fotos: `doug-corp` no claro, `doug-verde` no escuro).
 - [ ] Inserir YouTube real.
-- [ ] Inserir CV final.
+- [x] Inserir CV final (`public/cv/douglas-alencar-cv.pdf`; botão no Hero + rodapé, com `download`).
 - [ ] Revisar texto final de posicionamento.
 
 ## P3 — Trajetória
@@ -99,7 +99,7 @@
 
 - [x] Inserir LinkedIn (`https://www.linkedin.com/in/alencardoug/`).
 - [x] Inserir GitHub (`https://github.com/alencardoug/`).
-- [ ] Criar/adicionar CV PDF.
+- [x] Criar/adicionar CV PDF (`public/cv/douglas-alencar-cv.pdf`).
 - [ ] Planejar certificados para fase final.
 - [ ] Definir domínio.
 

@@ -23,7 +23,7 @@ export const profile = {
 export const links: ExternalLinks = {
   github: "https://github.com/alencardoug/",
   linkedin: "https://www.linkedin.com/in/alencardoug/",
-  cv: null, // pendente: public/cv/douglas-alencar-cv.pdf
+  cv: "/cv/douglas-alencar-cv.pdf",
   youtubeIntro: null, // pendente: vídeo de 1 minuto
   calendly: "https://calendly.com/alencardoug/45-minutes-meeting",
   email: "alencardoug@gmail.com",
@@ -193,7 +193,7 @@ export const projects: Project[] = [
   {
     slug: "portfolio",
     title: "Este portfólio",
-    status: "case-study",
+    status: "production",
     description:
       "Currículo web e produto de apresentação profissional construído com arquitetura estática, temas claro/escuro e foco em evidência técnica.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
