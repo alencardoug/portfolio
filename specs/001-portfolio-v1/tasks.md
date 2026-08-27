@@ -90,7 +90,7 @@
 - [x] Implementar dock condicionado a configuração.
 - [x] Inserir Calendly (`https://calendly.com/alencardoug/45-minutes-meeting`).
 - [x] Inserir e-mail profissional (`alencardoug@gmail.com`, via `mailto:` com assunto/corpo).
-- [x] Inserir número/link do WhatsApp (`https://wa.me/dougzinho`).
+- [x] Inserir número/link do WhatsApp (`https://wa.me/qr/SZB7REVZSBB6M1`).
 - [ ] Validar mensagem pré-preenchida (mailto tem assunto/corpo genéricos; WhatsApp ainda sem texto).
 - [ ] Testar comportamento mobile (não verificado no navegador desta sessão — janela não redimensiona abaixo de ~1144px; media queries revisadas por código).
 - [ ] Avaliar número profissional separado do pessoal.

@@ -30,7 +30,7 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
 
 - [x] **E-mail profissional** — alencardoug@gmail.com (2026-08-27)
 
-- [x] **WhatsApp** — https://wa.me/dougzinho (2026-08-27)
+- [x] **WhatsApp** — https://wa.me/qr/SZB7REVZSBB6M1 (2026-08-27)
   - Avaliar uso de número profissional separado.
   - Confirmar texto pré-preenchido (hoje: assunto/corpo genéricos no `mailto:`; WhatsApp sem texto pré-preenchido).
 
