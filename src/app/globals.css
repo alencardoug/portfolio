@@ -1029,6 +1029,39 @@ h3 {
   margin-top: 8px;
 }
 
+/* card em destaque: ações viram CTAs grandes (~2x) */
+.project-card.featured .project-actions {
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.project-card.featured .project-actions .button {
+  min-height: 62px;
+  padding: 0 28px;
+  font-size: 1.02rem;
+  border-radius: calc(var(--button-radius) + 3px);
+  letter-spacing: -0.01em;
+}
+
+:root[data-theme="dark"]
+  .project-card.featured
+  .project-actions
+  .button {
+  font-size: 0.92rem;
+}
+
+@media (max-width: 600px) {
+  .project-card.featured .project-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-card.featured .project-actions .button {
+    width: 100%;
+    min-height: 56px;
+  }
+}
+
 .secondary-project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

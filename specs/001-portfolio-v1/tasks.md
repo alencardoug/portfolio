@@ -81,9 +81,9 @@
 ## P7 — Projeto portfólio
 
 - [x] Criar card secundário.
-- [ ] Criar GitHub definitivo.
+- [x] Criar GitHub definitivo (`https://github.com/alencardoug/portfolio`).
+- [x] Adicionar link para código-fonte (card na home + botão na página do estudo de caso).
 - [ ] Atualizar card com CI/CD e deploy reais após implementação.
-- [ ] Adicionar link para código-fonte.
 
 ## P8 — Contato
 

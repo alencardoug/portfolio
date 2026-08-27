@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ContactDock } from "@/components/ContactDock";
 import { Footer } from "@/components/Footer";
+import { GithubMark } from "@/components/BrandIcons";
 import { Header } from "@/components/Header";
-import { links } from "@/content/pt";
+import { links, projects } from "@/content/pt";
 
 const PAGE_TITLE = "Este portfólio";
 const PAGE_DESC =
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
   openGraph: { title: PAGE_TITLE, description: PAGE_DESC },
   twitter: { title: PAGE_TITLE, description: PAGE_DESC },
 };
+
+const project = projects.find((item) => item.slug === "portfolio");
 
 export default function PortfolioCasePage() {
   return (
@@ -55,6 +58,26 @@ export default function PortfolioCasePage() {
               evidências rapidamente; um gestor técnico deve conseguir aprofundar
               sem sobrecarregar a homepage.
             </p>
+          </section>
+
+          <section>
+            <div className="case-actions">
+              {project?.githubUrl && (
+                <a
+                  className="button primary"
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <GithubMark size={16} />
+                  Código no GitHub
+                </a>
+              )}
+              <a className="button secondary" href="/#projetos">
+                Ver outros projetos
+                <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
           </section>
         </div>
       </main>

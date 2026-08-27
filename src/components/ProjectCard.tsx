@@ -10,6 +10,7 @@ const statusLabel = {
 };
 
 export function ProjectCard({ project }: { project: Project }) {
+  // No card em destaque, as ações são botões grandes (CTA); nos demais, links.
   return (
     <article className={`project-card ${project.featured ? "featured" : ""}`}>
       <div className="project-topline">
@@ -45,23 +46,34 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <div className="project-actions">
         {project.appUrl && (
-          <ExternalLink href={project.appUrl} className="text-link">
-            <Globe size={16} aria-hidden="true" />
+          <ExternalLink
+            href={project.appUrl}
+            className={
+              project.featured ? "button primary" : "text-link"
+            }
+          >
+            <Globe size={project.featured ? 19 : 16} aria-hidden="true" />
             Abrir aplicação
           </ExternalLink>
         )}
 
         {project.githubUrl && (
-          <ExternalLink href={project.githubUrl} className="text-link">
-            <GithubMark size={16} />
+          <ExternalLink
+            href={project.githubUrl}
+            className={project.featured ? "button secondary" : "text-link"}
+          >
+            <GithubMark size={project.featured ? 19 : 16} />
             GitHub
           </ExternalLink>
         )}
 
         {project.caseStudyUrl && (
-          <a href={project.caseStudyUrl} className="text-link">
+          <a
+            href={project.caseStudyUrl}
+            className={project.featured ? "button secondary" : "text-link"}
+          >
             Estudo de caso
-            <ArrowRight size={16} aria-hidden="true" />
+            <ArrowRight size={project.featured ? 19 : 16} aria-hidden="true" />
           </a>
         )}
       </div>

@@ -198,7 +198,7 @@ export const projects: Project[] = [
       "Currículo web e produto de apresentação profissional construído com arquitetura estática, temas claro/escuro e foco em evidência técnica.",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"],
     appUrl: null,
-    githubUrl: null, // TODO: após criação do repositório
+    githubUrl: "https://github.com/alencardoug/portfolio",
     caseStudyUrl: "/projects/portfolio/",
   },
 ];
