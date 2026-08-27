@@ -1,8 +1,9 @@
 import { Check } from "lucide-react";
-import { capabilities, sections } from "@/content/pt";
+import type { SiteContent } from "@/content/types";
 
-export function Capabilities() {
-  const copy = sections.capabilities;
+export function Capabilities({ content }: { content: SiteContent }) {
+  const { capabilities, ui } = content;
+  const copy = content.sections.capabilities;
 
   return (
     <section id="capacidades" className="section">
@@ -20,7 +21,7 @@ export function Capabilities() {
                 <h3>{capability.title}</h3>
                 <span
                   className="capability-mark"
-                  aria-label="Sei construir e colocar em produção"
+                  aria-label={ui.capabilities.markAria}
                 >
                   <Check size={14} strokeWidth={3} aria-hidden="true" />
                 </span>
@@ -28,7 +29,10 @@ export function Capabilities() {
               <p>{capability.description}</p>
               <div
                 className="tag-list"
-                aria-label={`Tecnologias de ${capability.title}`}
+                aria-label={ui.capabilities.techAriaTemplate.replace(
+                  "{title}",
+                  capability.title,
+                )}
               >
                 {capability.evidence.map((item) => (
                   <span className="tag" key={item}>

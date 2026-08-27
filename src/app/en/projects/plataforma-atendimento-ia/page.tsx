@@ -3,16 +3,16 @@ import { CasePlataforma } from "@/components/case/CasePlataforma";
 import { getContent } from "@/content";
 import { pageMetadata } from "@/lib/seo";
 
-const content = getContent("pt");
+const content = getContent("en");
 
 export const metadata: Metadata = pageMetadata({
-  locale: "pt",
+  locale: "en",
   ptPath: "/projects/plataforma-atendimento-ia",
-  title: "Plataforma de Atendimento com IA",
+  title: "AI Customer Support Platform",
   description:
-    "Estudo de caso: RAG, LLM, dados relacionais e vetoriais, workflows de atendimento e níveis de autonomia — arquitetura, processo SDD e evidências de engenharia.",
+    "Case study: RAG, LLM, relational and vector data, support workflows and levels of autonomy — architecture, the SDD process and engineering evidence.",
 });
 
-export default function PlataformaAtendimentoPage() {
+export default function PlataformaAtendimentoPageEn() {
   return <CasePlataforma content={content} />;
 }

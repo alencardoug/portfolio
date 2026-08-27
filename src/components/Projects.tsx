@@ -1,10 +1,11 @@
-import { projects, sections } from "@/content/pt";
+import type { SiteContent } from "@/content/types";
 import { ProjectCard } from "./ProjectCard";
 
-export function Projects() {
+export function Projects({ content }: { content: SiteContent }) {
+  const { projects, ui } = content;
   const featured = projects.find((project) => project.featured);
   const others = projects.filter((project) => !project.featured);
-  const copy = sections.projects;
+  const copy = content.sections.projects;
 
   return (
     <section id="projetos" className="section">
@@ -15,11 +16,11 @@ export function Projects() {
           <p className="sub">{copy.sub}</p>
         </div>
 
-        {featured && <ProjectCard project={featured} />}
+        {featured && <ProjectCard project={featured} ui={ui} />}
 
         <div className="secondary-project-grid">
           {others.map((project) => (
-            <ProjectCard project={project} key={project.slug} />
+            <ProjectCard project={project} ui={ui} key={project.slug} />
           ))}
         </div>
       </div>

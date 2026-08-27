@@ -1,8 +1,11 @@
 import { ArrowDown, FileText, Play } from "lucide-react";
-import { heroSpec, links, profile } from "@/content/pt";
+import type { SiteContent } from "@/content/types";
 import { ExternalLink } from "./ExternalLink";
 
-export function Hero() {
+export function Hero({ content }: { content: SiteContent }) {
+  const { profile, heroSpec, links, ui } = content;
+  const cvName = links.cv?.split("/").pop() || "cv.pdf";
+
   return (
     <section id="quem-sou" className="hero section">
       <div className="container hero-grid">
@@ -12,9 +15,7 @@ export function Hero() {
 
           <h1 className="hero-name">{profile.name}</h1>
           <p className="hero-role">{profile.role}</p>
-          <p className="hero-run">
-            A.C.Camargo Cancer Center / AB InBev / Shell + UFRJ
-          </p>
+          <p className="hero-run">{profile.companiesRun}</p>
 
           <p className="hero-headline">{profile.headline}</p>
           <p className="hero-summary">{profile.summary}</p>
@@ -23,12 +24,12 @@ export function Hero() {
             {links.youtubeIntro && (
               <ExternalLink href={links.youtubeIntro} className="button secondary">
                 <Play size={17} aria-hidden="true" />
-                Vídeo de 1 minuto
+                {ui.hero.watchVideo}
               </ExternalLink>
             )}
 
             <a className="button primary" href="#projetos">
-              Ver projetos <ArrowDown size={17} aria-hidden="true" />
+              {ui.hero.seeProjects} <ArrowDown size={17} aria-hidden="true" />
             </a>
 
             {links.cv && (
@@ -36,10 +37,10 @@ export function Hero() {
                 className="button secondary"
                 href={links.cv}
                 type="application/pdf"
-                download="douglas-alencar-cv.pdf"
+                download={cvName}
               >
                 <FileText size={17} aria-hidden="true" />
-                Baixar CV (PDF)
+                {ui.hero.downloadCv}
               </a>
             )}
           </div>
@@ -56,7 +57,7 @@ export function Hero() {
                 src="/assets/portrait/doug-corp.jpg"
                 width={760}
                 height={950}
-                alt="Douglas Alencar, retrato profissional"
+                alt={ui.hero.portraitLightAlt}
                 loading="eager"
               />
             </picture>
@@ -74,13 +75,13 @@ export function Hero() {
                 src="/assets/portrait/doug-verde.jpg"
                 width={720}
                 height={720}
-                alt="Douglas Alencar, retrato com fundo verde"
+                alt={ui.hero.portraitDarkAlt}
                 loading="eager"
               />
             </picture>
           </div>
 
-          <div className="hero-spec" aria-label="Resumo profissional">
+          <div className="hero-spec" aria-label={ui.hero.specAria}>
             {heroSpec.map((item) => (
               <div className="spec-row" key={item.key}>
                 <span>{item.key}</span>

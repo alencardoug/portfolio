@@ -1,7 +1,8 @@
-import { career, education, sections } from "@/content/pt";
+import type { SiteContent } from "@/content/types";
 
-export function Career() {
-  const copy = sections.career;
+export function Career({ content }: { content: SiteContent }) {
+  const { career, education } = content;
+  const copy = content.sections.career;
 
   return (
     <section id="trajetoria" className="section">
