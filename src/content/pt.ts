@@ -413,6 +413,7 @@ export const ui: Ui = {
     toDark: "modo escuro",
     hintTemplate: "tecle {kbd} para {target}",
     activateTemplate: "Ativar {target}",
+    nudgeTemplate: "experimente o {target}",
   },
   hero: {
     seeProjects: "Ver projetos",

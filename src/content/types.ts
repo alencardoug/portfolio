@@ -146,7 +146,14 @@ export type Ui = {
   skipLink: string;
   nav: { career: string; capabilities: string; projects: string; brandAria: string; navAria: string };
   langSwitch: { label: string; aria: string };
-  theme: { toLight: string; toDark: string; hintTemplate: string; activateTemplate: string };
+  theme: {
+    toLight: string;
+    toDark: string;
+    hintTemplate: string;
+    activateTemplate: string;
+    /** Balão exibido uma única vez sugerindo experimentar o outro modo. */
+    nudgeTemplate: string;
+  };
   hero: {
     seeProjects: string;
     watchVideo: string;
