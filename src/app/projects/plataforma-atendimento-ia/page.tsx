@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CasePlataforma } from "@/components/case/CasePlataforma";
+import { CaseRich } from "@/components/case/CaseRich";
 import { getContent } from "@/content";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,5 +14,12 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function PlataformaAtendimentoPage() {
-  return <CasePlataforma content={content} />;
+  return (
+    <CaseRich
+      content={content}
+      slug="plataforma-atendimento-ia"
+      ptPath="/projects/plataforma-atendimento-ia"
+      assetBase="/assets/projects/plataforma-atendimento"
+    />
+  );
 }

@@ -27,7 +27,7 @@ export const profile: Profile = {
   headline:
     "Data engineer specialized in building Artificial Intelligence applications.",
   summary:
-    "7 years of experience in technology and work across complex corporate environments, connecting data engineering, AI applications, APIs, cloud, evaluation, observability and production.",
+    "8 years of experience in technology and work across complex corporate environments, connecting data engineering, AI applications, APIs, cloud, evaluation, observability and production.",
   companiesRun: "A.C.Camargo Cancer Center / AB InBev / Shell + UFRJ",
 };
 
@@ -42,7 +42,7 @@ export const links: ExternalLinks = {
 };
 
 export const heroSpec: HeroSpecItem[] = [
-  { key: "experience", value: "7 years in tech" },
+  { key: "experience", value: "8 years in tech" },
   { key: "focus", value: "data + ai" },
   { key: "scope", value: "data → deploy" },
   { key: "education", value: "postgrad / engineering" },
@@ -55,7 +55,7 @@ export const sections: Record<
 > = {
   career: {
     eyebrow: "01 — Career",
-    heading: "Seven years in complex corporate environments.",
+    heading: "Eight years in complex corporate environments.",
     sub: "Healthcare, global industry and applied research — always where data, engineering and business meet.",
   },
   capabilities: {
@@ -66,17 +66,17 @@ export const sections: Record<
   projects: {
     eyebrow: "03 — What I have built",
     heading: "Proof, not promises.",
-    sub: "One AI project in production, one in development, and this portfolio itself.",
+    sub: "Two AI projects in production, one data project in development, and this portfolio itself.",
   },
 };
 
 export const career: CareerItem[] = [
   {
     organization: "A.C.Camargo Cancer Center",
-    duration: "2 years",
+    duration: "3 years",
     context: "Data, analytics, governance and AI.",
     roleDetail:
-      "Data Coordinator — 1 year: leading the Analytics team, including GCP and Azure cloud, BI and governance of projects and data in the healthcare sector. Data Engineer — 1 year: institutional transformation toward a data-driven culture through BI and adoption of cloud and data best practices.",
+      "Data Coordinator — 2 years: leading the Analytics team, including GCP and Azure cloud, BI and governance of projects and data in the healthcare sector. Data Engineer — 1 year: institutional transformation toward a data-driven culture through BI and adoption of cloud and data best practices.",
   },
   {
     organization: "AB InBev",
@@ -188,6 +188,33 @@ export const projects: Project[] = [
       { label: "Tests", value: "247" },
       { label: "Commits", value: "69" },
       { label: "SDD tasks", value: "473" },
+    ],
+  },
+  {
+    slug: "analisador-risco-mudanca-dados",
+    title: "Data Change Risk Analyst",
+    status: "production",
+    description:
+      "Corporate AI tool that helps decide whether a change to a data asset — dropping a column, changing a type, adding an index — can be made safely: it interprets the request, collects evidence from the database, applies a deterministic risk policy, drafts a non-binding recommendation with an LLM and pauses for human review before recording the decision.",
+    technologies: [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "PostgreSQL",
+      "Streamlit",
+      "MCP",
+      "Docker",
+      "GCP",
+    ],
+    appUrl: "https://analisador-de-risco.web.app/",
+    githubUrl: "https://github.com/alencardoug/data-change-risk-analyst",
+    caseStudyUrl: "/en/projects/analisador-risco-mudanca-dados/",
+    featured: true,
+    metrics: [
+      { label: "First version", value: "5 days" },
+      { label: "Tests", value: "76" },
+      { label: "Commits", value: "31" },
+      { label: "ADRs", value: "21" },
     ],
   },
   {
@@ -353,6 +380,163 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
     },
     stateBody:
       "Functional in production, with the planned functional tests complete. Refinement of conversational content and behavior continues as a later stage.",
+  },
+  "analisador-risco-mudanca-dados": {
+    eyebrow: "// case study — 02",
+    disclaimerLabel: "Synthetic data",
+    disclaimer:
+      "Fictional system for technical demonstration. The database, the tables (orders and the reporting views), the downstream-usage signal and all other data are synthetic. No schema change is ever really applied — the tool only recommends.",
+    nature:
+      "An AI Engineering portfolio project, built with AI-assisted engineering under Spec-Driven Development (SDD), with the artifacts versioned in the repository (specs/, *_SEED.md, DECISIONS.md). The stated goal was to show real, defensible uses of LangGraph and LangChain — workflow orchestration, deterministic routing, parallel fan-out with a reducer, interrupt/resume with checkpointing and a bounded ReAct agent — without turning into a production change-management platform.",
+    flow: ["constitution", "specify", "clarify", "plan", "tasks", "implement"],
+    evidence: [
+      { label: "Development window", value: "5 days" },
+      { label: "Published on", value: "2026-08-31" },
+      { label: "Commits", value: "31" },
+      { label: "Pull requests", value: "10" },
+      { label: "ADRs", value: "21" },
+      { label: "Requirements (FR-###)", value: "25" },
+      { label: "Source code", value: "~2,400 lines · 30 .py" },
+      { label: "Tests collected", value: "76 · 26 files" },
+      { label: "Dependencies · packages", value: "13 · 97" },
+    ],
+    stack: [
+      {
+        label: "Orchestration",
+        text: "LangGraph — state graph, checkpointing and interrupt/resume; langgraph-checkpoint-postgres.",
+      },
+      {
+        label: "LLM",
+        text: "LangChain — structured output, @tool tools and a ReAct agent; langchain-openai (gpt-4o by default).",
+      },
+      {
+        label: "Remote tools",
+        text: "MCP (mcp, langchain-mcp-adapters) — optional downstream-usage reader.",
+      },
+      {
+        label: "Domain",
+        text: "Pydantic v2 for the contracts; risk rules in plain Python.",
+      },
+      {
+        label: "Database",
+        text: "PostgreSQL via psycopg 3 + psycopg_pool; introspection through information_schema / pg_catalog.",
+      },
+      {
+        label: "UI",
+        text: "Streamlit — form, step-by-step result, review gate and table view.",
+      },
+      { label: "Observability", text: "LangSmith (optional tracing)." },
+      {
+        label: "Runtime and dev",
+        text: "Docker (python:3.13-slim + uv); ruff and pytest.",
+      },
+      {
+        label: "Production",
+        text: "Google Cloud Run, Neon, Firebase Hosting, Secret Manager and Cloud Build.",
+      },
+    ],
+    nextSteps: [
+      "Real per-column downstream usage (a data catalog, pg_stat_statements or BI APIs), replacing the flow's one synthetic signal.",
+      "Assisted DDL application — generating the ALTER/DROP and the rollback plan.",
+      "Authentication and multi-user support (the “reviewer” field already anticipates that separation).",
+    ],
+    screenshots: [
+      {
+        src: "/assets/projects/analisador-risco/ss-2-formulario",
+        alt: "The tool's form: the change request in natural language, with ready-made examples.",
+        caption: "Form — the request in natural language",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-3-etapas-evidencias",
+        alt: "Step-by-step graph execution and the evidence read from the real information_schema: views in the reporting schema and inbound foreign keys.",
+        caption: "Steps + evidence — the graph and Postgres introspection",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-4-risco-recomendacao",
+        alt: "Result with MEDIUM risk, the named risk factors and the AI recommendation labeled as non-binding, in Portuguese.",
+        caption: "Risk + recommendation — named factors, non-binding recommendation",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-5-revisao-humana",
+        alt: "Human review gate: approve, reject or return the case, with the risk rationale in view.",
+        caption: "Human review — approve / reject / return",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-6-estrutura-orders",
+        alt: "Structure of the orders table: column, type, constraints (PK, FK, constraint) and the purpose of each field.",
+        caption: "Structure of the orders table",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-7-tabela-orders",
+        alt: "A live read of the orders table from the database: header and fifteen rows.",
+        caption: "orders table — a live read from the database",
+      },
+      {
+        src: "/assets/projects/analisador-risco/ss-1-apresentacao",
+        alt: "Presentation page: the context of the problem before entering the tool.",
+        caption: "Presentation — the problem before the tool",
+      },
+    ],
+    architecture: {
+      appAlt:
+        "The case flow in LangGraph: interpret (the LLM produces StructuredChange), a parallel fan-out to collect_asset, collect_deps and collect_usage, assess_risk with deterministic rules (LOW/MEDIUM/HIGH), an optional detour to the investigate agent when there is an evidence gap, recommend (LLM, non-binding) and routing to an automatic finalize or to human_review with interrupt and a checkpoint in Postgres.",
+      deployAlt:
+        "Deploy topology: the browser is 301-redirected from Firebase Hosting to Cloud Run (us-east1, scales to zero, Streamlit + LangGraph), which talks to Neon Postgres (checkpoints, analysis_record, orders and views) and the OpenAI API; Secret Manager mounts the environment variables.",
+      notes: [
+        "A hard boundary between the deterministic and the probabilistic: the LLM only produces structured output at two points (interpreting the request and drafting the recommendation, explicitly non-binding). Collecting evidence, classifying risk and routing is plain, reproducible Python.",
+        "Fan-out / fan-in: the three collectors run in parallel and a reducer merges the concurrent writes into the state's evidence field.",
+        "Evidence collection = real Postgres introspection: with a database configured, it reads type, NOT NULL, PK and UNIQUE from information_schema plus table_constraints, and dependencies from view_column_usage (views) and pg_constraint (inbound foreign keys). With no database, it falls back to an equivalent simulated catalog.",
+        "Human-in-the-loop is mandatory for MEDIUM/HIGH: the graph calls interrupt(), the state is written to Postgres and a Command(resume=…) resumes exactly where it stopped — surviving an app or database restart. The AI recommendation and the human decision are stored as separate fields.",
+        "Persistence: analysis_record (one row per case; risk, recommendations and decisions are append-only JSON arrays — the “current” one is always arr[-1]) plus LangGraph's four checkpoint tables, linked by thread_id.",
+        "Deploy: Firebase Hosting acts only as a 301 redirect (it does not proxy Streamlit's WebSocket); Cloud Run runs with min-instances=0 (scales to zero), max-instances=1 (a coherent Streamlit session with no session affinity) and timeout=3600; Neon is on the free plan, with a ConnectionPool + pre-ping absorbing the autosuspend. The expected cost fits the free tier — only OpenAI is billed by usage.",
+        "Deliberately out of scope: authentication/multi-user, real DDL application, an in-house data catalog, an async queue, an authorization layer and HA/autoscaling.",
+      ],
+    },
+    decisionTree: {
+      kh: "// recommend + route — a tree fixed in code; the LLM only writes the text leaves",
+      alt: "The recommendation decision tree: if the operation is DROP/ALTER and some dependency or usage source came back unavailable, the investigate agent re-reads the tools; recommend drafts the disposition; LOW risk finalizes on its own (AUTO_FINALIZED) and MEDIUM/HIGH go to the human reviewer, who approves, rejects or returns (with a note to re-recommend, or flagging missing evidence to re-collect and re-assess); a revision-limit guard ends the loop.",
+      notes: [
+        "The tree is fixed in code; the LLM enters only at the text leaves (recommend), never at the branches.",
+        "Risk classification (assess_risk) is plain Python: each named predicate that fires is a RiskFactor with its own severity, and the final category is the maximum severity among the factors — HIGH for ASSET_NOT_FOUND, IN_PRIMARY_KEY, IN_UNIQUE_CONSTRAINT and INBOUND_FOREIGN_KEY; MEDIUM for REFERENCED_BY_VIEW, ACTIVELY_READ, EVIDENCE_UNAVAILABLE and INDEX_BUILD_CONTENTION; LOW for ADD_INDEX_LOW_RISK and NO_DEPENDENTS_OR_USAGE.",
+        "If the operation is DROP/ALTER and some dependency/usage source came back UNAVAILABLE, a bounded ReAct agent (3 tools, 8 steps) re-reads the evidence before the recommendation.",
+        "recommend returns PROCEED, PROCEED_WITH_MITIGATION (with the list of mitigations) or DO_NOT_PROCEED, with a rationale in Portuguese, labeled “🤖 AI-generated (non-binding)”.",
+        "Routing: LOW finalizes on its own (AUTO_FINALIZED); MEDIUM/HIGH go to the human gate — APPROVE → APPROVED, REJECT → REJECTED, RETURN + note → re-recommend, RETURN + missing evidence → re-collect and re-assess. A guard at revision_limit = 2 prevents an infinite loop. None of this is decided by the LLM.",
+      ],
+    },
+    pending: [],
+    headings: {
+      nature: "Nature of the project",
+      evidence: "Evidence",
+      archDecision: "Architectural decision",
+      architecture: "Architecture",
+      stack: "Stack",
+      state: "Current state and next steps",
+      decisionTree: "Recommendation generation — decision tree",
+      visualEvidence: "Visual evidence",
+    },
+    kh: {
+      nature: "// portfolio · AI engineering · spec-driven development",
+      evidence: "// counts from the repository on the publication date",
+      fineprint:
+        "// some e2e tests are DB-gated (skipped without an accessible Postgres); the real-LLM integration tests are opt-in",
+      archDecision:
+        "// state graph · deterministic ⟂ probabilistic boundary",
+      archApp:
+        "// case flow — parallel fan-out ⟶ assess_risk ⟶ recommend ⟶ human review",
+      archDeploy: "// deploy — Firebase Hosting (301) ⟶ Cloud Run ⟶ Neon / OpenAI",
+      stack: "// from orchestration to deploy",
+      state: "// stable, published and frozen",
+      visualEvidence: "// application in production — real captures",
+      pending: "// pending",
+    },
+    archDecisionBody: {
+      pre: "A ",
+      strong:
+        "LangGraph state graph with a hard boundary between the deterministic and the probabilistic",
+      post: ". The LLM never decides the risk category or the routing; it only produces structured output when interpreting the request and when drafting the recommendation, which is explicitly non-binding. LangGraph and LangChain were chosen to exercise real uses — orchestration, deterministic routing, fan-out with a reducer, interrupt/resume with checkpointing and a bounded ReAct agent.",
+    },
+    stateBody:
+      "Stable and published. The product is complete and frozen — no next steps are planned for now. One known defect was not fixed: the “open cases” dropdown in Reopen a case does not populate in the published environment (reopening by thread_id works), per KNOWN_ISSUES.md. Possible evolutions, if ever picked up again:",
   },
 };
 

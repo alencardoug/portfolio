@@ -11,7 +11,7 @@
 **Data & AI Engineer**
 
 ### Texto principal — versão inicial
-Engenheiro de dados especializado no desenvolvimento de aplicações de Inteligência Artificial, com 7 anos de experiência em tecnologia e atuação em ambientes corporativos complexos.
+Engenheiro de dados especializado no desenvolvimento de aplicações de Inteligência Artificial, com 8 anos de experiência em tecnologia e atuação em ambientes corporativos complexos.
 
 Construo soluções que conectam engenharia de dados, aplicações de IA, APIs, cloud, avaliação, observabilidade e produção.
 
@@ -23,14 +23,14 @@ Experiência profissional em dados, analytics e governança, combinada ao desenv
 # 01 · Quem sou / trajetória
 
 ## Resumo
-Trajetória de 7 anos em TI, com experiências no A.C.Camargo Cancer Center, AB InBev e Shell em parceria com UFRJ.
+Trajetória de 8 anos em TI, com experiências no A.C.Camargo Cancer Center, AB InBev e Shell em parceria com UFRJ.
 
 ## Experiência — conteúdo disponível
 
 ### A.C.Camargo Cancer Center
-**Duração informada:** 2 anos  
+**Duração informada:** 3 anos (corrigido por Douglas em 2026-08-31; era 2 anos)  
 **Contexto:** dados, analytics, governança e IA.  
-**Detalhe de cargo (fornecido por Douglas em 2026-08-27):** Coordenador de Dados — 1 ano: gestão do time de Analytics, incluindo cloud GCP e Azure, BI e governança de projetos e dados no setor da saúde. Engenheiro de Dados — 1 ano: transformação institucional para cultura data-driven através de BI e adesão à cloud e às boas práticas em dados.
+**Detalhe de cargo (fornecido por Douglas em 2026-08-27; divisão por cargo corrigida em 2026-08-31):** Coordenador de Dados — 2 anos: gestão do time de Analytics, incluindo cloud GCP e Azure, BI e governança de projetos e dados no setor da saúde. Engenheiro de Dados — 1 ano: transformação institucional para cultura data-driven através de BI e adesão à cloud e às boas práticas em dados.
 
 ### AB InBev
 **Duração informada:** 2,5 anos  

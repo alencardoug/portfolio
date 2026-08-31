@@ -1166,6 +1166,11 @@ h3 {
   }
 }
 
+.featured-project-list {
+  display: grid;
+  gap: 16px;
+}
+
 .secondary-project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -6,29 +6,36 @@ import { Footer } from "@/components/Footer";
 import { GithubMark } from "@/components/BrandIcons";
 import { Header } from "@/components/Header";
 
-const PT_PATH = "/projects/plataforma-atendimento-ia";
-const ASSET = "/assets/projects/plataforma-atendimento";
-const DIAGRAM = `${ASSET}/arvore-decisao`;
-const ARCH_APP = `${ASSET}/arquitetura-app`;
-const ARCH_DEPLOY = `${ASSET}/arquitetura-deploy`;
+type Props = {
+  content: SiteContent;
+  /** Slug do projeto/estudo de caso (chave em `projects` e `caseStudies`). */
+  slug: string;
+  /** Caminho canônico PT desta página (ex.: "/projects/plataforma-atendimento-ia"). */
+  ptPath: string;
+  /** Base dos assets do case (ex.: "/assets/projects/plataforma-atendimento"). */
+  assetBase: string;
+};
+
 const slotIcons = [Network];
 
-export function CasePlataforma({ content }: { content: SiteContent }) {
+export function CaseRich({ content, slug, ptPath, assetBase }: Props) {
   const { ui } = content;
   const prefix = localePrefix(content.locale);
-  const project = content.projects.find(
-    (item) => item.slug === "plataforma-atendimento-ia",
-  );
-  const cs = content.caseStudies["plataforma-atendimento-ia"];
+  const project = content.projects.find((item) => item.slug === slug);
+  const cs = content.caseStudies[slug];
 
   if (!project || !cs) return null;
+
+  const DIAGRAM = `${assetBase}/arvore-decisao`;
+  const ARCH_APP = `${assetBase}/arquitetura-app`;
+  const ARCH_DEPLOY = `${assetBase}/arquitetura-deploy`;
 
   return (
     <>
       <a className="skip-link" href="#conteudo">
         {ui.skipLink}
       </a>
-      <Header content={content} ptPath={PT_PATH} />
+      <Header content={content} ptPath={ptPath} />
       <main id="conteudo" className="case-page">
         <div className="container case-container">
           <a href={`${prefix}/#projetos`} className="case-back">
