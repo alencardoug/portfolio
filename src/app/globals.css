@@ -745,6 +745,8 @@ h3 {
 .career-card.is-active {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
   transform: translateY(-2px);
+  /* eleva o card ativo (e seu balão) acima do card seguinte no DOM */
+  z-index: 40;
 }
 
 .seq {
