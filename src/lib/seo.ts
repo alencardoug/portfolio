@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import type { Locale } from "@/content/types";
 import { localizedPath } from "@/content";
 
+/**
+ * Imagem de card social (Open Graph / Twitter). URL absoluta e nome de arquivo
+ * versionado: o LinkedIn mantém cache por URL de imagem por ~7 dias, então
+ * trocar o nome força novo scrape. 1200×630. Ver docs/launch-checklist.md.
+ */
+export const OG_IMAGE =
+  "https://portfolio-douglas-alencar.web.app/assets/og/portfolio-og-v2.jpg";
+export const OG_IMAGE_TYPE = "image/jpeg";
+
 type PageMeta = {
   locale: Locale;
   /** Caminho canônico PT (ex.: "/", "/projects/portfolio"). */
@@ -56,7 +65,9 @@ export function pageMetadata({
       description,
       images: [
         {
-          url: "/assets/og/portfolio-og.png",
+          url: OG_IMAGE,
+          secureUrl: OG_IMAGE,
+          type: OG_IMAGE_TYPE,
           width: 1200,
           height: 630,
           alt: ogImageAlt ?? title,
@@ -67,7 +78,7 @@ export function pageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["/assets/og/portfolio-og.png"],
+      images: [OG_IMAGE],
     },
   };
 }
