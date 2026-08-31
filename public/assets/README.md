@@ -25,7 +25,7 @@ public/
         screenshot-chat.webp
         architecture.svg
     og/
-      portfolio-og.png
+      portfolio-og-v2.jpg
   cv/
     douglas-alencar-cv.pdf
 ```

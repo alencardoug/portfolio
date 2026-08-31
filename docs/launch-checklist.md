@@ -34,7 +34,7 @@
 ## SEO
 - [x] Domínio (Firebase): `portfolio-douglas-alencar.web.app`. Domínio próprio ainda não.
 - [x] Title/description por rota (`metadata` no layout + páginas).
-- [x] Open Graph + Twitter card — `public/assets/og/portfolio-og.png` (1200×630, substituível).
+- [x] Open Graph + Twitter card — `public/assets/og/portfolio-og-v2.jpg` (1200×630, `image/jpeg`, com `og:image:secure_url`/`type`). Nome versionado: trocar o arquivo força o LinkedIn a refazer o scrape (cache por URL ~7 dias).
 - [x] favicon — `src/app/icon.svg` + `src/app/apple-icon.png`.
 - [ ] sitemap.xml (quando o domínio estiver estável).
 - [ ] robots.txt (idem).

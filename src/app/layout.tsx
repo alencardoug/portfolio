@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Newsreader, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
+import { OG_IMAGE, OG_IMAGE_TYPE } from "@/lib/seo";
 import "./globals.css";
 
 // Nomes de variável distintos dos tokens de tema do Tailwind (--font-sans/serif/mono).
@@ -57,7 +58,9 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [
       {
-        url: "/assets/og/portfolio-og.png",
+        url: OG_IMAGE,
+        secureUrl: OG_IMAGE,
+        type: OG_IMAGE_TYPE,
         width: 1200,
         height: 630,
         alt: "Douglas Alencar — Data & AI Engineer",
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Douglas Alencar | Data & AI Engineer",
     description: DESCRIPTION,
-    images: ["/assets/og/portfolio-og.png"],
+    images: [OG_IMAGE],
   },
 };
 
