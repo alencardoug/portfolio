@@ -3,7 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 
 export function Projects({ content }: { content: SiteContent }) {
   const { projects, ui } = content;
-  const featured = projects.find((project) => project.featured);
+  const featured = projects.filter((project) => project.featured);
   const others = projects.filter((project) => !project.featured);
   const copy = content.sections.projects;
 
@@ -16,7 +16,13 @@ export function Projects({ content }: { content: SiteContent }) {
           <p className="sub">{copy.sub}</p>
         </div>
 
-        {featured && <ProjectCard project={featured} ui={ui} />}
+        {featured.length > 0 && (
+          <div className="featured-project-list">
+            {featured.map((project) => (
+              <ProjectCard project={project} ui={ui} key={project.slug} />
+            ))}
+          </div>
+        )}
 
         <div className="secondary-project-grid">
           {others.map((project) => (
