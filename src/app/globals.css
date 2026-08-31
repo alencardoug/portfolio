@@ -736,12 +736,13 @@ h3 {
   background: var(--surface);
   border-radius: var(--card-radius);
   padding: 24px;
-  cursor: default;
+  cursor: pointer;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .career-card:hover,
-.career-card:focus-within {
+.career-card:focus-within,
+.career-card.is-active {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
   transform: translateY(-2px);
 }
@@ -841,7 +842,8 @@ h3 {
 }
 
 .career-card:hover .tip,
-.career-card:focus-within .tip {
+.career-card:focus-within .tip,
+.career-card.is-active .tip {
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -1653,10 +1655,15 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  /* no mobile o detalhe de cargo (tooltip) não aparece — sem hover e para
-     manter o card enxuto; o resumo curto (context) permanece. */
+  /* no mobile não há hover: o detalhe de cargo (tooltip) fica oculto por
+     padrão e aparece ao tocar no card (toque de novo, ou em outro card,
+     para alternar). O resumo curto (context) permanece sempre visível. */
   .tip {
     display: none;
+  }
+
+  .career-card.is-active .tip {
+    display: block;
   }
 
   .career-card {
