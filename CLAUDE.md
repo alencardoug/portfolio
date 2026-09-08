@@ -26,6 +26,17 @@ Antes de alterar arquitetura, conteúdo ou posicionamento, leia:
 9. Evite animações excessivas.
 10. Trate acessibilidade, responsividade, SEO básico, performance e semântica HTML como requisitos, não como polimento opcional.
 
+## Currículos (CV/Resume)
+
+Sempre que o Douglas pedir para **atualizar os currículos**, pegue as 2 versões em PDF presentes em:
+
+`~/Documentos/CV/CV_by_portfolio/texto/`
+
+- versão PT → `public/cv/douglas-alencar-cv.pdf`
+- versão EN (`*_Resume_EN.pdf`) → `public/cv/douglas-alencar-resume-en.pdf`
+
+Use os PDFs que estiverem nesse path como fonte de verdade; não edite o conteúdo do currículo manualmente.
+
 ## Decisões que exigem consulta ao humano
 
 Pergunte antes de:

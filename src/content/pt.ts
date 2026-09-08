@@ -127,6 +127,7 @@ export const capabilities: Capability[] = [
       "REST",
       "PostgreSQL",
       "Docker",
+      "LangChain/LangGraph/LangSmith",
     ],
   },
   {
