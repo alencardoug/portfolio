@@ -54,7 +54,7 @@ export const sections: Record<
   },
   capabilities: {
     eyebrow: "02 — O que sei construir",
-    heading: "Não só quais ferramentas conheço — o que consigo entregar.",
+    heading: "Além das ferramentas - o que eu entrego.",
     sub: "Seis frentes que combino para levar uma ideia de IA da engenharia de dados até o deploy.",
   },
   projects: {
@@ -213,6 +213,44 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "rag-avancado-ragflow",
+    title: "RAG avançado via RAGFlow",
+    status: "development",
+    statusLabel: "Explorando solução",
+    description:
+      "Ambiente de estudo e experimentação de uma arquitetura corporativa de RAG com RAGFlow e Elasticsearch: busca híbrida, estratégias de chunking, estruturas parent-child e avaliação de recuperação para um cenário simulado de atendimento em saúde.",
+    technologies: [
+      "RAGFlow",
+      "Elasticsearch",
+      "RAG",
+      "LangChain",
+      "LangGraph",
+      "PostgreSQL",
+      "Docker Compose",
+    ],
+    appUrl: null,
+    githubUrl: "https://github.com/alencardoug/mvp_pa2",
+    caseStudyUrl: "/projects/rag-avancado-ragflow/",
+  },
+  {
+    slug: "skill-astramax",
+    title: "Skill AstraMax",
+    status: "development",
+    statusLabel: "Testando",
+    description:
+      "Agent Skill que adiciona uma etapa de revisão independente, feita por um segundo modelo em contexto separado, ao desenvolvimento de software assistido por IA. O fluxo de referência usa Claude Code para implementar e OpenAI Codex com GPT-6 Astra para verificar e encontrar defeitos.",
+    technologies: [
+      "Agent Skills",
+      "Claude Code",
+      "OpenAI Codex",
+      "Code Review",
+      "Python",
+    ],
+    appUrl: null,
+    githubUrl: "https://github.com/alencardoug/astramax",
+    caseStudyUrl: "/projects/skill-astramax/",
+  },
+  {
     slug: "engenharia-dados-gcp",
     title: "Engenharia de Dados no GCP",
     status: "development",
@@ -220,7 +258,7 @@ export const projects: Project[] = [
       "Projeto em desenvolvimento voltado a pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.",
     technologies: ["Python", "SQL", "GCP", "BigQuery"],
     appUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/alencardoug/mvp_eng_dados_1",
     caseStudyUrl: "/projects/engenharia-dados-gcp/",
   },
   {
@@ -535,23 +573,143 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
 };
 
 export const simpleCases: Partial<Record<string, SimpleCase>> = {
+  "rag-avancado-ragflow": {
+    eyebrow: "// explorando solução",
+    title: "RAG avançado via RAGFlow",
+    lead: "Ambiente de estudo e experimentação para entender as decisões de engenharia por trás de uma solução RAG corporativa mais confiável, rastreável e sustentável, próxima de produção.",
+    sections: [
+      {
+        heading: "Objetivo",
+        body: "O objetivo não é apenas fazer um LLM responder perguntas a partir de documentos, mas explorar o que torna uma solução de Retrieval-Augmented Generation robusta: qualidade da recuperação, rastreabilidade das fontes e separação clara entre o que deve vir da busca semântica e o que deve ser tratado pela aplicação tradicional.",
+      },
+      {
+        heading: "O que o projeto exercita",
+        list: [
+          "RAGFlow como plataforma principal de RAG e camada de orquestração.",
+          "Elasticsearch para indexação e recuperação escalável, com busca híbrida (similaridade vetorial + busca lexical).",
+          "Embeddings e seu impacto na qualidade da recuperação.",
+          "Estratégias de chunking: tamanho dos chunks, estrutura documental e limites semânticos.",
+          "Estruturas parent-child para preservar contexto mantendo unidades de recuperação precisas.",
+          "Avaliação de recuperação: verificar se os chunks corretos são recuperados antes de avaliar a resposta final.",
+          "Ajustes de similaridade e ranking, filtros por metadados e reranking.",
+          "PostgreSQL para dados estruturados, governança e informações determinísticas da aplicação.",
+          "Workflows determinísticos para operações que não devem depender de IA generativa.",
+          "LangChain e LangGraph para orquestração em nível de aplicação e workflows de IA explícitos.",
+          "Conceitos de LangSmith / Langfuse para tracing, observabilidade e avaliação das execuções.",
+          "Docker Compose para infraestrutura local reproduzível, com otimização de recursos.",
+        ],
+      },
+      {
+        heading: "Arquitetura em alto nível",
+        body: "Documentos entram no RAGFlow, que cuida de chunking/parsing, embeddings e metadados. O Elasticsearch indexa e serve busca vetorial, lexical e híbrida. A camada de aplicação combina LangChain, LangGraph, regras determinísticas e o LLM para produzir uma resposta rastreável. O PostgreSQL complementa a camada de RAG armazenando dados estruturados e informações que não devem depender de recuperação semântica. A arquitetura é preparada para um futuro deploy no GCP.",
+      },
+      {
+        heading: "Domínio de exemplo",
+        body: "O cenário demonstrativo simula uma base de conhecimento corporativa para atendimento em saúde — reagendamento de consultas, documentos necessários, orientações de preparo, informações administrativas e procedimentos de atendimento. O projeto usa apenas informações sintéticas ou demonstrativas e não se destina a decisões clínicas reais.",
+      },
+      {
+        heading: "Principal aprendizado",
+        body: "A qualidade de uma solução RAG depende fortemente da qualidade da recuperação. Um LLM poderoso não compensa de forma confiável documentos mal estruturados, chunking inadequado, embeddings fracos ou um ranking de recuperação incorreto. Por isso o projeto trata os testes de retrieval como uma atividade central de engenharia, e não apenas a avaliação da resposta final.",
+      },
+      {
+        heading: "Estado atual e próximos passos",
+        body: "Projeto de aprendizado e portfólio, em desenvolvimento ativo.",
+        list: [
+          "Em andamento: infraestrutura local com RAGFlow, recuperação com Elasticsearch, chunking de documentos, similaridade de embeddings e validação de retrieval.",
+          "Próximas iterações: orquestração da aplicação, observabilidade, avaliação, workflows determinísticos, governança e deploy em nuvem.",
+        ],
+      },
+    ],
+    screenshotsHeading: "Evidência visual",
+    screenshots: [
+      {
+        src: "/assets/projects/rag-avancado-ragflow/ss-1-retrieval-testing",
+        alt: "Tela 'Retrieval testing' do RAGFlow: painel de ajustes com limiar de similaridade 0,2 e peso de similaridade vetorial 0,30 / lexical 0,70, a pergunta 'como faço para remarcar minha consulta?' e quatro trechos recuperados com pontuações de similaridade híbrida, lexical e vetorial.",
+        caption:
+          "Teste de recuperação no RAGFlow: efeito do peso da similaridade vetorial e do limiar sobre o ranking dos trechos recuperados (captura feita durante o estudo).",
+      },
+    ],
+  },
+  "skill-astramax": {
+    eyebrow: "// testando",
+    title: "Skill AstraMax",
+    lead: "AstraMax Reviewer é uma Agent Skill que adiciona uma etapa de revisão independente, por um segundo modelo, ao desenvolvimento de software assistido por IA.",
+    sections: [
+      {
+        heading: "Por que existe",
+        body: "Um agente de implementação já formou premissas sobre requisitos, arquitetura e testes. Um segundo modelo, em contexto novo, pode desafiar essas premissas e criar outra oportunidade de encontrar defeitos. Independência não garante correção; o valor está em evidências e achados reproduzíveis.",
+      },
+      {
+        heading: "Como funciona",
+        body: "O fluxo de referência usa Claude Code para implementar e OpenAI Codex com GPT-6 Astra, no maior esforço de raciocínio suportado, para verificar e descobrir defeitos. O agente que implementa entrega requisitos e evidências para um contexto revisor separado, que inspeciona o repositório e desafia a implementação com um protocolo repetível. A skill é composta de instruções e referências, com um auxiliar opcional em Python para montar o dossiê de handoff — ela não chama API, não escolhe o modelo sozinha, não configura ferramentas do agente, não roda em background nem instala hooks.",
+      },
+      {
+        heading: "Fluxo de revisão",
+        list: [
+          "Definir escopo: working tree, mudanças em stage, um intervalo de commits explícito, ou componentes / o repositório inteiro. Ler requisitos e restrições.",
+          "Inspecionar o código alterado junto de chamadores, contratos, configuração e testes.",
+          "Desafiar correção, regressões, cobertura de testes, arquitetura, segurança, integridade de dados e complexidade desnecessária.",
+          "Descobrir os comandos de verificação do projeto-alvo e executá-los dentro da autorização do usuário.",
+          "Reportar achados por severidade, lacunas de verificação e um veredito: PASS, PASS WITH MINOR FINDINGS, CHANGES RECOMMENDED, CHANGES REQUIRED ou UNABLE TO VERIFY.",
+        ],
+      },
+      {
+        heading: "Escopo e limites",
+        body: "Revisão apenas, por padrão. Os achados não autorizam edições de implementação, commits, pushes, publicação ou remoção de relatório. Se o modelo, o esforço de raciocínio ou o contexto independente não puderem ser confirmados, o resultado é UNABLE TO VERIFY — preparar um dossiê não conta como revisão do Astra.",
+      },
+      {
+        heading: "Estado atual",
+        body: "Versão 0.1.0 em desenvolvimento local, ainda não publicada. Disponibilidade do modelo externo, validação de Agent Skills e instalação via GitHub / SkillPM ainda não foram verificadas. É um projeto de comunidade independente, sem afiliação com OpenAI ou Anthropic.",
+      },
+    ],
+    screenshotsHeading: "Evidência visual",
+    screenshots: [
+      {
+        src: "/assets/projects/skill-astramax/ss-1-claude-codex",
+        alt: "Editor com dois terminais lado a lado: à esquerda o Claude Code registrando a reavaliação dos achados em REVISAO.md; à direita o Codex rodando gpt-6-astra em esforço xhigh, listando itens bloqueantes da revisão independente.",
+        caption:
+          "Claude Code (implementação) e Codex com GPT-6 Astra (revisão independente) lado a lado, trocando achados via REVISAO.md.",
+      },
+    ],
+  },
   "engenharia-dados-gcp": {
     eyebrow: "// em desenvolvimento",
     title: "Engenharia de Dados no GCP",
-    lead: "Projeto voltado a pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.",
+    lead: "MVP que constrói, de ponta a ponta, um fluxo de dados sobre um marketplace de varejo omnichannel sintético: de um banco transacional PostgreSQL até um datamart dimensional com governança, views de consumo e documentação.",
     sections: [
       {
-        heading: "Por que aparece no portfólio agora?",
-        body: "O projeto complementará o case de IA e sustentará o posicionamento Data & AI Engineer. O card é deliberadamente marcado como “Em desenvolvimento”.",
+        heading: "O que é",
+        body: "Engenharia e governança de dados de referência. O projeto é conduzido primeiro em infraestrutura local e, quando maduro, replicado no Google Cloud Platform com Terraform, preservando as mesmas boas práticas. Todos os dados são sintéticos — nenhum dado pessoal real é usado em nenhuma fase.",
       },
       {
-        heading: "O que ainda será definido",
+        heading: "Fluxo de dados",
         list: [
-          "Problema e dataset.",
-          "Arquitetura e serviços GCP.",
-          "Pipeline e modelagem.",
-          "Observabilidade e qualidade.",
-          "Repositório GitHub e evidências.",
+          "Batch, orquestrado por Airflow: Faker → PostgreSQL → Airbyte → dbt → datamart → consumo.",
+          "Streaming de estoque: Debezium → Redpanda → Apache Beam.",
+          "Segunda origem: legado defeituoso → snapshot → limpeza → quarentena.",
+        ],
+      },
+      {
+        heading: "Fases",
+        list: [
+          "Local (pré-GCP): duas origens transacionais, geração determinística de dados, ingestão, transformação em camadas, datamart dimensional, um fluxo contínuo restrito ao estoque, governança e testes — tudo reproduzível a partir do repositório.",
+          "GCP: replicação do fluxo com Cloud SQL, BigQuery, Datastream, Pub/Sub e Dataflow, provisionado por Terraform, com a mesma governança materializada em policy tags.",
+        ],
+      },
+      {
+        heading: "Decisões de arquitetura",
+        body: "43 ADRs aceitos. Entre as escolhas que mais definem o projeto: domínio de varejo omnichannel; Airbyte, dbt e Airflow desde a fase local; Terraform como infraestrutura como código; geração com Faker orientada a configuração em YAML; streaming de estoque com Debezium sobre Kafka Connect, Redpanda e Apache Beam; catálogo como código; nove schemas no armazém, com o schema de governança restrito a controle e auditoria; SQLAlchemy e Alembic; quatro níveis de classificação e cinco papéis de acesso; src/ como pacote Python instalável; chaves substitutas por hash e SCD tipo 2 por snapshot; volume por proporções e fator de escala, com o alto volume reservado à fase GCP; uv e Python 3.11.",
+      },
+      {
+        heading: "Estado atual",
+        body: "Marcos entregues: termo aprovado (M0), decisões em ADR (M1), ambiente subindo do zero com um comando (M2), fluxo completo origem → consumo em operação (M3) e streaming em operação com o batch intacto (M4). Etapa 10 em implementação; a origem legada foi reaberta para revisão e o armazém ainda está sendo reconciliado com a última versão da transformação.",
+        list: [
+          "Seis cortes verticais entregues: comercial; financeiro e estoque; o caminho quente; entrega e logística; relacionamento; e a origem legada.",
+          "Modelo dimensional completo: 10 fatos e 15 dimensões, e as 16 perguntas de negócio têm view com contract: enforced.",
+          "Armazém com 36 fluxos de ingestão em lote da origem principal, o CDC de inventory_movements e 40 do legado; o dbt build passa com 851 objetos, WARN=0 e ERROR=0.",
+          "Segunda origem atravessa da captura ao modelo dimensional: 12.747 ocorrências capturadas — 81,9% aceitas, 17,9% rejeitadas em quarentena com motivo e 0,2% corrigidas.",
+          "Procedência viaja junto: source_system é coluna em toda tabela empilhada e entra na chave substituta das dimensões.",
+          "A DAG fluxo_batch roda dez tarefas de ponta a ponta em 5 min 20 s, com as duas capturas em paralelo.",
         ],
       },
     ],

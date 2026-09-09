@@ -123,6 +123,10 @@ export type SimpleCase = {
   title: string;
   lead: string;
   sections: SimpleCaseSection[];
+  /** Capturas de tela reais (galeria opcional ao fim do estudo de caso). */
+  screenshots?: Array<{ src: string; alt: string; caption: string }>;
+  /** Título da seção de evidência visual (obrigatório se houver screenshots). */
+  screenshotsHeading?: string;
 };
 
 export type ProjectStatus = "production" | "development" | "case-study";
@@ -131,6 +135,8 @@ export type Project = {
   slug: string;
   title: string;
   status: ProjectStatus;
+  /** Rótulo de status sobrescrito; se ausente, usa `ui.projectCard.status[status]`. */
+  statusLabel?: string;
   description: string;
   technologies: string[];
   appUrl: OptionalUrl;

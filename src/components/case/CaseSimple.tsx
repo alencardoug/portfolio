@@ -60,6 +60,41 @@ export function CaseSimple({ content, slug, ptPath }: Props) {
             </section>
           ))}
 
+          {sc.screenshots && sc.screenshots.length > 0 && (
+            <section>
+              {sc.screenshotsHeading && <h2>{sc.screenshotsHeading}</h2>}
+              <div
+                className={
+                  sc.screenshots.length === 1
+                    ? "case-shots case-shots--single"
+                    : "case-shots"
+                }
+              >
+                {sc.screenshots.map((shot) => (
+                  <figure key={shot.src}>
+                    <a
+                      href={`${shot.src}.jpg`}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <picture>
+                        <source srcSet={`${shot.src}.webp`} type="image/webp" />
+                        <img
+                          src={`${shot.src}.jpg`}
+                          width={1366}
+                          height={768}
+                          alt={shot.alt}
+                          loading="lazy"
+                        />
+                      </picture>
+                    </a>
+                    <figcaption>{shot.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
+
           {hasActions && (
             <section>
               <div className="case-actions">

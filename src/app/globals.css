@@ -1530,6 +1530,11 @@ h3 {
   margin-top: 4px;
 }
 
+.case-shots--single {
+  grid-template-columns: 1fr;
+  max-width: 900px;
+}
+
 .case-shots figure {
   margin: 0;
 }

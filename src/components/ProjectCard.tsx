@@ -12,7 +12,7 @@ export function ProjectCard({ project, ui }: { project: Project; ui: Ui }) {
           {project.status === "production" && (
             <span className="pulse" aria-hidden="true" />
           )}
-          {ui.projectCard.status[project.status]}
+          {project.statusLabel ?? ui.projectCard.status[project.status]}
         </span>
       </div>
 

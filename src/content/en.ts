@@ -60,7 +60,7 @@ export const sections: Record<
   },
   capabilities: {
     eyebrow: "02 — What I can build",
-    heading: "Not just which tools I know — what I can actually deliver.",
+    heading: "Beyond the tools - what I deliver.",
     sub: "Six fronts I combine to take an AI idea from data engineering all the way to deploy.",
   },
   projects: {
@@ -219,6 +219,44 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "rag-avancado-ragflow",
+    title: "Advanced RAG via RAGFlow",
+    status: "development",
+    statusLabel: "Exploring the solution",
+    description:
+      "A study and experimentation environment for a corporate RAG architecture with RAGFlow and Elasticsearch: hybrid search, chunking strategies, parent-child structures and retrieval evaluation for a simulated healthcare support scenario.",
+    technologies: [
+      "RAGFlow",
+      "Elasticsearch",
+      "RAG",
+      "LangChain",
+      "LangGraph",
+      "PostgreSQL",
+      "Docker Compose",
+    ],
+    appUrl: null,
+    githubUrl: "https://github.com/alencardoug/mvp_pa2",
+    caseStudyUrl: "/en/projects/rag-avancado-ragflow/",
+  },
+  {
+    slug: "skill-astramax",
+    title: "AstraMax Skill",
+    status: "development",
+    statusLabel: "Testing",
+    description:
+      "An Agent Skill that adds an independent second-model review stage, in a separate context, to AI-assisted software development. The reference workflow uses Claude Code to implement and OpenAI Codex with GPT-6 Astra to verify and find defects.",
+    technologies: [
+      "Agent Skills",
+      "Claude Code",
+      "OpenAI Codex",
+      "Code Review",
+      "Python",
+    ],
+    appUrl: null,
+    githubUrl: "https://github.com/alencardoug/astramax",
+    caseStudyUrl: "/en/projects/skill-astramax/",
+  },
+  {
     slug: "engenharia-dados-gcp",
     title: "Data Engineering on GCP",
     status: "development",
@@ -226,7 +264,7 @@ export const projects: Project[] = [
       "Project in development focused on pipelines, processing, modeling and delivery of data on Google Cloud.",
     technologies: ["Python", "SQL", "GCP", "BigQuery"],
     appUrl: null,
-    githubUrl: null,
+    githubUrl: "https://github.com/alencardoug/mvp_eng_dados_1",
     caseStudyUrl: "/en/projects/engenharia-dados-gcp/",
   },
   {
@@ -542,23 +580,143 @@ export const caseStudies: Partial<Record<string, CaseStudy>> = {
 };
 
 export const simpleCases: Partial<Record<string, SimpleCase>> = {
+  "rag-avancado-ragflow": {
+    eyebrow: "// exploring the solution",
+    title: "Advanced RAG via RAGFlow",
+    lead: "A study and experimentation environment to understand the engineering decisions behind a corporate RAG solution that is more reliable, traceable and sustainable, closer to production.",
+    sections: [
+      {
+        heading: "Goal",
+        body: "The goal is not merely to make an LLM answer questions from documents, but to explore what makes a Retrieval-Augmented Generation solution robust: retrieval quality, source traceability and a clear boundary between what should come from semantic search and what should be handled by the traditional application.",
+      },
+      {
+        heading: "What the project exercises",
+        list: [
+          "RAGFlow as the main RAG platform and orchestration layer.",
+          "Elasticsearch for scalable indexing and retrieval, with hybrid search (vector similarity + lexical search).",
+          "Embeddings and their impact on retrieval quality.",
+          "Chunking strategies: chunk size, document structure and semantic boundaries.",
+          "Parent-child structures to preserve context while keeping precise retrieval units.",
+          "Retrieval evaluation: checking that the right chunks are retrieved before assessing the final answer.",
+          "Similarity and ranking tuning, metadata filters and reranking.",
+          "PostgreSQL for structured data, governance and deterministic application information.",
+          "Deterministic workflows for operations that should not depend on generative AI.",
+          "LangChain and LangGraph for application-level orchestration and explicit AI workflows.",
+          "LangSmith / Langfuse concepts for tracing, observability and evaluation of runs.",
+          "Docker Compose for a reproducible local infrastructure, with resource optimization.",
+        ],
+      },
+      {
+        heading: "High-level architecture",
+        body: "Documents enter RAGFlow, which handles chunking/parsing, embeddings and metadata. Elasticsearch indexes and serves vector, lexical and hybrid search. The application layer combines LangChain, LangGraph, deterministic rules and the LLM to produce a traceable answer. PostgreSQL complements the RAG layer by storing structured data and information that should not depend on semantic retrieval. The architecture is prepared for a future deployment on GCP.",
+      },
+      {
+        heading: "Example domain",
+        body: "The demo scenario simulates a corporate knowledge base for healthcare support — appointment rescheduling, required documents, preparation guidance, administrative information and patient service procedures. The project uses only synthetic or illustrative information and is not intended for real clinical decisions.",
+      },
+      {
+        heading: "Main takeaway",
+        body: "The quality of a RAG solution depends heavily on retrieval quality. A powerful LLM cannot reliably compensate for poorly structured documents, inadequate chunking, weak embeddings or an incorrect retrieval ranking. That is why the project treats retrieval testing as a core engineering activity, not just an evaluation of the final answer.",
+      },
+      {
+        heading: "Current state and next steps",
+        body: "A learning and portfolio project, under active development.",
+        list: [
+          "In progress: local infrastructure with RAGFlow, retrieval with Elasticsearch, document chunking, embedding similarity and retrieval validation.",
+          "Next iterations: application orchestration, observability, evaluation, deterministic workflows, governance and cloud deployment.",
+        ],
+      },
+    ],
+    screenshotsHeading: "Visual evidence",
+    screenshots: [
+      {
+        src: "/assets/projects/rag-avancado-ragflow/ss-1-retrieval-testing",
+        alt: "RAGFlow 'Retrieval testing' screen: a settings panel with similarity threshold 0.2 and vector similarity weight 0.30 / lexical 0.70, the question 'como faço para remarcar minha consulta?' and four retrieved chunks with hybrid, term and vector similarity scores.",
+        caption:
+          "Retrieval testing in RAGFlow: the effect of vector similarity weight and threshold on the ranking of retrieved chunks (captured during the study).",
+      },
+    ],
+  },
+  "skill-astramax": {
+    eyebrow: "// testing",
+    title: "AstraMax Skill",
+    lead: "AstraMax Reviewer is an Agent Skill that adds an independent second-model review stage to AI-assisted software development.",
+    sections: [
+      {
+        heading: "Why it exists",
+        body: "An implementation agent has already formed assumptions about requirements, architecture and tests. A second model, in a fresh context, can challenge those assumptions and provide another opportunity to find defects. Independence does not guarantee correctness; the value is in evidence and reproducible findings.",
+      },
+      {
+        heading: "How it works",
+        body: "The reference workflow uses Claude Code to implement and OpenAI Codex with GPT-6 Astra, at the maximum supported reasoning effort, to verify and discover defects. The implementing agent hands requirements and evidence to a separate reviewer context, which inspects the repository and challenges the implementation using a repeatable protocol. The skill is instructions and references, with an optional Python helper to assemble the handoff dossier — it does not call an API, select the model by itself, configure agent tools, run in the background or install hooks.",
+      },
+      {
+        heading: "Review workflow",
+        list: [
+          "Establish scope: working tree, staged changes, an explicit commit range, or selected components / the whole repository. Read requirements and constraints.",
+          "Inspect changed code together with callers, contracts, configuration and tests.",
+          "Challenge correctness, regressions, test coverage, architecture, security, data integrity and unnecessary complexity.",
+          "Discover the target project's verification commands and run them within the user's authorization.",
+          "Report findings by severity, verification gaps and one verdict: PASS, PASS WITH MINOR FINDINGS, CHANGES RECOMMENDED, CHANGES REQUIRED or UNABLE TO VERIFY.",
+        ],
+      },
+      {
+        heading: "Scope and limits",
+        body: "Review-only by default. Findings do not authorize implementation edits, commits, pushes, publication or report deletion. If the model, the reasoning effort or the independent context cannot be confirmed, the result is UNABLE TO VERIFY — preparing a dossier does not count as an Astra review.",
+      },
+      {
+        heading: "Current state",
+        body: "Version 0.1.0 in local development, not yet published. External model availability, Agent Skills validation and GitHub / SkillPM installation have not been verified. It is an independent community project, not affiliated with OpenAI or Anthropic.",
+      },
+    ],
+    screenshotsHeading: "Visual evidence",
+    screenshots: [
+      {
+        src: "/assets/projects/skill-astramax/ss-1-claude-codex",
+        alt: "An editor with two side-by-side terminals: on the left, Claude Code recording the re-assessment of findings in REVISAO.md; on the right, Codex running gpt-6-astra at xhigh effort, listing blocking items from the independent review.",
+        caption:
+          "Claude Code (implementation) and Codex with GPT-6 Astra (independent review) side by side, exchanging findings via REVISAO.md.",
+      },
+    ],
+  },
   "engenharia-dados-gcp": {
     eyebrow: "// in development",
     title: "Data Engineering on GCP",
-    lead: "A project focused on pipelines, processing, modeling and delivery of data on Google Cloud.",
+    lead: "An MVP that builds, end to end, a data flow over a synthetic omnichannel retail marketplace: from a transactional PostgreSQL database to a dimensional datamart with governance, consumption views and documentation.",
     sections: [
       {
-        heading: "Why is it in the portfolio already?",
-        body: "The project will complement the AI case study and support the Data & AI Engineer positioning. The card is deliberately marked as “In development”.",
+        heading: "What it is",
+        body: "Reference data engineering and governance. The project runs first on local infrastructure and, once mature, is replicated on Google Cloud Platform with Terraform, preserving the same practices. All data is synthetic — no real personal data is used in any phase.",
       },
       {
-        heading: "What is still to be defined",
+        heading: "Data flow",
         list: [
-          "Problem and dataset.",
-          "Architecture and GCP services.",
-          "Pipeline and modeling.",
-          "Observability and quality.",
-          "GitHub repository and evidence.",
+          "Batch, orchestrated by Airflow: Faker → PostgreSQL → Airbyte → dbt → datamart → consumption.",
+          "Inventory streaming: Debezium → Redpanda → Apache Beam.",
+          "Second source: defective legacy → snapshot → cleanup → quarantine.",
+        ],
+      },
+      {
+        heading: "Phases",
+        list: [
+          "Local (pre-GCP): two transactional sources, deterministic data generation, ingestion, layered transformation, a dimensional datamart, a continuous flow restricted to inventory, governance and tests — all reproducible from the repository.",
+          "GCP: replicating the flow with Cloud SQL, BigQuery, Datastream, Pub/Sub and Dataflow, provisioned by Terraform, with the same governance materialized as policy tags.",
+        ],
+      },
+      {
+        heading: "Architecture decisions",
+        body: "43 accepted ADRs. Among the choices that most define the project: an omnichannel retail domain; Airbyte, dbt and Airflow from the local phase; Terraform as infrastructure as code; config-driven Faker generation in YAML; inventory streaming with Debezium over Kafka Connect, Redpanda and Apache Beam; catalog as code; nine schemas in the warehouse, with the governance schema restricted to control and audit; SQLAlchemy and Alembic; four classification levels and five access roles; src/ as an installable Python package; hash surrogate keys and SCD type 2 by snapshot; volume by proportions and a scale factor, with high volume reserved for the GCP phase; uv and Python 3.11.",
+      },
+      {
+        heading: "Current state",
+        body: "Milestones delivered: charter approved (M0), decisions in ADRs (M1), the environment coming up from zero with one command (M2), the full source → consumption flow in operation (M3) and streaming in operation with batch intact (M4). Stage 10 in progress; the legacy source was reopened for review and the warehouse is still being reconciled with the latest version of the transformation.",
+        list: [
+          "Six vertical slices delivered: commercial; financial and inventory; the hot path; delivery and logistics; relationship; and the legacy source.",
+          "Dimensional model complete: 10 facts and 15 dimensions, and the 16 business questions each have a view with contract: enforced.",
+          "Warehouse with 36 batch ingestion flows from the main source, the CDC of inventory_movements and 40 from the legacy source; dbt build passes with 851 objects, WARN=0 and ERROR=0.",
+          "The second source goes from capture to the dimensional model: 12,747 occurrences captured — 81.9% accepted, 17.9% rejected to quarantine with a reason and 0.2% corrected.",
+          "Provenance travels along: source_system is a column in every stacked table and enters the surrogate key of the dimensions.",
+          "The fluxo_batch DAG runs ten tasks end to end in 5 min 20 s, with the two captures in parallel.",
         ],
       },
     ],
