@@ -183,16 +183,58 @@ https://plataforma-atendimento-prod.web.app/
 
 ---
 
-## Projeto 02 — Engenharia de Dados no GCP
+## Projeto 02 — Engenharia e Governança de Dados
 
-**Status:** Em desenvolvimento.
+**Status:** Concluído — fase local, `v1.0.0`, 04/10/2026.
 
-### Resumo inicial
-Projeto de engenharia de dados voltado à construção de pipelines, processamento, modelagem e disponibilização de dados utilizando serviços do Google Cloud.
+### Resumo
+Fluxo de dados de ponta a ponta sobre um varejo omnichannel sintético: do PostgreSQL ao modelo
+dimensional e às views de consumo, com Airbyte, dbt e Airflow no lote, CDC com Debezium, Redpanda e
+Apache Beam no estoque, e governança desde a primeira camada.
 
-Não inventar stack ou arquitetura ainda não definidas.
+### Natureza do projeto
+Desenvolvido por `github.com/alencardoug` com suporte de Claude Code (implementação) e OpenAI Codex
+(revisão independente das Etapas 10 a 12). Dados 100% sintéticos.
 
-GitHub deve permanecer ausente até o repositório real existir.
+### Evidências informadas (fonte: repositório mvp_eng_dados_1, 04/10/2026)
+- Primeira versão em 33 dias (01/09/2026 → 04/10/2026).
+- 306 commits até a v1.0.0.
+- 48 ADRs aceitos, cada um com a contrapartida na nuvem declarada.
+- 637 testes Python e 700 testes de dados no dbt (build de 905 nós).
+- 40 tabelas de origem, 9 camadas, 10 fatos, 15 dimensões, 16 views de consumo.
+- 4.161 de 4.161 colunas classificadas por sensibilidade.
+- Ciclo do zero refeito e medido num clone novo (25/09/2026); restauração completa em 17 minutos.
+
+### Stack
+PostgreSQL, Airbyte (em Kubernetes local), dbt, Airflow, Debezium sobre Kafka Connect, Redpanda,
+Apache Beam, Terraform, Docker, Python (SQLAlchemy, Alembic, uv).
+
+### Links
+- GitHub: https://github.com/alencardoug/mvp_eng_dados_1
+- Aplicação: não há (projeto de dados; manter `appUrl: null`).
+
+---
+
+## Projeto 02b — Engenharia de Dados no GCP
+
+**Status:** A iniciar. Pré-requisito: autorização do autor (Etapa 13 do plano do mvp_eng_dados_1).
+
+### Resumo
+Replicação no Google Cloud, por Terraform, do Projeto 02: Cloud SQL, BigQuery, Datastream, Pub/Sub,
+Dataflow com o mesmo código Apache Beam e Cloud Composer, com a mesma governança aplicada como policy
+tags.
+
+### Já decidido (fonte: ADR-0024, ADR-0025, ADR-0046 do mvp_eng_dados_1)
+- Composer e Airbyte em contêiner, criados e destruídos na mesma janela de uso.
+- Policy tags aplicadas por fluxo automatizado, a partir do YAML do dbt.
+- A concorrência entre lote e contínuo é medida na nuvem.
+
+### Evidências
+Nenhuma ainda. Não publicar custo, prazo ou número antes de medidos.
+
+### Links
+- GitHub: https://github.com/alencardoug/mvp_eng_dados_1 (mesmo repositório, salvo se um próprio for criado)
+- Aplicação: não há.
 
 ---
 

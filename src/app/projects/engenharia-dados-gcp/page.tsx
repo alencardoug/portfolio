@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   ptPath: "/projects/engenharia-dados-gcp",
   title: "Engenharia de Dados no GCP",
   description:
-    "Projeto em desenvolvimento: pipelines, processamento, modelagem e disponibilização de dados no Google Cloud.",
+    "Projeto a iniciar: replicação no Google Cloud, por Terraform, de um fluxo de dados local já concluído, com BigQuery, Datastream, Pub/Sub, Dataflow e Cloud Composer e a mesma governança como policy tags.",
 });
 
 export default function EngenhariaDadosGcpPage() {
