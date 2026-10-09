@@ -55,7 +55,12 @@ export function CaseStory({ content, slug, ptPath }: Props) {
           <p className="case-eyebrow">{sc.eyebrow}</p>
           <h1>{project.title}</h1>
           <div className="story-meta">
-            <span className="status status-case-study">{sc.statusLabel}</span>
+            <span className={`status status-${project.status}`}>
+              {project.status === "production" && (
+                <span className="pulse" aria-hidden="true" />
+              )}
+              {project.statusLabel ?? ui.projectCard.status[project.status]}
+            </span>
             <span className="story-reading">{sc.readingTime}</span>
           </div>
 

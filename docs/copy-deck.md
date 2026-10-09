@@ -238,9 +238,9 @@ Nenhuma ainda. Não publicar custo, prazo ou número antes de medidos.
 
 ---
 
-## Projeto 02c — Analytics avançado via IA - Voz do cliente
+## Projeto 02c — Analytics avançado via IA e sugestão de produto
 
-**Status:** Publicado (sem pulsação: "Em produção" sugeriria adoção pela operadora; a nota "Estudo independente" fica na página do estudo de caso).
+**Status:** Em produção, como os demais projetos no ar (decisão de Douglas, 09/10/2026); a nota "Estudo independente" fica na página do estudo de caso. Título anterior: "Analytics avançado via IA - Voz do cliente" (o slug `analytics-voz-do-cliente` foi mantido).
 **Posição:** card secundário, logo antes de "Este portfólio" (pedido de Douglas, 09/10/2026).
 
 ### Resumo (card)

@@ -8,7 +8,7 @@ const content = getContent("en");
 export const metadata: Metadata = pageMetadata({
   locale: "en",
   ptPath: "/projects/analytics-voz-do-cliente",
-  title: "Advanced analytics via AI - Voice of the customer",
+  title: "Advanced analytics via AI and product suggestion",
   description:
     "Independent case study: 1,343 public complaints from health plan members read with AI to propose where a single 12-to-18-month project should go — the LLM reads, code checks and I decide, with evidence anyone can check.",
 });

@@ -64,7 +64,7 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
 - [ ] Publicar primeira versão demonstrável.
 - [ ] Inserir evidências, custos medidos e screenshots quando fizer sentido.
 
-## Projeto Analytics avançado via IA - Voz do cliente (publicado, estudo independente)
+## Projeto Analytics avançado via IA e sugestão de produto (em produção, estudo independente)
 
 - [x] Card antes de "Este portfólio" e estudo de caso em PT e EN (09/10/2026).
 - [x] Duas capturas legíveis da aplicação em `public/assets/projects/analytics-voz-do-cliente/`

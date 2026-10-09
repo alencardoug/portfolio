@@ -157,7 +157,6 @@ export type StoryContender = {
  */
 export type StoryCase = {
   eyebrow: string;
-  statusLabel: string;
   readingTime: string;
   quote: { text: string; source: string };
   lead: string;

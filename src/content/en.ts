@@ -310,10 +310,8 @@ export const projects: Project[] = [
   },
   {
     slug: "analytics-voz-do-cliente",
-    title: "Advanced analytics via AI - Voice of the customer",
-    // Independent study on public data: "In production" would suggest adoption by the operator.
-    status: "case-study",
-    statusLabel: "Published",
+    title: "Advanced analytics via AI and product suggestion",
+    status: "production",
     description:
       "AI application that organizes public complaints from members of Unimed Nacional (CNU), a Brazilian health plan operator, compares improvement priorities and records the human choice, with evidence anyone can check.",
     technologies: ["Python", "LLM", "Claude Code", "Codex", "FastAPI", "Cloud Run"],
@@ -885,7 +883,6 @@ export const simpleCases: Partial<Record<string, SimpleCase>> = {
 export const storyCases: Partial<Record<string, StoryCase>> = {
   "analytics-voz-do-cliente": {
     eyebrow: "// case study · voice of the customer",
-    statusLabel: "Published",
     readingTime: "4-minute read",
     quote: {
       text: "They booked it in another city and want me to do it through reimbursement. […] I want care in my own city!",
