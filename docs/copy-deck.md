@@ -238,17 +238,17 @@ Nenhuma ainda. Não publicar custo, prazo ou número antes de medidos.
 
 ---
 
-## Projeto 02c — Analytics avançado via IA - Voz do cliente
+## Projeto 02c — Analytics avançado via IA e sugestão de produto
 
-**Status:** Publicado · estudo independente (sem pulsação: "Em produção" sugeriria adoção pela operadora).
+**Status:** Em produção, como os demais projetos no ar (decisão de Douglas, 09/10/2026); a nota "Estudo independente" fica na página do estudo de caso. Título anterior: "Analytics avançado via IA - Voz do cliente" (o slug `analytics-voz-do-cliente` foi mantido).
 **Posição:** card secundário, logo antes de "Este portfólio" (pedido de Douglas, 09/10/2026).
 
 ### Resumo (card)
 Aplicação de IA que organiza reclamações públicas de beneficiários da Unimed Nacional (CNU), compara
 prioridades de melhoria e registra a escolha humana, com evidências conferíveis.
 
-Métricas do card: 1.343 reclamações na decisão · 25 temas · 15 afirmações com evidência · ~15 s por
-execução sem dado novo. Tags: Python, LLM, Claude Code, Codex, FastAPI, Cloud Run.
+Card sem métricas (retiradas a pedido de Douglas, 09/10/2026). Tags: Python, LLM, Claude Code, Codex,
+FastAPI, Cloud Run.
 
 ### Natureza do projeto
 Estudo independente com dados públicos (consumidor.gov.br, base ConsumerBR da UFMG), sem dado interno

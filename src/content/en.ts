@@ -45,7 +45,7 @@ export const links: ExternalLinks = {
 export const heroSpec: HeroSpecItem[] = [
   { key: "experience", value: "8 years in tech" },
   { key: "focus", value: "data + ai" },
-  { key: "scope", value: "data → deploy" },
+  { key: "scope", value: "strategy → observability" },
   { key: "education", value: "postgrad / engineering" },
   { key: "language", value: "advanced English" },
 ];
@@ -310,22 +310,14 @@ export const projects: Project[] = [
   },
   {
     slug: "analytics-voz-do-cliente",
-    title: "Advanced analytics via AI - Voice of the customer",
-    // Independent study on public data: "In production" would suggest adoption by the operator.
-    status: "case-study",
-    statusLabel: "Published · independent study",
+    title: "Advanced analytics via AI and product suggestion",
+    status: "production",
     description:
       "AI application that organizes public complaints from members of Unimed Nacional (CNU), a Brazilian health plan operator, compares improvement priorities and records the human choice, with evidence anyone can check.",
     technologies: ["Python", "LLM", "Claude Code", "Codex", "FastAPI", "Cloud Run"],
     appUrl: "https://voz-do-beneficiario.web.app/",
     githubUrl: null, // private repository
     caseStudyUrl: "/en/projects/analytics-voz-do-cliente/",
-    metrics: [
-      { label: "Complaints in the decision", value: "1,343" },
-      { label: "Themes", value: "25" },
-      { label: "Evidence-backed claims", value: "15" },
-      { label: "Run with no new data", value: "~15 s" },
-    ],
   },
   {
     slug: "portfolio",
@@ -891,7 +883,6 @@ export const simpleCases: Partial<Record<string, SimpleCase>> = {
 export const storyCases: Partial<Record<string, StoryCase>> = {
   "analytics-voz-do-cliente": {
     eyebrow: "// case study · voice of the customer",
-    statusLabel: "Published · independent study",
     readingTime: "4-minute read",
     quote: {
       text: "They booked it in another city and want me to do it through reimbursement. […] I want care in my own city!",
