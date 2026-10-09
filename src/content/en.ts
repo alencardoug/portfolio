@@ -19,6 +19,7 @@ import type {
   StoryCase,
   Ui,
 } from "./types";
+import { buildDate } from "./build-info";
 
 export const profile: Profile = {
   name: "Douglas Alencar",
@@ -335,6 +336,10 @@ export const projects: Project[] = [
     appUrl: null,
     githubUrl: "https://github.com/alencardoug/portfolio",
     caseStudyUrl: "/en/projects/portfolio/",
+    metrics: [
+      { label: "First version", value: "1 day" },
+      { label: "Last updated", value: buildDate("en-US") },
+    ],
   },
 ];
 
