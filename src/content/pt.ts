@@ -307,19 +307,13 @@ export const projects: Project[] = [
     title: "Analytics avançado via IA - Voz do cliente",
     // Estudo independente com dados públicos: "Em produção" sugeriria adoção pela operadora.
     status: "case-study",
-    statusLabel: "Publicado · estudo independente",
+    statusLabel: "Publicado",
     description:
       "Aplicação de IA que organiza reclamações públicas de beneficiários da Unimed Nacional (CNU), compara prioridades de melhoria e registra a escolha humana, com evidências conferíveis.",
     technologies: ["Python", "LLM", "Claude Code", "Codex", "FastAPI", "Cloud Run"],
     appUrl: "https://voz-do-beneficiario.web.app/",
     githubUrl: null, // repositório privado
     caseStudyUrl: "/projects/analytics-voz-do-cliente/",
-    metrics: [
-      { label: "Reclamações na decisão", value: "1.343" },
-      { label: "Temas", value: "25" },
-      { label: "Afirmações com evidência", value: "15" },
-      { label: "Execução sem dado novo", value: "~15 s" },
-    ],
   },
   {
     slug: "portfolio",
@@ -884,7 +878,7 @@ export const simpleCases: Partial<Record<string, SimpleCase>> = {
 export const storyCases: Partial<Record<string, StoryCase>> = {
   "analytics-voz-do-cliente": {
     eyebrow: "// estudo de caso · voz do cliente",
-    statusLabel: "Publicado · estudo independente",
+    statusLabel: "Publicado",
     readingTime: "4 min de leitura",
     quote: {
       text: "Marcaram em outra cidade e querem fazer através de reembolso. […] Quero atendimento na minha cidade!",
