@@ -64,6 +64,15 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
 - [ ] Publicar primeira versão demonstrável.
 - [ ] Inserir evidências, custos medidos e screenshots quando fizer sentido.
 
+## Projeto Analytics avançado via IA - Voz do cliente (publicado, estudo independente)
+
+- [x] Card antes de "Este portfólio" e estudo de caso em PT e EN (09/10/2026).
+- [x] Duas capturas legíveis da aplicação em `public/assets/projects/analytics-voz-do-cliente/`
+  (gráfico da análise e placar do painel; nenhum texto bruto de reclamação).
+- [ ] Douglas confirmar que a explicação da escolha (risco à saúde junto com resposta que não resolve)
+  é a que ele vai dar na entrevista.
+- [ ] Revisão editorial do texto EN.
+
 ## Portfólio
 
 - [ ] Criar repositório GitHub.

@@ -9,6 +9,7 @@ import type {
   SectionCopy,
   SimpleCase,
   SiteContent,
+  StoryCase,
   Ui,
 } from "./types";
 
@@ -300,6 +301,25 @@ export const projects: Project[] = [
     appUrl: null,
     githubUrl: "https://github.com/alencardoug/mvp_eng_dados_1",
     caseStudyUrl: "/projects/engenharia-dados-gcp/",
+  },
+  {
+    slug: "analytics-voz-do-cliente",
+    title: "Analytics avançado via IA - Voz do cliente",
+    // Estudo independente com dados públicos: "Em produção" sugeriria adoção pela operadora.
+    status: "case-study",
+    statusLabel: "Publicado · estudo independente",
+    description:
+      "Aplicação de IA que organiza reclamações públicas de beneficiários da Unimed Nacional (CNU), compara prioridades de melhoria e registra a escolha humana, com evidências conferíveis.",
+    technologies: ["Python", "LLM", "Claude Code", "Codex", "FastAPI", "Cloud Run"],
+    appUrl: "https://voz-do-beneficiario.web.app/",
+    githubUrl: null, // repositório privado
+    caseStudyUrl: "/projects/analytics-voz-do-cliente/",
+    metrics: [
+      { label: "Reclamações na decisão", value: "1.343" },
+      { label: "Temas", value: "25" },
+      { label: "Afirmações com evidência", value: "15" },
+      { label: "Execução sem dado novo", value: "~15 s" },
+    ],
   },
   {
     slug: "portfolio",
@@ -859,6 +879,163 @@ export const simpleCases: Partial<Record<string, SimpleCase>> = {
   },
 };
 
+// Fonte dos números: repositório privado voc_saude (analise/, dados/4-serving/,
+// run de registro 20261007-1856). Crítica editorial do Codex em 09/10/2026.
+export const storyCases: Partial<Record<string, StoryCase>> = {
+  "analytics-voz-do-cliente": {
+    eyebrow: "// estudo de caso · voz do cliente",
+    statusLabel: "Publicado · estudo independente",
+    readingTime: "4 min de leitura",
+    quote: {
+      text: "Marcaram em outra cidade e querem fazer através de reembolso. […] Quero atendimento na minha cidade!",
+      source: "Beneficiário da CNU no consumidor.gov.br, fev/2024 · reclamação RC-2749732",
+    },
+    lead: "A frase é uma das 1.343 reclamações públicas de beneficiários da Unimed Nacional (CNU) que analisei com IA para propor uma prioridade: com espaço para um único projeto de jornada em 12 a 18 meses, onde investir? O placar e o parecer do LLM recomendaram o reembolso. Escolhi o acesso à rede — e registrei o motivo.",
+    note: {
+      label: "Estudo independente",
+      text: "Dados públicos e reais do consumidor.gov.br (base ConsumerBR, da UFMG), de ago/2022 a jun/2024, com nomes e contatos mascarados na origem. Nenhum dado interno da operadora.",
+    },
+    countTemplate: "{n} de {total}",
+    decision: {
+      heading: "A escolha e o que ficou para depois",
+      kh: "// placar × escolha · base de 1.343 reclamações",
+      intro: "Três temas disputaram o topo do placar, que soma volume, esforço do beneficiário, risco à saúde e insucesso: com pesos iguais, venceu o reembolso, por 0,07; com o risco à saúde em dobro, a autorização. A rede ficou em 2º nas duas contas. Na escolha, olhei duas medidas juntas:",
+      rankLabels: ["Pesos iguais", "Risco em dobro"],
+      measures: {
+        risk: "Risco à saúde nos relatos (leitura da IA)",
+        unresolved: "“Não resolvido”, entre as avaliadas",
+      },
+      contenders: [
+        {
+          name: "Reembolso indeferido por exigência documental",
+          ranks: ["1º", "3º"],
+          role: "Recomendação do LLM",
+          risk: { n: 7, total: 102 },
+          unresolved: { n: 50, total: 60 },
+        },
+        {
+          name: "Demora na análise de autorização",
+          ranks: ["3º", "1º"],
+          role: "Líder com risco em dobro",
+          risk: { n: 61, total: 82 },
+          unresolved: { n: 20, total: 41 },
+        },
+        {
+          name: "Busca de prestador e atendimento fora do prazo",
+          ranks: ["2º", "2º"],
+          role: "Minha escolha",
+          chosen: true,
+          risk: { n: 43, total: 65 },
+          unresolved: { n: 28, total: 31 },
+        },
+      ],
+      takeaway:
+        "Priorizei a rede pela combinação: 43 de 65 relatos com risco à saúde e uma resposta que quase nunca resolve — 28 das 31 avaliadas terminaram como “Não resolvido”. A autorização tem proporção maior de relatos com risco, mas metade das avaliadas termina resolvida. É um julgamento de prioridade, não uma conclusão automática dos números.",
+      later:
+        "Com um único projeto, ficam para outro ciclo o reembolso documental (102 reclamações, o maior esforço do beneficiário), a demora de autorização (61 de 82 com risco à saúde) e as terapias de TEA (43 de 45 com risco). Em paralelo, sem ocupar o slot, proponho pré-validar documentos no reembolso e acompanhar o prazo das guias com risco, escalonando antes do vencimento.",
+      fronts: {
+        heading: "O projeto proposto: quatro frentes, como hipótese a validar",
+        items: [
+          "Busca de rede com protocolo único e o prazo regulatório controlado por sistema.",
+          "Guia médico confiável: aceite do plano, contato, especialidade e agenda.",
+          "Descredenciamento com aviso prévio e substituto antes da saída.",
+          "Reembolso liberado quando a busca não encontra rede.",
+        ],
+      },
+    },
+    verify: {
+      heading: "Como conferir a decisão",
+      kh: "// o LLM lê · o código confere · eu decido",
+      funnel: ["1.343 reclamações", "25 temas", "15 passam nos filtros", "1 escolha"],
+      steps: [
+        "O LLM classificou cada reclamação nos 25 temas que revisei e aprovei; a leitura fica guardada, e só o que é novo volta ao LLM.",
+        "O código aplicou os filtros (volume, persistência, causa estrutural, resposta que já resolve) e calculou o placar; o parecer do LLM avaliou cada alternativa, inclusive restrições de contrato e de regulação.",
+        "Eu escolhi, e o painel da execução registra a divergência em relação ao parecer.",
+      ],
+      body: "As 15 afirmações da recomendação listam os ids das reclamações que as sustentam; o código confere cada número, id e trecho citado, e a interpretação fica com a revisão humana. Um segundo modelo (Codex) leu 994 das mesmas reclamações e concordou no tema principal em 83,5% — concordância entre modelos, não acurácia.",
+      link: {
+        label: "Ler as 65 reclamações de busca de rede na aplicação",
+        href: "https://voz-do-beneficiario.web.app/index.html#f=%7B%22tema%22%3A%22busca_rede_prazo_garantia%22%2C%22base%22%3A%22corpus%22%7D&t=Busca+de+prestador+fora+do+prazo+%C2%B7+base+da+decis%C3%A3o+%28ago%2F2022%E2%80%93jun%2F2024%29",
+      },
+    },
+    built: {
+      heading: "O que construí",
+      kh: "// aplicação publicada · analytics + produto",
+      body: "Escolhi o recorte, pedi a análise de VoC e CX antes da decisão, aprovei a taxonomia e as regras de decisão, decidi o slot e conduzi a publicação. O código, a análise e os documentos foram escritos com o Claude Code; o Codex leu parte das reclamações para medir a concordância, revisou o projeto e é o motor de IA do site.",
+      parts: [
+        {
+          label: "Analytics",
+          text: "A tabela das 2.109 reclamações da CNU (ago/2022 a mar/2025), filtrável, e uma análise de VoC e CX em 16 seções: cada gráfico abre as reclamações por trás dele.",
+          shot: {
+            src: "/assets/projects/analytics-voz-do-cliente/ss-1-analise-risco",
+            alt: "Gráfico de barras da página de análise: percentual das reclamações de cada macrojornada que relatam risco à saúde, de 75,9% em autorização e cobertura assistencial a 0,6% em cancelamento pedido pelo beneficiário; rede credenciada e acesso ao atendimento, 52,1%.",
+            caption: "Página 2 · risco à saúde por macrojornada, na leitura do LLM",
+            width: 1752,
+            height: 1078,
+          },
+        },
+        {
+          label: "Produto",
+          text: "Recebe um trimestre novo, lê só o que é novo, pausa para a pessoa escolher e grava três relatórios por execução: recomendação, evidências e painel. Agir exige login; os relatórios são abertos.",
+          shot: {
+            src: "/assets/projects/analytics-voz-do-cliente/ss-2-painel-placar",
+            alt: "Painel da execução: as seis primeiras das 15 alternativas mantidas no placar, em barras empilhadas por critério (volume, esforço, risco à saúde e insucesso). Em negrito, a proposta do parecer, reembolso indeferido por exigência documental (3,018), e a escolhida, busca de prestador e garantia de atendimento fora do prazo (2,950), com a parte de risco à saúde bem maior.",
+            caption: "Painel da execução · as 6 primeiras das 15 alternativas no placar, por critério; em negrito, a proposta do parecer e a escolha",
+            width: 1720,
+            height: 575,
+          },
+        },
+      ],
+      runNote:
+        "Sem dado novo, a execução inteira leva ~15 s e não chama o LLM. Com um trimestre novo somado (2024T3), a ordem do placar não mudou.",
+      specs: {
+        summary: "Ficha técnica",
+        items: [
+          {
+            label: "Stack",
+            text: "Python (uv, pandas), FastAPI e ECharts; páginas estáticas que abrem offline.",
+          },
+          {
+            label: "IA",
+            text: "Claude Code — Sonnet 5.5 na leitura, Opus 5.5 na taxonomia e no parecer. No site publicado, Codex (gpt-6-luna), com o Claude de reserva.",
+          },
+          {
+            label: "Custo de leitura",
+            text: "US$ 2,70 por mil reclamações com Sonnet 5.5, a preço de lista; US$ 0,10 com gpt-6-luna.",
+          },
+          {
+            label: "Publicação",
+            text: "Firebase Hosting, Cloud Run (0 a 1 instância) e Cloud Storage, dentro das cotas gratuitas do Google Cloud.",
+          },
+          {
+            label: "Qualidade",
+            text: "Conferência de cada número da página de análise e de cada citação da recomendação; revisão independente pelo Codex, com os achados conferidos e registrados.",
+          },
+          {
+            label: "Tempo",
+            text: "Dois dias (06 e 07/10/2026): ~7 h de trabalho ativo, medidas no registro das sessões, sobre a base de um case anterior (~32 h).",
+          },
+          {
+            label: "Dados e privacidade",
+            text: "Os relatos vêm da fonte pública com nomes e contatos mascarados, mas podem citar condições de saúde. O LLM recebe só o texto do beneficiário; o site republica os trechos como estão na fonte, e o repositório é privado.",
+          },
+        ],
+      },
+    },
+    validate: {
+      heading: "O que falta validar com a operação",
+      kh: "// limites do dado · próximo passo",
+      body: "A aplicação está publicada; o benefício do projeto proposto ainda precisa ser validado com quem opera a rede e o reembolso.",
+      list: [
+        "A base é de quem reclama em público: não mede quem não reclama, nem custo, contrato, plano ou prestador.",
+        "“Resolvido” é a avaliação do consumidor: só metade avalia, e 37 das 135 reclamações marcadas como Resolvido vieram com nota 1 ou 2.",
+        "A anonimização da fonte apagou os dias de espera: a base não mede o atendimento contra o prazo da ANS.",
+        "Alcance, benefício e prazo das quatro frentes são hipóteses. O próximo passo é testá-las numa amostra de casos, com as áreas de Rede Credenciada e Reembolso.",
+      ],
+    },
+  },
+};
+
 export const ui: Ui = {
   htmlLang: "pt-BR",
   skipLink: "Pular para o conteúdo",
@@ -957,6 +1134,7 @@ export const pt: SiteContent = {
   projects,
   caseStudies,
   simpleCases,
+  storyCases,
 };
 
 export default pt;
