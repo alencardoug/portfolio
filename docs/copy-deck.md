@@ -238,6 +238,55 @@ Nenhuma ainda. Não publicar custo, prazo ou número antes de medidos.
 
 ---
 
+## Projeto 02c — Analytics avançado via IA - Voz do cliente
+
+**Status:** Publicado · estudo independente (sem pulsação: "Em produção" sugeriria adoção pela operadora).
+**Posição:** card secundário, logo antes de "Este portfólio" (pedido de Douglas, 09/10/2026).
+
+### Resumo (card)
+Aplicação de IA que organiza reclamações públicas de beneficiários da Unimed Nacional (CNU), compara
+prioridades de melhoria e registra a escolha humana, com evidências conferíveis.
+
+Métricas do card: 1.343 reclamações na decisão · 25 temas · 15 afirmações com evidência · ~15 s por
+execução sem dado novo. Tags: Python, LLM, Claude Code, Codex, FastAPI, Cloud Run.
+
+### Natureza do projeto
+Estudo independente com dados públicos (consumidor.gov.br, base ConsumerBR da UFMG), sem dado interno
+da operadora. Douglas definiu o recorte, pediu a análise de VoC e CX antes da decisão, aprovou a
+taxonomia e as regras, escolheu o slot e conduziu a publicação; código, análise e documentos com
+Claude Code; leitura de comparação, revisão independente e motor do site com Codex.
+
+### Estudo de caso
+Página narrativa em cinco blocos (`CaseStory`): abertura pela voz do beneficiário; a escolha e o que
+ficou para depois (três concorrentes comparados por risco à saúde e por resposta que não resolve); como
+conferir; o que construí (analytics + produto); o que falta validar. Roteiro revisado em duas rodadas
+de crítica editorial do Codex (09/10/2026). A escolha aparece como julgamento de prioridade de Douglas,
+não como conclusão automática dos números: a autorização tem proporção maior de relatos com risco, mas
+metade das avaliadas termina resolvida; reembolso, autorização e TEA ficam para outro ciclo.
+
+### Evidências (fonte: repositório privado voc_saude, run de registro 20261007-1856)
+- 1.343 reclamações na decisão (ago/2022–jun/2024); 2.109 na análise (ago/2022–mar/2025).
+- 25 temas; 15 passam nos filtros; 15 afirmações com os ids que as sustentam.
+- Placar com pesos iguais: reembolso 3,018 · rede 2,950 · autorização 2,758. Com risco em dobro:
+  autorização 3,758 · rede 3,655 · reembolso 3,132.
+- Relatam risco à saúde: reembolso 7 de 102 · autorização 61 de 82 · rede 43 de 65. Sem solução entre
+  as avaliadas: 50 de 60 · 20 de 41 · 28 de 31.
+- Concordância de tema principal entre Claude e Codex: 83,5% (994 reclamações) — não é acurácia.
+- ~15 s por execução sem dado novo; US$ 2,70 por mil reclamações lidas (Sonnet 5.5, preço de lista);
+  ~7 h ativas sobre a base de um case anterior (~32 h); publicação nas cotas gratuitas do Google Cloud.
+
+### Não publicar
+- Alcance do projeto proposto: 218 (tema principal) e 259 (conjunto de evidências) são populações
+  diferentes, e nenhuma demonstra cobertura.
+- Comparação CNU × outras Unimeds na página (fica na aplicação, com o contexto dela).
+- Link direto para reclamação individual com dado de saúde.
+
+### Links
+- Aplicação: https://voz-do-beneficiario.web.app/
+- GitHub: não há (repositório privado; manter `githubUrl: null`).
+
+---
+
 ## Projeto 03 — Este portfólio
 
 Projeto próprio de engenharia web para apresentar currículo, experiência e evidências técnicas.

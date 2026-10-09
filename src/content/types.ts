@@ -129,6 +129,72 @@ export type SimpleCase = {
   screenshotsHeading?: string;
 };
 
+/** Captura de tela com dimensões reais (evita salto de layout). `src` sem extensão: .webp + .jpg. */
+export type Screenshot = {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+};
+
+/** Um concorrente da decisão, com as duas medidas que pesaram na escolha. */
+export type StoryContender = {
+  name: string;
+  /** Posição no placar em cada perfil de peso, na ordem de `decision.rankLabels`. */
+  ranks: string[];
+  /** Selo do cartão ("Recomendação do LLM", "Minha escolha"). */
+  role: string;
+  chosen?: boolean;
+  risk: { n: number; total: number };
+  unresolved: { n: number; total: number };
+};
+
+/**
+ * Estudo de caso narrativo (Voz do cliente): abertura humana, decisão em
+ * cartões, método curto com uma evidência conferível, o que foi construído e
+ * os limites. Cinco blocos, pensados para leitura rápida.
+ */
+export type StoryCase = {
+  eyebrow: string;
+  statusLabel: string;
+  readingTime: string;
+  quote: { text: string; source: string };
+  lead: string;
+  note: { label: string; text: string };
+  /** Modelo de contagem nos cartões: "{n} de {total}". */
+  countTemplate: string;
+  decision: {
+    heading: string;
+    kh: string;
+    intro: string;
+    /** Rótulos dos perfis de peso do placar ("Pesos iguais", "Risco em dobro"). */
+    rankLabels: string[];
+    measures: { risk: string; unresolved: string };
+    contenders: StoryContender[];
+    takeaway: string;
+    later: string;
+    fronts: { heading: string; items: string[] };
+  };
+  verify: {
+    heading: string;
+    kh: string;
+    funnel: string[];
+    steps: string[];
+    body: string;
+    link: { label: string; href: string };
+  };
+  built: {
+    heading: string;
+    kh: string;
+    body: string;
+    parts: Array<{ label: string; text: string; shot: Screenshot }>;
+    runNote: string;
+    specs: { summary: string; items: Array<{ label: string; text: string }> };
+  };
+  validate: { heading: string; kh: string; body: string; list: string[] };
+};
+
 export type ProjectStatus = "production" | "development" | "case-study";
 
 export type Project = {
@@ -226,4 +292,5 @@ export type SiteContent = {
   projects: Project[];
   caseStudies: Partial<Record<string, CaseStudy>>;
   simpleCases: Partial<Record<string, SimpleCase>>;
+  storyCases: Partial<Record<string, StoryCase>>;
 };

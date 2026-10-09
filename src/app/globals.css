@@ -19,6 +19,8 @@
   --accent-contrast: #ffffff;
 
   --shadow: 0 24px 70px rgba(20, 20, 20, 0.1);
+  /* barras de ênfase: cinza para o contexto (≥3:1 na superfície), acento para o destaque */
+  --chart-bar: #86867f;
   --tip-bg: #1c1c1c;
   --tip-fg: #f4f4f2;
   --tip-strong: #ffffff;
@@ -48,6 +50,7 @@
   --accent-contrast: #05140b;
 
   --shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+  --chart-bar: #5d7065;
   --tip-bg: var(--surface-2);
   --tip-fg: var(--foreground);
   --tip-strong: var(--accent);
@@ -1039,7 +1042,10 @@ h3 {
   letter-spacing: 0.08em;
 }
 
-.status-production {
+/* projeto entregue, no ar ou concluído: o mesmo verde (o ponto pulsante fica só
+   em "Em produção") */
+.status-production,
+.status-case-study {
   background: var(--accent);
   color: var(--accent-contrast);
 }
@@ -1051,11 +1057,6 @@ h3 {
 
 :root[data-theme="dark"] .status-development {
   border: 1px solid var(--line);
-}
-
-.status-case-study {
-  border: 1px solid var(--line);
-  color: var(--muted);
 }
 
 .pulse {
@@ -1086,6 +1087,18 @@ h3 {
 .metric-grid div {
   border-top: 2px solid var(--accent);
   padding-top: 12px;
+}
+
+/* nos cards, rótulo de uma ou duas linhas: o valor (sempre curto) fica alinhado
+   na base em todas as colunas */
+.project-card .metric-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card .metric-grid dd {
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 :root[data-theme="dark"] .metric-grid div {
@@ -1603,6 +1616,418 @@ h3 {
   font-family: var(--font-code);
   font-size: 0.72rem;
   color: var(--muted);
+}
+
+/* ============================================================
+   Estudo de caso narrativo (CaseStory)
+   ============================================================ */
+
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.story-reading {
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+/* abertura: a voz do beneficiário, como primeira linha (não monumento) */
+.story-quote {
+  margin: 38px 0 0;
+  padding: 2px 0 2px 20px;
+  border-left: 3px solid var(--accent);
+}
+
+.story-quote blockquote {
+  margin: 0;
+}
+
+.story-quote p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-style: var(--role-style);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+.story-quote figcaption {
+  margin-top: 10px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* a decisão: três cartões comparáveis, ênfase na escolha */
+.story .story-contenders {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.story .story-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+:root[data-theme="dark"] .story .story-card {
+  border-radius: 8px;
+}
+
+.story .story-card.is-chosen {
+  padding: 17px;
+  border: 2px solid var(--accent);
+  background: linear-gradient(
+    160deg,
+    var(--surface),
+    color-mix(in srgb, var(--accent-soft) 70%, var(--surface))
+  );
+}
+
+.story-role {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.story-card.is-chosen .story-role {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.story-card h3 {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+/* posição no placar, em mini-blocos: 1º/3º · 3º/1º · 2º/2º se comparam de relance */
+.story-ranks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 2px 0 0;
+}
+
+.story-ranks div {
+  padding: 6px 9px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.story-card.is-chosen .story-ranks div {
+  background: color-mix(in srgb, var(--accent) 13%, transparent);
+}
+
+.story-ranks dt {
+  font-family: var(--font-code);
+  font-size: 0.64rem;
+  color: var(--muted);
+}
+
+.story-ranks dd {
+  margin: 1px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* o Tailwind zera a margem de <p>: espaçar parágrafos e links seguidos */
+.story section > p + p {
+  margin-top: 14px;
+}
+
+.story section > .text-link {
+  margin-top: 12px;
+}
+
+.story .story-part + p {
+  margin-top: 24px;
+}
+
+.story-measures {
+  display: grid;
+  gap: 12px;
+  margin: auto 0 0;
+  padding-top: 8px;
+}
+
+/* rótulo de uma ou duas linhas: o valor fica na base, alinhado com o vizinho */
+.story-measures div {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-measures dt {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.story-measures dd {
+  margin: auto 0 0;
+  padding-top: 3px;
+}
+
+.story-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.story-value b {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+:root[data-theme="dark"] .story-value b {
+  font-family: var(--font-grotesk), var(--font-body);
+}
+
+/* medidor: trilho neutro, preenchimento quadrado na base e arredondado na ponta */
+.story-meter {
+  display: block;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, var(--foreground) 9%, transparent);
+}
+
+.story-meter span {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: var(--chart-bar);
+}
+
+.story-card.is-chosen .story-meter span {
+  background: var(--accent);
+}
+
+.case-page section > p.story-takeaway {
+  margin-top: 20px;
+  color: var(--foreground);
+}
+
+.story-subhead {
+  margin: 32px 0 12px;
+  font-size: 1.05rem;
+}
+
+/* as frentes propostas: contorno tracejado = hipótese, ainda não entregue */
+.story .story-fronts {
+  counter-reset: front;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.story .story-fronts li {
+  counter-increment: front;
+  position: relative;
+  margin: 0;
+  padding: 13px 14px 13px 46px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line));
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 0.92rem;
+  color: var(--foreground);
+}
+
+.story .story-fronts li::before {
+  content: counter(front);
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+/* método em quatro passos */
+.story .story-steps {
+  counter-reset: step;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 16px;
+  padding: 0;
+}
+
+.story .story-steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 8px;
+  margin: 0;
+}
+
+.story .story-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  padding-top: 4px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+/* o que foi construído: analytics + produto, cada um com a captura legível */
+.story-part {
+  margin-top: 28px;
+}
+
+.case-page section .story-part-text {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.story-part-text b {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.story-shot {
+  margin: 0;
+}
+
+.story-shot a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.story-shot a:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+
+.story-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.story-shot figcaption {
+  margin-top: 8px;
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+/* ficha técnica recolhida: para quem quer aprofundar */
+.story-specs {
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.story-specs summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.story-specs summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.story-specs dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0 18px 16px;
+}
+
+.story-specs dl div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.story-specs dt {
+  padding-top: 2px;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.story-specs dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .story .story-contenders {
+    grid-template-columns: 1fr;
+  }
+
+  /* no celular, as duas medidas lado a lado: cada cartão cabe numa olhada */
+  .story-measures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .story .story-fronts {
+    grid-template-columns: 1fr;
+  }
+
+  .story-specs dl div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
 }
 
 /* ============================================================

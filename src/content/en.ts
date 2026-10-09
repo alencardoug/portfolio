@@ -16,6 +16,7 @@ import type {
   SectionCopy,
   SimpleCase,
   SiteContent,
+  StoryCase,
   Ui,
 } from "./types";
 
@@ -306,6 +307,25 @@ export const projects: Project[] = [
     appUrl: null,
     githubUrl: "https://github.com/alencardoug/mvp_eng_dados_1",
     caseStudyUrl: "/en/projects/engenharia-dados-gcp/",
+  },
+  {
+    slug: "analytics-voz-do-cliente",
+    title: "Advanced analytics via AI - Voice of the customer",
+    // Independent study on public data: "In production" would suggest adoption by the operator.
+    status: "case-study",
+    statusLabel: "Published · independent study",
+    description:
+      "AI application that organizes public complaints from members of Unimed Nacional (CNU), a Brazilian health plan operator, compares improvement priorities and records the human choice, with evidence anyone can check.",
+    technologies: ["Python", "LLM", "Claude Code", "Codex", "FastAPI", "Cloud Run"],
+    appUrl: "https://voz-do-beneficiario.web.app/",
+    githubUrl: null, // private repository
+    caseStudyUrl: "/en/projects/analytics-voz-do-cliente/",
+    metrics: [
+      { label: "Complaints in the decision", value: "1,343" },
+      { label: "Themes", value: "25" },
+      { label: "Evidence-backed claims", value: "15" },
+      { label: "Run with no new data", value: "~15 s" },
+    ],
   },
   {
     slug: "portfolio",
@@ -866,6 +886,163 @@ export const simpleCases: Partial<Record<string, SimpleCase>> = {
   },
 };
 
+// Source of the numbers: private voc_saude repository (analise/, dados/4-serving/,
+// run of record 20261007-1856). Editorial critique by Codex on 2026-10-09.
+export const storyCases: Partial<Record<string, StoryCase>> = {
+  "analytics-voz-do-cliente": {
+    eyebrow: "// case study · voice of the customer",
+    statusLabel: "Published · independent study",
+    readingTime: "4-minute read",
+    quote: {
+      text: "They booked it in another city and want me to do it through reimbursement. […] I want care in my own city!",
+      source: "CNU member on consumidor.gov.br, Feb 2024 · complaint RC-2749732 (translated from Portuguese)",
+    },
+    lead: "That sentence is one of 1,343 public complaints from members of Unimed Nacional (CNU), a Brazilian health plan operator, that I analyzed with AI to propose a priority: with room for a single journey project over 12 to 18 months, where should it go? The score and the LLM's opinion recommended reimbursement. I chose access to the provider network — and recorded the reason.",
+    note: {
+      label: "Independent study",
+      text: "Real, public data from consumidor.gov.br, Brazil's government complaint platform (ConsumerBR dataset, UFMG), Aug 2022 to Jun 2024, with names and contacts masked at the source. No internal data from the operator.",
+    },
+    countTemplate: "{n} of {total}",
+    decision: {
+      heading: "The choice, and what waits for later",
+      kh: "// score × choice · base of 1,343 complaints",
+      intro: "Three themes competed for the top of the score, which adds up volume, member effort, health risk and failure: with equal weights, reimbursement won by 0.07; with health risk doubled, authorization did. The network came second both ways. For the choice, I looked at two measures together:",
+      rankLabels: ["Equal weights", "Risk doubled"],
+      measures: {
+        risk: "Health risk in the reports (AI reading)",
+        unresolved: "“Not resolved”, among those rated",
+      },
+      contenders: [
+        {
+          name: "Reimbursement denied over paperwork",
+          ranks: ["1st", "3rd"],
+          role: "LLM's recommendation",
+          risk: { n: 7, total: 102 },
+          unresolved: { n: 50, total: 60 },
+        },
+        {
+          name: "Slow authorization review",
+          ranks: ["3rd", "1st"],
+          role: "Leader with risk doubled",
+          risk: { n: 61, total: 82 },
+          unresolved: { n: 20, total: 41 },
+        },
+        {
+          name: "Provider search and care past the deadline",
+          ranks: ["2nd", "2nd"],
+          role: "My choice",
+          chosen: true,
+          risk: { n: 43, total: 65 },
+          unresolved: { n: 28, total: 31 },
+        },
+      ],
+      takeaway:
+        "I prioritized the network for the combination: 43 of 65 reports with a health risk and a response that almost never resolves — 28 of the 31 rated ended as “Not resolved”. Authorization has a larger share of reports with risk, but half of those rated end up resolved. It is a prioritization judgment, not an automatic conclusion from the numbers.",
+      later:
+        "With a single project, paperwork reimbursement (102 complaints, the highest member effort), slow authorization (61 of 82 with a health risk) and autism (ASD) therapies (43 of 45 with risk) wait for another cycle. In parallel, without taking the slot, I propose pre-validating reimbursement documents and tracking the deadline of authorizations with risk, escalating before they expire.",
+      fronts: {
+        heading: "The proposed project: four fronts, as a hypothesis to validate",
+        items: [
+          "Provider search with a single protocol and the regulatory deadline tracked by the system.",
+          "A reliable provider directory: plan acceptance, contact, specialty and availability.",
+          "Provider removal with advance notice and a replacement before the exit.",
+          "Reimbursement released when the search finds no provider.",
+        ],
+      },
+    },
+    verify: {
+      heading: "How to check the decision",
+      kh: "// the LLM reads · code checks · I decide",
+      funnel: ["1,343 complaints", "25 themes", "15 pass the filters", "1 choice"],
+      steps: [
+        "The LLM classified each complaint into the 25 themes I reviewed and approved; the reading is stored, and only what is new goes back to the LLM.",
+        "Code applied the filters (volume, persistence, structural cause, a response that already resolves) and computed the score; the LLM's opinion assessed each alternative, including contract and regulatory constraints.",
+        "I chose, and the run dashboard records the divergence from the opinion.",
+      ],
+      body: "The recommendation's 15 claims list the ids of the complaints behind them; code checks every number, id and quoted excerpt, and interpretation stays with human review. A second model (Codex) read 994 of the same complaints and agreed on the main theme in 83.5% — agreement between models, not accuracy.",
+      link: {
+        label: "Read the 65 provider-search complaints in the app (in Portuguese)",
+        href: "https://voz-do-beneficiario.web.app/index.html#f=%7B%22tema%22%3A%22busca_rede_prazo_garantia%22%2C%22base%22%3A%22corpus%22%7D&t=Busca+de+prestador+fora+do+prazo+%C2%B7+base+da+decis%C3%A3o+%28ago%2F2022%E2%80%93jun%2F2024%29",
+      },
+    },
+    built: {
+      heading: "What I built",
+      kh: "// published application · analytics + product",
+      body: "I chose the scope, asked for the VoC and CX analysis before the decision, approved the taxonomy and the decision rules, made the call on the slot and led the deployment. The code, the analysis and the documents were written with Claude Code; Codex read part of the complaints to measure agreement, reviewed the project and is the site's AI engine.",
+      parts: [
+        {
+          label: "Analytics",
+          text: "A filterable table of CNU's 2,109 complaints (Aug 2022 to Mar 2025) and a 16-section VoC and CX analysis: every chart opens the complaints behind it.",
+          shot: {
+            src: "/assets/projects/analytics-voz-do-cliente/ss-1-analise-risco",
+            alt: "Bar chart from the analysis page: share of complaints in each macro-journey that report a health risk, from 75.9% in authorization and coverage to 0.6% in member-requested cancellation; provider network and access to care, 52.1%.",
+            caption: "Page 2 · health risk by macro-journey, as read by the LLM (in Portuguese)",
+            width: 1752,
+            height: 1078,
+          },
+        },
+        {
+          label: "Product",
+          text: "Takes in a new quarter, reads only what is new, pauses for a person to choose and saves three reports per run: recommendation, evidence and dashboard. Acting requires login; the reports are open.",
+          shot: {
+            src: "/assets/projects/analytics-voz-do-cliente/ss-2-painel-placar",
+            alt: "Run dashboard: the top six of the 15 alternatives kept, as bars stacked by criterion (volume, effort, health risk and failure). In bold, the opinion's proposal, reimbursement denied over paperwork (3.018), and the chosen one, provider search and care past the deadline (2.950), with a much larger health-risk segment.",
+            caption: "Run dashboard · top 6 of the 15 alternatives, by criterion; in bold, the opinion's proposal and the choice (in Portuguese)",
+            width: 1720,
+            height: 575,
+          },
+        },
+      ],
+      runNote:
+        "With no new data, the whole run takes ~15 s and makes no LLM calls. With a new quarter added (2024 Q3), the score order did not change.",
+      specs: {
+        summary: "Spec sheet",
+        items: [
+          {
+            label: "Stack",
+            text: "Python (uv, pandas), FastAPI and ECharts; static pages that open offline.",
+          },
+          {
+            label: "AI",
+            text: "Claude Code — Sonnet 5.5 for reading, Opus 5.5 for the taxonomy and the opinion. On the published site, Codex (gpt-6-luna), with Claude as backup.",
+          },
+          {
+            label: "Reading cost",
+            text: "US$ 2.70 per thousand complaints with Sonnet 5.5 at list price; US$ 0.10 with gpt-6-luna.",
+          },
+          {
+            label: "Deployment",
+            text: "Firebase Hosting, Cloud Run (0 to 1 instance) and Cloud Storage, within Google Cloud's free tier.",
+          },
+          {
+            label: "Quality",
+            text: "Every number on the analysis page and every quote in the recommendation is checked; independent review by Codex, with the findings verified and recorded.",
+          },
+          {
+            label: "Time",
+            text: "Two days (Oct 6–7, 2026): ~7 h of active work, measured from the session logs, on top of an earlier case (~32 h).",
+          },
+          {
+            label: "Data and privacy",
+            text: "The reports come from the public source with names and contacts masked, but may mention health conditions. The LLM receives only the member's text; the site republishes excerpts as they appear in the source, and the repository is private.",
+          },
+        ],
+      },
+    },
+    validate: {
+      heading: "What still needs validating with operations",
+      kh: "// data limits · next step",
+      body: "The application is published; the benefit of the proposed project still needs to be validated with the teams that run the network and reimbursement.",
+      list: [
+        "The data comes from people who complain publicly: it does not measure those who don't complain, nor cost, contract, plan or provider.",
+        "“Resolved” is the consumer's own rating: only half rate it, and 37 of the 135 complaints marked Resolved came with a score of 1 or 2.",
+        "The source's anonymization erased waiting times: the data cannot measure care against the regulator's (ANS) deadline.",
+        "The reach, benefit and timing of the four fronts are hypotheses. The next step is to test them on a sample of cases with the Provider Network and Reimbursement teams.",
+      ],
+    },
+  },
+};
+
 export const ui: Ui = {
   htmlLang: "en",
   skipLink: "Skip to content",
@@ -964,6 +1141,7 @@ export const en: SiteContent = {
   projects,
   caseStudies,
   simpleCases,
+  storyCases,
 };
 
 export default en;
