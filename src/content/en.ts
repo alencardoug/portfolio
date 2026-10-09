@@ -45,7 +45,7 @@ export const links: ExternalLinks = {
 export const heroSpec: HeroSpecItem[] = [
   { key: "experience", value: "8 years in tech" },
   { key: "focus", value: "data + ai" },
-  { key: "scope", value: "data → deploy" },
+  { key: "scope", value: "strategy → observability" },
   { key: "education", value: "postgrad / engineering" },
   { key: "language", value: "advanced English" },
 ];
