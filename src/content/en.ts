@@ -318,6 +318,12 @@ export const projects: Project[] = [
     appUrl: "https://voz-do-beneficiario.web.app/",
     githubUrl: null, // private repository
     caseStudyUrl: "/en/projects/analytics-voz-do-cliente/",
+    metrics: [
+      { label: "First version", value: "2 days" },
+      { label: "Commits", value: "33" },
+      { label: "Complaints read", value: "2,109" },
+      { label: "Logged decisions", value: "27" },
+    ],
   },
   {
     slug: "portfolio",

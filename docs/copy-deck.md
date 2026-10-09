@@ -247,7 +247,7 @@ Nenhuma ainda. Não publicar custo, prazo ou número antes de medidos.
 Aplicação de IA que organiza reclamações públicas de beneficiários da Unimed Nacional (CNU), compara
 prioridades de melhoria e registra a escolha humana, com evidências conferíveis.
 
-Card sem métricas (retiradas a pedido de Douglas, 09/10/2026). Tags: Python, LLM, Claude Code, Codex,
+Métricas do card (só CNU, 09/10/2026): primeira versão 2 dias (06–07/10) · 33 commits · 2.109 reclamações lidas · 27 decisões registradas (D1–D27). Tags: Python, LLM, Claude Code, Codex,
 FastAPI, Cloud Run.
 
 ### Natureza do projeto
