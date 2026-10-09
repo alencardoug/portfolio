@@ -1042,7 +1042,10 @@ h3 {
   letter-spacing: 0.08em;
 }
 
-.status-production {
+/* projeto entregue, no ar ou concluído: o mesmo verde (o ponto pulsante fica só
+   em "Em produção") */
+.status-production,
+.status-case-study {
   background: var(--accent);
   color: var(--accent-contrast);
 }
@@ -1054,11 +1057,6 @@ h3 {
 
 :root[data-theme="dark"] .status-development {
   border: 1px solid var(--line);
-}
-
-.status-case-study {
-  border: 1px solid var(--line);
-  color: var(--muted);
 }
 
 .pulse {
