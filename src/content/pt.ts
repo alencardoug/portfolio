@@ -62,7 +62,7 @@ export const sections: Record<
   projects: {
     eyebrow: "03 — O que já construí",
     heading: "Provas, não promessas.",
-    sub: "Dois projetos de IA em produção, um projeto de dados em desenvolvimento e este próprio portfólio.",
+    sub: "Três aplicações de IA em produção, um projeto de dados concluído, três em desenvolvimento e este próprio portfólio.",
   },
 };
 

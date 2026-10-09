@@ -68,7 +68,7 @@ export const sections: Record<
   projects: {
     eyebrow: "03 — What I have built",
     heading: "Proof, not promises.",
-    sub: "Two AI projects in production, one data project in development, and this portfolio itself.",
+    sub: "Three AI applications in production, one completed data project, three in development, and this portfolio itself.",
   },
 };
 
