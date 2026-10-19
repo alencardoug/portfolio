@@ -287,6 +287,47 @@ metade das avaliadas termina resolvida; reembolso, autorização e TEA ficam par
 
 ---
 
+## Projeto 02d — Linkedia — revista de IA com prática de uso
+
+**Status:** Em produção desde 17/10/2026 (https://linkedia.web.app/).
+**Posição:** card secundário, logo antes de "Este portfólio" (pedido de Douglas, 19/10/2026).
+
+### Resumo (card)
+Revista diária de IA que Douglas criou para aprender de forma ampla sem ler e esquecer: um motor
+editorial propõe pautas com fontes, ele escolhe e revisa cada matéria, e o acervo traz exercícios
+práticos e prompts para aprofundar. A pré-capa é um laboratório de frontend com IA.
+
+Métricas do card (19/10/2026): primeira versão 3 dias (15–17/10, sobre o kit de planejamento de 14/10)
+· 123 commits (95 no motor + 28 na revista) · 72 decisões registradas (D-001 a D-072) · 13 matérias
+publicadas (3 edições). Tags: muitas, por pedido de Douglas — LangGraph e LangSmith sim; LangChain não
+(o motor só usa `langchain_core` indiretamente, pelo LangGraph).
+
+### Estudo de caso
+Página de jornada (`CaseJourney`): abertura pela nota de revisão que Douglas escreveu no painel para a
+matéria da Meta (19/10), sem os números que a fonte não confirmava; o que cada leitura vira (entender ·
+praticar · decidir, com prompts e exercícios publicados); o motor com as duas pausas humanas; a
+pré-capa como estudo de design e frontend, com a capa "Singularidade" rodando num quadrado; limites e
+ficha técnica. Ângulo e texto planejados e revisados com o Codex (duas rodadas, 19/10/2026).
+
+### Evidências (fontes: `linkedia-engine` privado — docs/DECISIONS.md, STATUS.md, HOW_TO_USE.md — e
+`linkedia-magazine` público)
+- 37 feeds ativos (39 cadastrados); 3 canais; 15 pautas por edição no padrão.
+- Testes: 791 no motor (pytest), 117 unitários na revista (Vitest) + e2e Playwright/axe.
+- ~20 h de sessões entre 15 e 17/10, estimadas pelos registros do Claude Code (intervalos ≤ 15 min).
+- Com cinco pautas, cerca de oito chamadas ao Claude por edição; sem API paga.
+
+### Não publicar
+- O perfil de leitor (texto pessoal de Douglas no painel `/perfil`).
+- Números da nota de revisão que a matéria não confirma (limite de receita em 12 meses, 9º lugar, 700 GB).
+
+### Links
+- Aplicação: https://linkedia.web.app/ · capa: https://linkedia.web.app/visual/singularidade
+- GitHub: https://github.com/users/alencardoug/projects/3/views/3 — quadro público do GitHub Projects
+  (pedido de Douglas, 19/10/2026); repositório público da revista: https://github.com/alencardoug/linkedia-magazine
+  (o motor é privado)
+
+---
+
 ## Projeto 03 — Este portfólio
 
 Projeto próprio de engenharia web para apresentar currículo, experiência e evidências técnicas.
