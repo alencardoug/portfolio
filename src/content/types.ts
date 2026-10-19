@@ -194,6 +194,77 @@ export type StoryCase = {
   validate: { heading: string; kh: string; body: string; list: string[] };
 };
 
+/** Uma parte do que foi construído: texto curto + captura de tela. */
+export type JourneyPart = {
+  label: string;
+  text: string;
+  shot: Screenshot;
+  /** Link opcional para conferir a evidência no ar. */
+  link?: { label: string; href: string };
+};
+
+/**
+ * Capa interativa rodando dentro do estudo de caso (Linkedia): o texto da
+ * capa em HTML (o que a arte curva) e as dicas de uso, por estado.
+ */
+export type LiveCover = {
+  caption: string;
+  kicker: string;
+  edition: { label: string; date: string };
+  headlines: string[];
+  more: string;
+  /** Link real para a capa no ar, logo abaixo do quadrado. */
+  link: { label: string; href: string };
+  /** Rótulo acessível da área clicável ("atravessar o horizonte de eventos"). */
+  hitLabel: string;
+  hints: { loading: string; live: string; liveTouch: string; still: string; paused: string; fallback: string };
+};
+
+/**
+ * Estudo de caso de jornada (Linkedia): abertura humana, o que cada leitura
+ * vira, o motor com as pausas humanas, a capa ao vivo e os limites.
+ */
+export type JourneyCase = {
+  /** Rótulo do botão do GitHub (o link pode ser um quadro do GitHub Projects, não código). */
+  githubLabel: string;
+  eyebrow: string;
+  readingTime: string;
+  quote: { text: string; source: string };
+  lead: string;
+  note: { label: string; text: string };
+  uses: {
+    heading: string;
+    kh: string;
+    intro: string;
+    cards: Array<{ verb: string; resource: string; text: string; from: string }>;
+    parts: JourneyPart[];
+    takeaway: string;
+  };
+  engine: {
+    heading: string;
+    kh: string;
+    funnel: string[];
+    steps: Array<{ command: string; text: string }>;
+    parts: JourneyPart[];
+    body: string;
+  };
+  cover: {
+    heading: string;
+    kh: string;
+    body: string[];
+    live: LiveCover;
+    after: string;
+    part: JourneyPart;
+  };
+  limits: {
+    heading: string;
+    kh: string;
+    body: string;
+    list: string[];
+    specs: { summary: string; items: Array<{ label: string; text: string }> };
+  };
+};
+
 export type ProjectStatus = "production" | "development" | "case-study";
 
 export type Project = {
@@ -292,4 +363,5 @@ export type SiteContent = {
   caseStudies: Partial<Record<string, CaseStudy>>;
   simpleCases: Partial<Record<string, SimpleCase>>;
   storyCases: Partial<Record<string, StoryCase>>;
+  journeyCases: Partial<Record<string, JourneyCase>>;
 };

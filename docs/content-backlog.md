@@ -73,6 +73,16 @@ Itens que precisam ser providenciados/confirmados antes da V1 final.
   é a que ele vai dar na entrevista.
 - [ ] Revisão editorial do texto EN.
 
+## Projeto Linkedia — revista de IA com prática de uso (em produção)
+
+- [x] Card antes de "Este portfólio" e estudo de caso em PT e EN (19/10/2026).
+- [x] Cinco capturas em `public/assets/projects/linkedia/`: quatro do painel local (`make review`:
+  pautas, roteiro prático, prompts para copiar, verificações + pareceres) e a revista publicada.
+- [x] Capa "Singularidade" rodando ao vivo no estudo de caso (renderer copiado do repositório público,
+  MIT, adaptado a uma caixa em `src/components/case/singularidade/`).
+- [ ] Atualizar as contagens do card (commits, decisões, matérias) quando fizer sentido; são de 19/10/2026.
+- [ ] Revisão editorial do texto EN.
+
 ## Portfólio
 
 - [ ] Criar repositório GitHub.

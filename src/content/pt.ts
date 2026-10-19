@@ -8,6 +8,7 @@ import type {
   Project,
   SectionCopy,
   SimpleCase,
+  JourneyCase,
   SiteContent,
   StoryCase,
   Ui,
@@ -62,7 +63,7 @@ export const sections: Record<
   projects: {
     eyebrow: "03 — O que já construí",
     heading: "Provas, não promessas.",
-    sub: "Três aplicações de IA em produção, um projeto de dados concluído, três em desenvolvimento e este próprio portfólio.",
+    sub: "Quatro aplicações de IA em produção, um projeto de dados concluído, três em desenvolvimento e este próprio portfólio.",
   },
 };
 
@@ -318,6 +319,45 @@ export const projects: Project[] = [
       { label: "Commits", value: "33" },
       { label: "Reclamações lidas", value: "2.109" },
       { label: "Decisões registradas", value: "27" },
+    ],
+  },
+  {
+    slug: "linkedia",
+    title: "Linkedia — revista de IA com prática de uso",
+    status: "production",
+    description:
+      "Revista diária de IA que criei para aprender de forma ampla sem ler e esquecer: um motor editorial propõe pautas com fontes, eu escolho e reviso cada matéria, e o acervo traz exercícios práticos e prompts para aprofundar. A pré-capa é um laboratório de frontend com IA.",
+    technologies: [
+      "LLM",
+      "Prompt Engineering",
+      "LangGraph",
+      "LangSmith",
+      "Human-in-the-loop",
+      "Claude Code",
+      "Codex",
+      "Python",
+      "FastAPI",
+      "HTMX",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Docker",
+      "JSON Schema",
+      "Astro",
+      "TypeScript",
+      "WebGL2",
+      "GLSL",
+      "Playwright",
+      "GitHub Actions",
+      "Firebase",
+    ],
+    appUrl: "https://linkedia.web.app/",
+    githubUrl: "https://github.com/users/alencardoug/projects/3/views/3", // quadro público do GitHub Projects (o motor é privado)
+    caseStudyUrl: "/projects/linkedia/",
+    metrics: [
+      { label: "Primeira versão", value: "3 dias" },
+      { label: "Commits", value: "123" },
+      { label: "Decisões registradas", value: "72" },
+      { label: "Matérias publicadas", value: "13" },
     ],
   },
   {
@@ -1038,6 +1078,217 @@ export const storyCases: Partial<Record<string, StoryCase>> = {
   },
 };
 
+const linkediaShots = "/assets/projects/linkedia";
+
+export const journeyCases: Partial<Record<string, JourneyCase>> = {
+  linkedia: {
+    githubLabel: "Projeto no GitHub",
+    eyebrow: "// estudo de caso · linkedia",
+    readingTime: "5 min de leitura",
+    quote: {
+      text: "Corrigir o limite de receita […], deixar claro que lidera só entre os americanos […] e incluir custo real […]",
+      source: "Minha nota de revisão numa matéria da Linkedia, 19/10/2026 · “Meta volta aos pesos abertos”",
+    },
+    lead: "Eu queria aprender IA de forma ampla — engenharia, liderança, pesquisa, riscos — sem ler uma matéria e esquecê-la na semana seguinte. Construí a Linkedia: um motor editorial que me propõe pautas com fontes e escreve matérias que eu escolho, leio e corrijo antes de publicar. O que sai fica num acervo público, com prompts e exercícios para continuar o estudo. A nota acima é um pedido meu de revisão — e a versão nova explicitou o que a fonte não confirmava, inclusive na minha nota.",
+    note: {
+      label: "Motor privado, revista pública.",
+      text: "O motor roda só na minha máquina, com o Claude Code na assinatura, sem API paga; a revista estática e o código dela são abertos. As matérias são geradas por IA a partir de fontes citadas, com seleção e revisão minhas — e a revista informa isso ao leitor.",
+    },
+    uses: {
+      heading: "O que cada leitura vira",
+      kh: "// entender · praticar · decidir",
+      intro: "Cada matéria junta uma síntese da notícia, com as fontes citadas, e uma parte prática, identificada como orientação geral. No fim, prompts para copiar e continuar o estudo em outra IA. Três exemplos publicados:",
+      cards: [
+        {
+          verb: "Entender",
+          resource: "Saber mais",
+          text: "Toda matéria tem um prompt pronto para a explicação completa. Na de revisão de código com agentes: tipos de risco, checagens automáticas, limites de revisores por LLM e um plano para um projeto pessoal.",
+          from: "“Revisão de código contínua”",
+        },
+        {
+          verb: "Praticar",
+          resource: "Laboratório de recusa",
+          text: "Um exercício de até 2 horas: 20 variações de um pedido que a IA deveria recusar, 5 rodadas de cada e a taxa de falha numa planilha.",
+          from: "“Guardrails não bastam”",
+        },
+        {
+          verb: "Decidir",
+          resource: "Roteiro para a diretoria",
+          text: "Uma conversa de 15 minutos para levar um piloto de IA à produção: métrica de base, critério de escala ou encerramento, responsável, riscos com LGPD e um pedido claro de decisão.",
+          from: "“Do piloto à operação”",
+        },
+      ],
+      parts: [
+        {
+          label: "Na prática",
+          text: "Na matéria sobre modelos abertos, a parte prática virou um roteiro de cerca de 3 horas para comparar a API fechada e o modelo aberto com tarefas reais, avaliando às cegas.",
+          shot: {
+            src: `${linkediaShots}/ss-3-roteiro`,
+            alt: "Trecho da pré-página da matéria: “Roteiro de cerca de 3 horas”, em seis passos — escolher 15 a 20 tarefas reais, definir um critério por tarefa, rodar na API fechada e no modelo aberto, embaralhar e avaliar sem saber o modelo, comparar acerto, custo, latência e falhas — seguido de um checklist de licença antes de usar em produto.",
+            caption: "Pré-página da matéria · roteiro prático e checklist de licença",
+            width: 1800,
+            height: 1024,
+          },
+        },
+        {
+          label: "Para aprofundar",
+          text: "E o prompt para levar a outra IA, já com o contexto da matéria.",
+          shot: {
+            src: `${linkediaShots}/ss-4-prompts`,
+            alt: "Seção “Prompts para copiar” com o prompt “Saber mais”: pede a uma IA que explique a diferença entre pesos abertos, open source e APIs fechadas, licenças restritivas, memória de um modelo de 816 bilhões de parâmetros em diferentes quantizações, provedores de inferência e como montar um teste com 15 tarefas reais.",
+            caption: "Prompts para copiar · o “Saber mais” desta matéria",
+            width: 1800,
+            height: 508,
+          },
+        },
+      ],
+      takeaway:
+        "É isso que fica: um acervo para consultar meses depois e exercícios de poucas horas para colocar a mão na massa.",
+    },
+    engine: {
+      heading: "O motor: a IA propõe e escreve; eu escolho e reviso",
+      kh: "// duas pausas humanas · nenhuma matéria sai sem leitura",
+      funnel: ["37 feeds ativos", "pautas por canal", "as que eu marco", "verificações", "meu parecer", "revista no ar"],
+      steps: [
+        {
+          command: "make research",
+          text: "O código coleta os feeds e monta um pacote de evidências por canal; o Claude propõe pautas citando só ids desse pacote. O modelo nunca escreve URL, e o código rejeita id desconhecido.",
+        },
+        {
+          command: "make review",
+          text: "No painel local, marco as pautas e deixo notas. Um perfil de leitor versionado orienta a descoberta e a escrita; quando peço, o motor propõe ajustes a ele a partir das minhas notas, e eu aceito ou rejeito.",
+        },
+        {
+          command: "make generate",
+          text: "Uma matéria por pauta, com chamadas extras só para reparo ou revisão. O código confere estrutura, citações e outras regras; depois leio a pré-página e aprovo, peço revisão ou rejeito.",
+        },
+        {
+          command: "make publish",
+          text: "Exporta JSON validado por schema para o repositório público; o CI roda os testes, inclusive de acessibilidade, e publica.",
+        },
+      ],
+      parts: [
+        {
+          label: "Pautas",
+          text: "Cada candidata chega com fontes, ressalvas e a avaliação do modelo — rotulada como julgamento, não medição.",
+          shot: {
+            src: `${linkediaShots}/ss-1-pautas`,
+            alt: "Painel local, pautas da edição de 19/10/2026: cartão “Meta volta aos pesos abertos: o que muda para quem escolhe modelo”, marcado como selecionada, com resumo, “por que agora”, avaliação do modelo (nota 0,53: utilidade para a carreira 0,50, novidade 0,60, popularidade 0,60, valor de aprendizado 0,45), etiquetas, um aviso de menos de 2 fontes e a ressalva de que o excerto é mínimo.",
+            caption: "Painel local · uma pauta com fontes, ressalvas e a nota do modelo",
+            width: 1800,
+            height: 1564,
+          },
+        },
+        {
+          label: "Parecer",
+          text: "Aprovei a primeira versão com uma exceção editorial e, relendo, pedi revisão sobre licença, posição entre os modelos e custo de uso. A versão 2 explicitou o que a fonte não confirmava e separou pesos gratuitos de custo de execução; aprovei-a com a exceção ainda registrada.",
+          shot: {
+            src: `${linkediaShots}/ss-2-parecer`,
+            alt: "Pré-página da matéria: verificações de qualidade com nove itens ok e “referências às fontes” como falhou (um parágrafo sem fonte antes da parte prática), e os pareceres anteriores — aprovada apesar das verificações (versão 1), revisão pedida com a nota sobre limite de receita, posição entre modelos e custo real, e aprovada apesar das verificações (versão 2).",
+            caption: "Pré-página · verificações de qualidade e o histórico de pareceres",
+            width: 1800,
+            height: 1370,
+          },
+          link: {
+            label: "Conferir a versão publicada",
+            href: "https://linkedia.web.app/materias/meta-volta-aos-pesos-abertos-o-que-muda-para-quem-escolhe-modelo",
+          },
+        },
+      ],
+      body: "O LangGraph registra as duas pausas humanas e permite retomar o fluxo de onde parou. No LangSmith, ligo traces por comando e, num comando à parte, envio minhas decisões como feedback de cada chamada — para avaliar os prompts com dados, não com impressão.",
+    },
+    cover: {
+      heading: "A pré-capa também é estudo",
+      kh: "// sem imagens · só código escrito por IA",
+      body: [
+        "Reservei a pré-capa da revista para estudar design e frontend com IA. Ali a leitura não está em jogo, então é onde peço o máximo do modelo: shaders, física, desempenho em aparelho fraco, acessibilidade e uma entrada na revista que funciona mesmo quando a arte não roda. “Singularidade” é o primeiro experimento; a proposta é uma capa nova por semana, cada uma guardada no arquivo como pacote reutilizável.",
+      ],
+      live: {
+        caption: "Primeira pré-capa gerada, sempre sem imagens, só código: “Singularidade”, semana 42 de 2026.",
+        kicker: "Revista diária · Inteligência artificial",
+        edition: { label: "Edição de 16 de outubro de 2026", date: "2026-10-16" },
+        headlines: [
+          "Avaliar agentes além do “vibe check”: como montar seus primeiros evals",
+          "Revisão de código contínua: de “um humano leu?” a “qual verificação pega este risco?”",
+          "MCP de documentação: como dar ao seu agente de código docs oficiais do Google atualizadas",
+        ],
+        more: "+ 4 matérias nesta edição",
+        link: { label: "Abrir na revista", href: "https://linkedia.web.app/visual/singularidade" },
+        hitLabel: "Atravessar o horizonte de eventos (a capa renasce em seguida)",
+        hints: {
+          loading: "Preparando a capa…",
+          live: "Mova o cursor; clique para atravessar o horizonte de eventos.",
+          liveTouch: "Toque para atravessar o horizonte de eventos.",
+          still: "Movimento reduzido: um quadro parado da capa.",
+          paused: "A animação foi pausada para manter o desempenho.",
+          fallback: "Sem WebGL2 aqui: esta é a capa em HTML, que a arte curvaria.",
+        },
+      },
+      after:
+        "Um buraco negro simulado em WebGL2, sem biblioteca, curva a tipografia segundo a relatividade geral, com aproximações e efeitos artísticos declarados. Este quadrado roda o renderizador da revista adaptado a uma caixa, com resolução adaptativa e um quadro parado para quem prefere movimento reduzido.",
+      part: {
+        label: "Tema de leitura",
+        text: "Dentro da revista, o leitor escolhe entre três temas: Base, Fixo e Atual — o espaço do experimento visual da semana.",
+        shot: {
+          src: `${linkediaShots}/ss-5-revista`,
+          alt: "Página inicial da revista publicada, edição de 19 de outubro de 2026, no tema Atual: fundo azul-escuro pontilhado, “Linkedia” com o “ia” em degradê rosa-laranja e a matéria de abertura “Itaú e a IARA: como uma camada de governança de IA sustenta o escalonamento em banco”.",
+          caption: "linkedia.web.app/revista · edição de 19/10/2026 no tema Atual",
+          width: 1800,
+          height: 1460,
+        },
+      },
+    },
+    limits: {
+      heading: "O que já funciona e o que falta medir",
+      kh: "// posição em 19/10/2026",
+      body: "No ar desde 17/10: 13 matérias em 3 edições, nos canais Conhecimento, Engenharia e Liderança de IA.",
+      list: [
+        "Não medi retenção: o acervo e os exercícios existem; quanto aprendi com eles ainda é impressão minha.",
+        "As verificações conferem estrutura, citações e fontes lidas, não cada interpretação — por isso a leitura humana é obrigatória, e as exceções que aprovo ficam registradas.",
+        "A execução é manual: com cinco pautas escolhidas, cerca de oito chamadas ao Claude, além de reparos e revisões. O tempo da minha leitura ainda não foi medido.",
+        "A busca com agente e a crítica do Codex durante a edição estão prontas, mas desligadas e sem medição.",
+      ],
+      specs: {
+        summary: "Ficha técnica",
+        items: [
+          {
+            label: "Motor",
+            text: "Python 3.13 (uv, Typer); painel local em FastAPI, Jinja2 e HTMX; PostgreSQL 16 em Docker Compose, SQLAlchemy e Alembic.",
+          },
+          {
+            label: "IA",
+            text: "Claude Code CLI na descoberta e na escrita (Sonnet; Opus opcional), na assinatura existente, sem cobrança por API. Chamadas isoladas, com saída em JSON Schema e sem ferramentas na escrita. Codex como revisor no desenvolvimento; a crítica editorial por ele é opcional e está desligada.",
+          },
+          {
+            label: "Orquestração",
+            text: "LangGraph com dois interrupts humanos e checkpoints no Postgres; LangSmith opcional por comando, com o feedback do editor enviado à parte.",
+          },
+          {
+            label: "Revista",
+            text: "Astro e TypeScript estrito; conteúdo em JSON validado por schema; CSP estrita; Firebase Hosting com deploy pelo GitHub Actions, sem chave (Workload Identity Federation).",
+          },
+          {
+            label: "Capa",
+            text: "Por pixel, o caminho da luz é integrado na métrica de Schwarzschild, com disco de acreção e efeito Doppler; as ondas são artísticas. Na revista, cerca de 10 KB de JavaScript comprimido.",
+          },
+          {
+            label: "Qualidade",
+            text: "791 testes no motor (pytest) e 117 unitários na revista, mais e2e com Playwright e axe; revisão independente do Codex nas tarefas de risco, com os achados registrados.",
+          },
+          {
+            label: "Tempo",
+            text: "Planejamento em 14/10 (um kit feito com o Codex); implementação de 15 a 17/10/2026, com a primeira publicação no dia 17. Cerca de 20 h, estimadas pelos registros das sessões, sem medir o esforço total.",
+          },
+          {
+            label: "Contagens",
+            text: "Em 19/10/2026: 123 commits nos dois repositórios, 72 decisões registradas (D-001 a D-072) e 13 matérias publicadas.",
+          },
+        ],
+      },
+    },
+  },
+};
+
 export const ui: Ui = {
   htmlLang: "pt-BR",
   skipLink: "Pular para o conteúdo",
@@ -1137,6 +1388,7 @@ export const pt: SiteContent = {
   caseStudies,
   simpleCases,
   storyCases,
+  journeyCases,
 };
 
 export default pt;

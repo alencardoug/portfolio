@@ -2031,6 +2031,252 @@ h3 {
 }
 
 /* ============================================================
+   Estudo de caso de jornada (CaseJourney) — Linkedia
+   ============================================================ */
+
+.journey .story-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.journey .story-card p.journey-from {
+  margin-top: auto;
+  padding-top: 4px;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.journey-command {
+  font-family: var(--font-code);
+  font-size: 0.82em;
+  color: var(--foreground);
+}
+
+.journey .story-part + p,
+.journey .sg-demo + p {
+  margin-top: 24px;
+}
+
+.journey-link {
+  margin-top: 10px;
+}
+
+/* Capa "Singularidade" ao vivo: sempre escura, como na revista, nos dois
+   temas do portfólio. O palco é o contêiner (quadrado); a caixa usa as
+   unidades dele (cqh/cqw) no lugar de vh/vw da capa original. */
+.sg-demo {
+  max-width: 560px;
+  margin: 28px auto 0;
+}
+
+.sg-stage {
+  container-type: size;
+  aspect-ratio: 1;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.sg-box {
+  --sg-bg: #0a0d26;
+  --sg-ink: #f4f6ff;
+  --sg-soft: #dfe6ff;
+  --sg-fine: #a9b8dc;
+  --sg-rule: rgba(200, 230, 255, 0.45);
+  --sg-dot: rgba(120, 170, 255, 0.28);
+  --ink-from: #ff3d7f;
+  --ink-to: #ffb13d;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 1.6cqh;
+  width: 100%;
+  height: 100%;
+  padding: 7cqh 8cqw 7cqh;
+  color-scheme: dark;
+  background-color: var(--sg-bg);
+  /* a grade de pontos: o renderer desenha a mesma (células de 2,6% da altura) */
+  background-image: radial-gradient(circle, var(--sg-dot) 1.1px, transparent 1.6px);
+  background-size: 2.6cqh 2.6cqh;
+  color: var(--sg-ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.sg-box [data-ink-rule] {
+  --ink-rule: var(--sg-rule);
+}
+
+.sg-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25em 1em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid var(--sg-rule);
+  font-size: clamp(0.56rem, 2.4cqh, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sg-masthead {
+  align-self: center;
+  justify-self: center;
+  font-size: 17cqw;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.sg-ia {
+  background: linear-gradient(90deg, var(--ink-from), var(--ink-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sg-lead {
+  padding-top: 0.8em;
+  border-top: 1px solid var(--sg-rule);
+  color: var(--sg-soft);
+  font-size: clamp(0.62rem, 2.9cqh, 1rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.sg-heads {
+  display: grid;
+  gap: 0.35em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* sem line-clamp: a textura pintaria as linhas que ele esconde; as três
+   manchetes cabem no quadrado até 320 px de tela */
+.sg-heads li {
+  margin: 0;
+  color: inherit;
+}
+
+.sg-n,
+.sg-more {
+  opacity: 0.75;
+}
+
+.sg-more {
+  margin-top: 0.35em;
+}
+
+.sg-canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* a caixa inteira é o alvo do clique (e do teclado: Enter ou Espaço) */
+.sg-hit {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sg-hit:disabled {
+  cursor: default;
+}
+
+.sg-hit:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: -4px;
+  border-radius: 10px;
+}
+
+/* dica e link da capa no ar, abaixo do quadrado (dentro dele, a lente
+   empurraria as manchetes por cima) */
+.sg-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin-top: 10px;
+}
+
+.sg-hint {
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.sg-enter {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.sg-enter:hover {
+  text-decoration: underline;
+}
+
+/* arte no ar: o canvas mostra a capa (pintada a partir deste HTML), a tinta
+   do DOM fica transparente e um arrasto horizontal conduz o buraco */
+.sg-box[data-art="live"] {
+  background-image: none;
+  touch-action: pan-y pinch-zoom;
+}
+
+.sg-box[data-art="live"] .sg-canvas {
+  opacity: 1;
+}
+
+.sg-box[data-art="live"] .sg-hit:not(:disabled) {
+  cursor: crosshair;
+}
+
+.sg-box[data-art="live"] :is(.sg-kicker, .sg-masthead, .sg-lead) {
+  border-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.sg-box[data-art="live"] .sg-ia {
+  background: none;
+}
+
+.sg-demo figcaption {
+  margin-top: 6px;
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sg-stage:has(.sg-box[data-art="live"]) + .sg-bar .sg-hint {
+    animation: sg-pulse 2.8s ease-in-out infinite;
+  }
+}
+
+@keyframes sg-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* ============================================================
    Responsivo
    ============================================================ */
 
