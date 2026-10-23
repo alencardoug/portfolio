@@ -13,6 +13,8 @@ Leia, nesta ordem:
 5. `docs/copy-deck.md`
 6. `docs/content-backlog.md`
 
+Para a V2 (versão gamificada, em `/v2/`): `specs/002-portfolio-v2/` (spec, plan, tasks) e as emendas da V2 em `docs/constitution.md` (§6).
+
 ## Regras
 
 - Posicionamento: **Data & AI Engineer**.
