@@ -1,0 +1,69 @@
+{
+  "_aviso": "Gerado por scripts/v2-boneco/boneco.py (npm run boneco). Não editar à mão.",
+  "figuras": {
+    "em-pe": {
+      "src": "/assets/v2/boneco/figura-em-pe.543420f0.webp",
+      "w": 280,
+      "h": 791,
+      "cabeca": {
+        "x": 139.9,
+        "y": 90.4,
+        "r": 100
+      },
+      "queixo": 1.9
+    },
+    "mesa": {
+      "src": "/assets/v2/boneco/figura-mesa.4a81d4f6.webp",
+      "w": 723,
+      "h": 954,
+      "cabeca": {
+        "x": 394.8,
+        "y": 159.5,
+        "r": 100
+      },
+      "queixo": 1.2
+    }
+  },
+  "rostos": {
+    "serio-inclinado": {
+      "src": "/assets/v2/boneco/rosto-serio-inclinado.c51ffb96.webp",
+      "lado": 512,
+      "queixo": {
+        "x": 297.3,
+        "y": 473.4
+      },
+      "altura": 482.7,
+      "largura": 396.7
+    },
+    "serio-lado": {
+      "src": "/assets/v2/boneco/rosto-serio-lado.4bee0c93.webp",
+      "lado": 512,
+      "queixo": {
+        "x": 370.8,
+        "y": 476.8
+      },
+      "altura": 482.7,
+      "largura": 439.3
+    },
+    "serio-torto": {
+      "src": "/assets/v2/boneco/rosto-serio-torto.d586d1b5.webp",
+      "lado": 512,
+      "queixo": {
+        "x": 201.6,
+        "y": 467.1
+      },
+      "altura": 482.3,
+      "largura": 412.1
+    },
+    "sorrindo-reto": {
+      "src": "/assets/v2/boneco/rosto-sorrindo-reto.9feb0408.webp",
+      "lado": 512,
+      "queixo": {
+        "x": 274.2,
+        "y": 475.7
+      },
+      "altura": 482.0,
+      "largura": 353.4
+    }
+  }
+}
