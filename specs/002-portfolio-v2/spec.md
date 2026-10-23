@@ -4,7 +4,7 @@
 
 Em construção em `/v2/`, sem link a partir da V1 e com `noindex`.
 
-- **Escopo (fonte de verdade):** `~/Documentos/Obsidian Vault/1 Projetos/IA/Portfolio/Portfolio V2/Escopo do portfolio V2.md` (Douglas, 23/10/2026; árvore revisada no mesmo dia, junto com as respostas às questões Q1–Q4).
+- **Escopo (fonte de verdade):** `~/Documentos/Obsidian Vault/1 Projetos/IA/Portfolio/Portfolio V2/Escopo do portfolio V2.md` (Douglas, 23/10/2026; árvore revisada no mesmo dia, junto com as respostas às questões Q1–Q4, Q8 e Q9).
 - **Mockups (Excalidraw, não versionados):** `DOCS_PROJETO/screenshot_portfolio_v2/` — os 9: `tela1_horizontal_pc` … `tela8_horizontal_pc` e `tela1_vertical_mobile`.
 - **Momento 1 (boneco):** pronto na branch `feat/v2-boneco`, ainda sem commit — `npm run boneco`, `src/components/v2/Boneco.tsx`, laboratório `/v2/boneco/`.
 - O escopo ainda promete "mais detalhes em breve" por tela. O que foi deduzido dos mockups sem texto de apoio está marcado como **(dedução)**.
@@ -29,7 +29,7 @@ A V1 mostra tudo em sequência e deixa a filtragem para quem lê. A V2 troca a r
 4. Cada projeto numa tela curta: ações no topo, explicação de 3 a 5 linhas, ferramentas embaixo.
 5. A V1 continua acessível ("Acessar portfólio versão currículo"), e os estudos de caso `/projects/*` são compartilhados pelas duas versões.
 
-## Emendas à constituição (propostas — exigem OK do Douglas)
+## Emendas à constituição (aprovadas por Douglas em 23/10/2026 — `docs/constitution.md` §6)
 
 A constituição (`docs/constitution.md`) foi escrita para a V1. Na V2 continuam valendo a finalidade, os públicos, o posicionamento **Data & AI Engineer** e os princípios P2–P10. Mudam, só na V2:
 
@@ -75,7 +75,7 @@ inicial — Engenharia de IA · Engenharia de Dados · Governança · Liderança
           Da voz do cliente ao produto .. analytics-voz-do-cliente (repo voc_saude)
           Portfolio V2 .................. portfolio (o texto atual descreve a V1)
       1.2.2 Agêntica ................................. projetos (mesa)
-          Casos de Analytics ............ ?                                          Q8
+          Graphic AI .................... linkedia (laboratório visual); aplicação → linkedia.web.app/visual
           Revista Linkedia .............. linkedia
           Skill Astramax ................ skill-astramax
       1.2.3 Casos de Analytics (tela6) ............... projetos (mesa)
@@ -96,20 +96,20 @@ inicial — Engenharia de IA · Engenharia de Dados · Governança · Liderança
       Planejamento Analytics Ravena ..... novo
 4 Liderança .......................................... projetos (mesa)
       Revista ........................... linkedia; aplicação → linkedia.web.app/categorias/lideranca-de-ia
-      AC Camargo ........................ novo (experiência; base em career[0])
+      Coordenação por 2 anos ............ novo (coordenação de dados na A.C.Camargo; base em career[0])
       Estratégia no GitHub .............. novo
 ```
 
-Contas (batem com as do Douglas): 13 telas numeradas, 4 delas com caixas de categoria e 9 com caixas de projeto, mais a inicial. São 22 caixas de projeto para 18 projetos distintos (17 se o item de Q8 sair).
+Contas (batem com as do Douglas): 13 telas numeradas, 4 delas com caixas de categoria e 9 com caixas de projeto, mais a inicial. São 22 caixas de projeto para 17 projetos distintos.
 
 Regras que a árvore impõe:
 
 - **Sem tela mista.** Os filhos de uma categoria são todos categorias ou todos projetos (Douglas, 23/10/2026). O validador do build garante.
-- **Um projeto, vários ramos.** Linkedia aparece em três ramos; ED1 e voc_saude, em dois cada. O projeto é um só (mesma stack, mesmo estudo de caso); o rótulo da caixa e a explicação curta mudam de ênfase conforme o ramo.
-- **Links por ramo.** Uma caixa pode trocar os links do projeto pelos daquele ramo: Revista em Liderança abre `https://linkedia.web.app/categorias/lideranca-de-ia`; Governança ED1 aponta o GitHub para a pasta de governança do repositório (URL exata a definir). Douglas vai rearranjar os links de cada conteúdo.
+- **Um projeto, vários ramos.** Linkedia aparece em quatro caixas (Graphic AI, Revista Linkedia, Revista em Dados e em Liderança); ED1 e voc_saude, em duas cada. O projeto é um só (mesma stack, mesmo estudo de caso); o rótulo da caixa e a explicação curta mudam de ênfase conforme o ramo.
+- **Links por ramo.** Uma caixa pode trocar os links do projeto pelos daquele ramo: Graphic AI abre `https://linkedia.web.app/visual`; Revista em Liderança abre `https://linkedia.web.app/categorias/lideranca-de-ia`; Governança ED1 aponta o GitHub para a pasta de governança do repositório (URL exata a definir). Douglas vai rearranjar os links de cada conteúdo.
 - **Repositório privado não vira botão.** O voc_saude é privado (o GitHub responde 404 para visitantes, conferido em 23/10/2026): "Ver Github" fica oculto nas duas caixas até o repositório abrir.
 - **Até 4 caixas por tela.** É o que cabe sem rolagem; a árvore atual usa no máximo 4.
-- **Itens novos** (8; 9 se o item de Q8 for um projeto próprio) só ganham tela com material do Douglas. Até lá aparecem como "em construção" apenas em `/v2/`. No lançamento, ramo incompleto não vai ao ar (P5: a UI não simula disponibilidade).
+- **Itens novos** (8) só ganham tela com material do Douglas. Até lá aparecem como "em construção" apenas em `/v2/`. No lançamento, ramo incompleto não vai ao ar (P5: a UI não simula disponibilidade).
 - **Casos corporativos** (Ravena, CNU, A.C.Camargo): só o que o Douglas autorizar publicar, sem dados de cliente; a regra da V1 de não apresentar projeto corporativo como público continua valendo.
 
 ## Comportamento por tela
@@ -203,14 +203,15 @@ Respondidas por Douglas (23/10/2026):
 - **Q2 — Mesa:** o boneco senta à mesa nas 9 telas de projetos; fica em pé na inicial e nas 4 telas de categorias. Não existe tela mista.
 - **Q3 — Identidades:** Plataforma V2 = RAG avançado via RAGFlow; Revista = Linkedia; Governança ED1 = Engenharia e Governança de Dados; Reclamações multicanal CNU = voc_saude, o mesmo repositório da Voz do cliente. Os links de cada caixa serão rearranjados por ele.
 - **Q4 — Quarta aptidão:** "Liderança".
+- **Q8 — Agêntica:** Graphic AI, Revista Linkedia e Skill Astramax. Graphic AI é o laboratório visual da Linkedia (`https://linkedia.web.app/visual`): uma caixa da `linkedia` com texto e link próprios.
+- **Q9 — RAG:** 2 projetos (Plataforma V1 e V2).
+- **Emendas à constituição:** aprovadas.
 
 Em aberto:
 
 - **Q5 — Dica das aptidões no celular.** (a) O 1º toque mostra a dica e o 2º entra; (b) o toque entra direto e a dica vira a fala do boneco na tela seguinte; (c) sem dica no celular. Recomendação: (b), que não dobra os toques da navegação principal e não perde a informação.
 - **Q6 — Fala inicial.** Aparece ao abrir sempre, ou só na primeira visita? Some sozinha depois de alguns segundos? Texto final: "obgd" ou "obrigado"; "Aproveite!" (computador) ou "Enjoy it!" (celular); "em produção", que só o celular tem, entra nos dois?
-- **Q7 — "11 cases" (tela3).** Com a árvore revisada, 11 é o número de caixas de projeto em Engenharia de IA, contando o item de Q8. Mas são 10 projetos distintos, porque o voc_saude aparece duas vezes. Proposta: o número é calculado da árvore, nunca escrito à mão, contando projetos distintos (P4). Na mesma dica, "VLM" e "cross-encoder" não aparecem nos estudos de caso atuais (há reranker na Plataforma e embeddings no RAGFlow): confirmar a evidência antes de publicar (P2).
-- **Q8 — "Casos de Analytics" dentro de Agêntica.** Agêntica ainda lista esse item. Como não há tela mista, ele é um projeto: qual? Ou é sobra da versão anterior, e Agêntica fica com Linkedia e AstraMax?
-- **Q9 — RAG.** O escopo diz "contém os 3 abaixo", mas lista 2 (Plataforma V1 e V2). Falta um projeto?
+- **Q7 — "11 cases" (tela3).** Com a árvore revisada, 11 é o número de caixas de projeto em Engenharia de IA. Mas são 9 projetos distintos: o voc_saude aparece duas vezes (Voz do cliente e CNU multicanal), e a Linkedia também (Graphic AI e Revista Linkedia). Proposta: o número é calculado da árvore, nunca escrito à mão, contando projetos distintos (P4). Na mesma dica, "VLM" e "cross-encoder" não aparecem nos estudos de caso atuais (há reranker na Plataforma e embeddings no RAGFlow): confirmar a evidência antes de publicar (P2).
 
 Decisões padrão (reversíveis; não precisam de resposta agora):
 

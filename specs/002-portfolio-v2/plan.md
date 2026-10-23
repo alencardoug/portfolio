@@ -79,7 +79,7 @@ O script de tema do `<head>` (layout raiz) já vale para `/v2/`, sem flash. A V2
 |---|---|---|
 | F0 | Momento 1 commitado; spec 002, ADRs e CLAUDE.md/AGENTS.md atualizados; `noindex` em todo `/v2/` | OK do Douglas no boneco e nas emendas |
 | F1 | Direção visual escolhida por opções renderizadas → tokens e fonte da V2 | escolha do Douglas |
-| F2 | Motor: árvore, rotas, palco, voltar, metadata, teste de sem rolagem | Q8, Q9 |
+| F2 | Motor: árvore, rotas, palco, voltar, metadata, teste de sem rolagem | F0 |
 | F3 | Tela inicial completa (tela1–4 + celular) | F1, F2, Q5, Q6 |
 | F4 | Sobre mim (tela5) | F1, F2 |
 | F5 | Telas de categorias e de projetos (tela6), com a troca de pose | F1, F2 |
@@ -153,5 +153,5 @@ axe em todas as telas, teclado completo, leitor de tela, reduced motion, contras
 | Celular baixo (iPhone SE com as barras do Safari) | `dvh`, escala pela altura e a resolução 375×548 na matriz de teste. |
 | View Transitions variam entre navegadores | Melhoria progressiva: sem suporte, a troca é instantânea. |
 | Conteúdo novo depende do Douglas | Itens "em construção" só em `/v2/`; ramo incompleto não vai ao ar. |
-| Ambiguidades da árvore | Q1–Q4 respondidas em 23/10/2026; Q8 e Q9 antes de a F2 fechar a árvore. |
+| Ambiguidades da árvore | Q1–Q4, Q8 e Q9 respondidas em 23/10/2026; o validador do build barra as que voltarem. |
 | Duas linguagens visuais (esboço × V1 no Sobre mim) | Resolver nas opções da F1, olhando as duas juntas. |

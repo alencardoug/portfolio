@@ -15,10 +15,11 @@ Ordem de execução: a das fases (ver `plan.md`). Cada fase fecha numa PR com `n
 - [x] Commit + PR `feat/v2-boneco` (pipeline, componente, laboratório, script `boneco` no `package.json`).
 - [x] Commit desta spec (`specs/002-portfolio-v2/`).
 - [x] Respostas Q1–Q4 incorporadas ao `spec.md` (23/10/2026).
-- [ ] Respostas Q5–Q9 incorporadas ao `spec.md`.
-- [ ] Emendas à constituição aprovadas e registradas (seção V2 em `docs/constitution.md`).
-- [ ] ADRs das decisões D1–D8 em `docs/decisions.md`.
-- [ ] `CLAUDE.md` e `AGENTS.md`: ler a spec 002 em todo trabalho na V2.
+- [x] Respostas Q8 e Q9 incorporadas ao `spec.md` (23/10/2026).
+- [ ] Respostas Q5–Q7 incorporadas ao `spec.md`.
+- [x] Emendas à constituição aprovadas e registradas (`docs/constitution.md` §6, 23/10/2026).
+- [x] ADRs das decisões D1–D8 e do boneco em `docs/decisions.md` (ADR-013 a ADR-021).
+- [x] `CLAUDE.md` e `AGENTS.md`: ler a spec 002 em todo trabalho na V2.
 - [x] `noindex` no layout de `/v2/` (todas as telas, não só o laboratório).
 
 ## F1 — Direção visual
@@ -34,7 +35,7 @@ Ordem de execução: a das fases (ver `plan.md`). Cada fase fecha numa PR com `n
 ## F2 — Motor de navegação
 
 - [ ] Tipos em `src/content/v2.ts`: categoria, folha, projeto da V2, textos de interface.
-- [ ] Árvore PT completa, com os links por ramo já definidos **(bloq: Q8, Q9)**.
+- [ ] Árvore PT completa, com os links por ramo já definidos.
 - [ ] Itens novos marcados "em construção" (visíveis só em `/v2/`).
 - [ ] `validarArvore()` com as regras de D5, chamada no build.
 - [ ] Contagem `{n}` calculada da árvore para textos como "11 cases".
@@ -100,11 +101,11 @@ Ordem de execução: a das fases (ver `plan.md`). Cada fase fecha numa PR com `n
   - [ ] skill-astramax
   - [ ] engenharia-governanca-dados
   - [ ] engenharia-dados-gcp
-- [ ] Ênfase por ramo onde o mesmo projeto se repete: Linkedia (IA, Dados, Liderança), ED1 (Dados, Governança), voc_saude (Workflow, Casos de Analytics).
-- [ ] Links por ramo, conforme o Douglas rearranjar. Já definidos: Revista em Liderança → `https://linkedia.web.app/categorias/lideranca-de-ia`; Governança ED1 → pasta de governança do repositório (URL a definir).
+- [ ] Ênfase por ramo onde o mesmo projeto se repete: Linkedia (Graphic AI, Revista Linkedia, Dados, Liderança), ED1 (Dados, Governança), voc_saude (Workflow, Casos de Analytics).
+- [ ] Links por ramo, conforme o Douglas rearranjar. Já definidos: Graphic AI → `https://linkedia.web.app/visual`; Revista em Liderança → `https://linkedia.web.app/categorias/lideranca-de-ia`; Governança ED1 → pasta de governança do repositório (URL a definir).
 - [ ] Dica das aptidões Engenharia de Dados, Governança e Liderança (só a de IA veio no mockup).
 - [ ] Conferir "VLM" e "cross-encoder" da dica de IA contra os estudos de caso **(bloq: Q7)**.
-- [ ] Itens novos, com material do Douglas: BI como código · Skincare Ravena · GCP · Databricks · Fabric · Planejamento Analytics Ravena · AC Camargo · Estratégia no GitHub · "Casos de Analytics" em Agêntica, se for projeto (Q8).
+- [ ] Itens novos, com material do Douglas: BI como código · Skincare Ravena · GCP · Databricks · Fabric · Planejamento Analytics Ravena · Coordenação por 2 anos · Estratégia no GitHub.
 - [ ] Seção V2 em `docs/content-backlog.md` com o que falta de cada item novo.
 
 ## F8 — EN

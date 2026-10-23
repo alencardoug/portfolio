@@ -101,3 +101,12 @@ Mensagem principal:
 > Data & AI Engineer com experiência corporativa em dados, analytics e governança, construindo aplicações de IA completas da engenharia de dados ao deploy.
 
 A formulação pode ser refinada, mas não deve virar uma lista genérica de ferramentas.
+
+## 6. Emendas da V2 (aprovadas por Douglas em 23/10/2026)
+
+A V2 (versão gamificada, sem rolagem — `specs/002-portfolio-v2/`) mantém a finalidade, os públicos, o posicionamento e os princípios P1–P10. Valem só para ela:
+
+- **§1, "não é um playground visual":** na V2, a gamificação é a própria navegação, não enfeite. P1 continua: cada elemento ajuda a entender, aprofundar ou entrar em contato.
+- **§4, "sistema complexo de animações":** na V2, o movimento é permitido e contido — flutuação lenta, troca de rosto do boneco, transição entre telas e o "estouro" das ferramentas. Só CSS e View Transitions nativas, sem biblioteca de animação, e tudo desligado com `prefers-reduced-motion`.
+- **Três seções principais (ADR-002):** a V2 entra por quatro aptidões e "Sobre mim". A V1 mantém as três seções.
+- **Estética aprovada:** a V2 usa a linguagem de esboço dos mockups (boneco de palito, caixas de traço). A direção final sai de opções renderizadas, nos dois temas.

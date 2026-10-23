@@ -13,9 +13,16 @@ Antes de alterar arquitetura, conteúdo ou posicionamento, leia:
 - `docs/copy-deck.md`
 - `docs/content-backlog.md`
 
+Para trabalho na V2 (versão gamificada, em `/v2/`), leia também:
+
+- `specs/002-portfolio-v2/spec.md`
+- `specs/002-portfolio-v2/plan.md`
+- `specs/002-portfolio-v2/tasks.md`
+- as emendas da V2 em `docs/constitution.md` (§6)
+
 ## Como trabalhar
 
-1. Execute as tarefas na ordem do `tasks.md`, salvo motivo técnico explícito.
+1. Execute as tarefas na ordem do `tasks.md` da versão em que estiver trabalhando (V1: `specs/001-…`; V2: `specs/002-…`), salvo motivo técnico explícito.
 2. Faça mudanças pequenas, revisáveis e verificáveis.
 3. Preserve separação entre conteúdo e apresentação.
 4. Não introduza backend, banco, autenticação, CMS ou dependência pesada sem necessidade aprovada.
